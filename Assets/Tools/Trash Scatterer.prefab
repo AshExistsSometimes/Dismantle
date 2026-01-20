@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8423293873939599677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8534008533141527379}
+  - component: {fileID: 6942788972028945862}
+  m_Layer: 0
+  m_Name: Trash Scatterer
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8534008533141527379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423293873939599677}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6942788972028945862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8423293873939599677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32445b987fe45124e906870c7f114462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 7
+  objectCount: 10
+  trashPrefabs:
+  - {fileID: 543023694621398846, guid: 7edd89f9af411b944b6561e86a9d46ca, type: 3}
+  - {fileID: 4111693595811736252, guid: 2e69a7ed54fea4443a91655b1ce6e03f, type: 3}
+  - {fileID: 5364081819712820129, guid: a9733c3f94fb0214a9b100087b35427b, type: 3}
+  - {fileID: 7770473921120000249, guid: 5e2e23b5b6eb9aa4d8148341aa8dfcf4, type: 3}
+  placementLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  maxSlopeAngle: 25
+  overlapCheckRadius: 0

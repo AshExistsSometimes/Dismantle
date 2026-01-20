@@ -1,0 +1,79 @@
+Blade - Change the emission map HSV Colour (Hue)
+
+Intensity = 2.75
+[ S = 95 ] [ V = 75 ] Unless otherwise specified
+
+9 Options
+
+Light Blue - [ H = 210 ]
+Dark Blue - [ H = 240 ] 
+Purple - [ H = 250 ]
+Pink - [ H = 330 ]
+Red - [ H = 0 ]
+Orange - [ H = 5 ]
+Yellow - [ H = 20 ]
+Green - [ H = 115 ]
+White - [ H = 215 ] [ S = 15 ] [ V = 75 ]
+___
+
+Primary - Change the material Colour
+
+16 Options
+
+Dark Gray - #434343
+Light Gray - #6C6C6C
+White- #E0E0E0
+Black- #2C2730
+Brown - #805938
+Red - #CF4949
+Orange - #CF8649
+Yellow - #CFC549
+Lime - #9ECF4A
+Green - #5BCF4A
+Teal - #4ACF84
+Light Blue - #4ACFCC
+Dark Blue - #4A77CF
+Purple - #8A4ACF
+Magenta - #CD49CF
+Pink - #D98AA8
+___
+
+Secondary - Change the material Colour
+
+16 Options
+
+Dark Gray - #434343
+Light Gray - #6C6C6C
+White- #E0E0E0
+Black- #2C2730
+Brown - #805938
+Red - #CF4949
+Orange - #CF8649
+Yellow - #CFC549
+Lime - #9ECF4A
+Green - #5BCF4A
+Teal - #4ACF84
+Light Blue - #4ACFCC
+Dark Blue - #4A77CF
+Purple - #8A4ACF
+Magenta - #CD49CF
+Pink - #D98AA8
+___
+
+DEFAULTS:
+
+Sword:
+Handle Default    - Dark Gray - #434343
+Body Default      - Light Gray - #6C6C6C
+Blade Default     - Light Blue - [ H = 210 ]
+
+Pistol:
+Primary Default   - Light Gray - #6C6C6C 
+Secondary Default - Brown - #805938 
+Glow Default      - Light Blue - [ H = 210 ]
+
+Shotgun:
+Primary Default   - Light Gray - #6C6C6C 
+Secondary Default - Brown - #805938 
+Glow Default      - Light Blue - [ H = 210 ] 
+
