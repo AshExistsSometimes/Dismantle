@@ -1,0 +1,8 @@
+Make Textures for:
+Art
+Tools
+
+Get a template from:
+Packages > Simple Folder Icon > Icons
+
+Name the icon to "Art" or "Tools", and put it in this folder

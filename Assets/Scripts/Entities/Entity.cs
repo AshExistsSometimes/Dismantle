@@ -1,0 +1,128 @@
+using System.Collections;
+using UnityEditor;
+using UnityEngine;
+
+public class Entity : MonoBehaviour
+{
+    // VARIABLES //
+
+    // IDENTITY
+    [Header("<color=#42f2ff><size=110%><b>Identity")]
+
+    public string Name = "Entity";
+
+    public EntityType type;
+    public enum EntityType
+    {
+        Hostile,
+        Boss,
+        NPC
+    }
+
+    // COMBAT
+    [Header("<color=#ff6842><size=110%><b>Combat")]
+
+    public int HP = 100;
+    public int MaxHP = 100;
+    [Space]
+    public int AttackDamage = 5;
+    public float AttackRate = 1f;
+    [Space]
+    public bool regenHP = false;
+    public float HPRegenRate = 1f;
+    public int HPRegenAmount = 1;
+
+    private Coroutine regenCoroutine = null;
+
+    // MOVEMENT
+    [Header("<color=#ffec70><size=110%><b>Movement")]
+
+    public float DefaultSpeed = 5f;
+
+    // BUFFS / DEBUFFS
+    [Header("<color=#f280ff><size=110%><b>Buffs / Debuffs")]
+
+    public Effects effects;
+    public enum Effects
+    {
+        Antiheal,// Prevents healing while active
+        Overheat,// Deals fire damage over time - ENEMY ONLY
+        MemoryLeak,// Slows target for a time - ENEMY ONLY
+        Malware, // Stops target and deals damage for a time - ENEMY ONLY
+    }
+
+
+    // DEBUG
+    [Header("<color=#ffb854><size=110%><b>Debug")]
+
+    [Tooltip("Turns off the entities AI, preventing pathfinding and combat")]
+    public bool NoAI = false;
+
+    [Tooltip("Prevents entity from dying")]
+    public bool Essential = false;
+
+    [Tooltip("Prevents entity from taking damage at all")]
+    public bool Immortal = false;
+
+    // UNITY FUNCTIONS //
+
+    // N/A
+
+    // FUNCTIONS
+
+    public virtual void TakeDamage(int damage)
+    {
+        if (Immortal) { return; }
+
+        if (regenCoroutine != null)
+        {
+            StopCoroutine(regenCoroutine);
+            regenCoroutine = null;
+        }
+
+        HP -= damage;
+
+        if (HP <= 0 && !Essential) { Die(); }
+        else if (HP <= 0 && Essential && regenCoroutine == null)
+        {
+            Immortal = true;
+            regenCoroutine = StartCoroutine(RegenToFull(HPRegenRate / 100f));
+        }
+    }
+
+    public virtual void Die()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public IEnumerator RegenHPByAmount(int HealAmount, float regenRate)
+    {
+        int finalHP = HP + HealAmount;
+        if (finalHP > MaxHP) { finalHP = MaxHP; }
+
+        while (HP < finalHP)
+        {
+            HP += 1;
+            yield return new WaitForSeconds(regenRate);
+        }
+
+        regenCoroutine = null;
+    }
+
+    public IEnumerator RegenToFull(float regenRate)
+    {
+        while (HP < MaxHP)
+        {
+            HP += 1;
+            yield return new WaitForSeconds(regenRate);
+        }
+
+        regenCoroutine = null;
+    }
+
+
+    public void DisplayEffects()
+    {
+        // Display effect visuals
+    }
+}
