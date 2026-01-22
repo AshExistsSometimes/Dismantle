@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class HUDController : MonoBehaviour
 {
     public PlayerController player;
+    public PlayerHealth health;
     public DualHooks grapple;
 
     [Header ("Health")]
@@ -35,7 +36,7 @@ public class HUDController : MonoBehaviour
     {
         // UpdateHealthDisplay(100f); // No health yet
         UpdateFuelDisplay(grapple.fuel);
-        UpdateHealthDisplay(DebugHealthValue);
+        UpdateHealthDisplay(health.CurrentHP);
     }
 
     // Currently just updates everything itself every frame, but once things are added the scripts being

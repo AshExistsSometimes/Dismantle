@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, IDamagable
 {
     // VARIABLES //
 
@@ -85,7 +85,6 @@ public class Entity : MonoBehaviour
         if (HP <= 0 && !Essential) { Die(); }
         else if (HP <= 0 && Essential && regenCoroutine == null)
         {
-            Immortal = true;
             regenCoroutine = StartCoroutine(RegenToFull(HPRegenRate / 100f));
         }
     }
