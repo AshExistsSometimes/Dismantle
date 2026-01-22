@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour, IDamagable
     [Header("<color=#f280ff><size=110%><b>Buffs / Debuffs")]
 
     public Effects effects;
-    public enum Effects
+    public enum Effects// NEEDS CHANGING - AN ENTITY SHOULD BE ABLE TO HAVE MULTIPLE BUFFS AT THE SAME TIME
     {
         Antiheal,// Prevents healing while active
         Overheat,// Deals fire damage over time - ENEMY ONLY
