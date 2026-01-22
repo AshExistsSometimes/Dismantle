@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
@@ -17,6 +18,35 @@ public class Entity : MonoBehaviour, IDamagable
         Hostile,
         Boss,
         NPC
+    }
+
+    // OUTLINE
+    [Header("<color=#9b34eb><size=110%><b>Outline")]
+    public bool OutlineEnabled = true;
+    [Space]
+    public Outline outline;
+    public float MaxOutlineThickness = 3f;
+    public OutlineColourSet OutlineColours;
+
+    private float outlineThickness = 3f;
+    private Transform player;
+
+    [System.Serializable]
+    public struct OutlineColourSet
+    {
+        public Color Hostile;
+        public Color Boss;
+        public Color NPC;
+
+        public Color Get(EntityType type)
+        {
+            return type switch
+            {
+                EntityType.Boss => Boss,
+                EntityType.NPC => NPC,
+                _ => Hostile
+            };
+        }
     }
 
     // COMBAT
@@ -66,7 +96,17 @@ public class Entity : MonoBehaviour, IDamagable
 
     // UNITY FUNCTIONS //
 
-    // N/A
+    private void Awake()
+    {
+        EnsureOutline();
+        CachePlayer();
+        outlineThickness = MaxOutlineThickness;
+    }
+
+    private void Update()
+    {
+        UpdateOutline();
+    }
 
     // FUNCTIONS
 
@@ -122,6 +162,63 @@ public class Entity : MonoBehaviour, IDamagable
 
     public void DisplayEffects()
     {
-        // Display effect visuals
+        // Display effect visuals (does nothing until I add effects)
+    }
+
+    private void UpdateOutline()
+    {
+        if (!OutlineEnabled || outline == null || player == null)
+        {
+            if (outline != null)
+                outline.OutlineWidth = 0f;
+
+            return;
+        }
+
+        UpdateOutlineColour();
+        UpdateOutlineThickness();
+    }
+
+    private void UpdateOutlineColour()
+    {
+        outline.OutlineColor = OutlineColours.Get(type);
+    }
+
+    private void UpdateOutlineThickness()
+    {
+        float distance = Vector3.Distance(transform.position, player.position);
+
+        // <= 10m = full thickness
+        if (distance <= 10f)
+        {
+            outlineThickness = MaxOutlineThickness;
+        }
+        else
+        {
+            // 10m -> 30m fade to zero
+            float t = Mathf.InverseLerp(10f, 30f, distance);
+            outlineThickness = Mathf.Lerp(MaxOutlineThickness, 0f, t);
+        }
+
+        outline.OutlineWidth = outlineThickness;
+    }
+
+    private void EnsureOutline()
+    {
+        if (outline == null)
+        {
+            outline = GetComponent<Outline>();
+            if (outline == null)
+                outline = gameObject.AddComponent<Outline>();
+        }
+
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
+    }
+
+    private void CachePlayer()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.transform;
     }
 }
