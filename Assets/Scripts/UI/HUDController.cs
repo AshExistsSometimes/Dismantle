@@ -27,6 +27,7 @@ public class HUDController : MonoBehaviour
 
     [Header("Active Equipment")]
     public Image EquipmentIcon;
+    public Image SecondaryEquipmentIcon;
 
     private void Start()
     {
