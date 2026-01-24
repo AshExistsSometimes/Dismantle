@@ -11,7 +11,7 @@ public class PlayerInventoryManager : MonoBehaviour, ISaveable
     public List<string> OwnedModifiers = new();
     public List<string> OwnedColourOptions = new();
 
-    private void Awake()
+    private void Start()
     {
         SaveManager.Instance.Register("Inventory", this);
     }

@@ -29,8 +29,12 @@ public class GameManager : MonoBehaviour, ISaveable
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        SaveManager.Instance.Register("GameManager", this);
         CurrentDate = DateTime.Now.ToString("dd/MM/yyyy");
+    }
+
+    private void Start()
+    {
+        SaveManager.Instance.Register("GameManager", this);
     }
 
     private void Update()

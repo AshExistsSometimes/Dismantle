@@ -7,7 +7,7 @@ public class ModifierManager : MonoBehaviour, ISaveable
     public int MaxModifiers = 3;
     public List<string> ActiveModifiers = new();
 
-    private void Awake()
+    private void Start()
     {
         SaveManager.Instance.Register("Modifiers", this);
     }
