@@ -51,8 +51,7 @@ public class DualHooks : MonoBehaviour
     private float velocitySampleTimer;
     private bool hasVelocityChangedEnough;
 
-    private bool grappleAdditive = false;
-    private float grappleProgress = 0f;
+    // private bool grappleAdditive = false;
 
     [Header("ODM Gear")]
     public Rigidbody rb;

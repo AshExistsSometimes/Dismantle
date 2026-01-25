@@ -12,7 +12,7 @@ public class BaseNPC : Entity
     // --------------------
     // Unity Functions
     // --------------------
-    private void Awake()
+    private new void Awake()
     {
         base.Awake();
 

@@ -7,7 +7,6 @@ public class BaseEnemy : Entity
 {
     [Header("<color=#A61A21><size=110%><b>Enemy Stats")]
     public int Damage = 10;
-    public float AttackRate = 1f; // attacks per second
     public EnemyModifier Modifier = EnemyModifier.Common;
 
     [Header("<color=#D71C74><size=110%><b>Detection")]
@@ -21,7 +20,7 @@ public class BaseEnemy : Entity
     protected Transform target;
     protected float attackCooldown;
 
-    private void Awake()
+    private new void Awake()
     {
         base.Awake();
 
@@ -80,13 +79,17 @@ public class BaseEnemy : Entity
             case EnemyModifier.Rare:
                 MaxHP = Mathf.RoundToInt(MaxHP * 1.5f);
                 HP = MaxHP;
-                Damage = Mathf.RoundToInt(Damage * 1.5f);
+                AttackDamage = Mathf.RoundToInt(AttackDamage * 1.5f);
+                gameObject.transform.localScale = new Vector3(1.15f, 1.15f, 1.15f);
+                DefaultSpeed = DefaultSpeed * 0.9f;
                 SetOutlineColor(new Color(0.6f, 0f, 1f)); // purple
                 break;
             case EnemyModifier.Legendary:
                 MaxHP = Mathf.RoundToInt(MaxHP * 2f);
                 HP = MaxHP;
-                Damage = Mathf.RoundToInt(Damage * 2f);
+                AttackDamage = Mathf.RoundToInt(AttackDamage * 2f);
+                gameObject.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+                DefaultSpeed = DefaultSpeed * 0.8f;
                 SetOutlineColor(Color.yellow);
                 break;
         }

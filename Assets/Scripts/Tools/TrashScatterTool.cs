@@ -4,6 +4,8 @@ using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+
+#if UNITY_EDITOR
 [ExecuteAlways]
 public class TrashScatterTool : MonoBehaviour
 {
@@ -124,4 +126,5 @@ public class TrashScatterToolEditor : Editor
         }
     }
 }
+    #endif
 #endif
