@@ -84,7 +84,7 @@ Animator:
   m_GameObject: {fileID: 8642494495349160529}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e7671909ef79af148abebfc9a548d9ef, type: 2}
+  m_Controller: {fileID: 9100000, guid: c7a36107b7e8f8a46a50dfbfd7bab935, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineColor: {r: 0, g: 0, b: 0, a: 1}
   outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []

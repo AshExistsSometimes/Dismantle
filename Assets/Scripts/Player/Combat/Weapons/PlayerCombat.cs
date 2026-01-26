@@ -7,10 +7,36 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Weapons")]
     public GameObject Revolver;
+    public Transform RevolverPivot;
+
     public GameObject Shotgun;
+    public Transform ShotgunPivot;
+
     public GameObject Sword; // Reference only rn
 
     private PlayerWeapon currentWeapon;
+
+    // ---------
+    private void Awake()
+    {
+        PlayerWeaponManager weaponManager =
+            FindFirstObjectByType<PlayerWeaponManager>();
+
+        if (weaponManager == null)
+        {
+            Debug.LogError("PlayerWeaponManager not found!");
+            return;
+        }
+
+        weaponManager.RegisterWeapons(
+            Revolver,
+            RevolverPivot,
+            Shotgun,
+            ShotgunPivot,
+            Sword
+        );
+    }
+
 
     private void Update()
     {

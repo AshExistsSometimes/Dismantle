@@ -329,6 +329,45 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
         image.color = c;
     }
 
+    public void RegisterHUD(HUDController hud)
+    {
+        hudController = hud;
+        UpdateHUDIcon();
+        UpdateSecondaryHUDIcon();
+    }
+
+    public void RegisterWeapons(
+        GameObject revolver,
+        Transform revolverPivot,
+        GameObject shotgun,
+        Transform shotgunPivot,
+        GameObject sword = null
+    )
+    {
+        RevolverObject = revolver;
+        RevolverPivot = revolverPivot;
+
+        ShotgunObject = shotgun;
+        ShotgunPivot = shotgunPivot;
+
+        SwordObject = sword;
+
+        // Ensure only the equipped weapon is visible
+        SyncWeaponVisibility();
+    }
+
+    private void SyncWeaponVisibility()
+    {
+        if (RevolverObject != null)
+            RevolverObject.SetActive(EquippedWeapon == PlayerWeapon.Revolver);
+
+        if (ShotgunObject != null)
+            ShotgunObject.SetActive(EquippedWeapon == PlayerWeapon.Shotgun);
+
+        // Sword later
+    }
+
+
     // --------------------
     // Saving
     // --------------------

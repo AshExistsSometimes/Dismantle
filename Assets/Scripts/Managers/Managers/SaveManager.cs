@@ -6,6 +6,7 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
 
+    public string SavePath = "Save Path";
     private const string SaveFileName = "DismantleSave.sav";
     private string savePath;
 
@@ -25,6 +26,7 @@ public class SaveManager : MonoBehaviour
 
         savePath = Path.Combine(Application.persistentDataPath, SaveFileName);
         Debug.Log($"[SaveManager] Save path: {savePath}");
+        SavePath = savePath;
     }
 
     public void Register(string key, ISaveable saveable)

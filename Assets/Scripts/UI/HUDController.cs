@@ -29,6 +29,23 @@ public class HUDController : MonoBehaviour
     public Image EquipmentIcon;
     public Image SecondaryEquipmentIcon;
 
+
+
+    private void Awake()
+    {
+        PlayerWeaponManager weaponManager =
+            FindFirstObjectByType<PlayerWeaponManager>();
+
+        if (weaponManager != null)
+        {
+            weaponManager.RegisterHUD(this);
+        }
+        else
+        {
+            Debug.LogWarning("HUDController: WeaponManager not found.");
+        }
+    }
+
     private void Start()
     {
         UpdateAllDisplays();
