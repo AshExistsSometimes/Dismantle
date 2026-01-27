@@ -3,13 +3,28 @@ using UnityEngine;
 
 public class ModifierManager : MonoBehaviour, ISaveable
 {
+    public string SaveKey => "ModifierManager";
+
     [Header("Modifiers")]
     public int MaxModifiers = 3;
     public List<string> ActiveModifiers = new();
 
+    private void Awake()
+    {
+        SaveManager.Instance?.Register(this);
+    }
+
     private void Start()
     {
-        SaveManager.Instance.Register("Modifiers", this);
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.Register(this);
+            Debug.Log("[ModifierManager] Registered with SaveManager.");
+        }
+        else
+        {
+            Debug.LogError("[ModifierManager] SaveManager not found!");
+        }
     }
 
     public bool TryAddModifier(string modifierID)
@@ -28,23 +43,21 @@ public class ModifierManager : MonoBehaviour, ISaveable
         ActiveModifiers.Remove(modifierID);
     }
 
-    [System.Serializable]
-    public class SaveData
+    public Dictionary<string, string> CaptureSaveData()
     {
-        public List<string> activeModifiers;
-    }
-
-    public object SaveState()
-    {
-        return new SaveData
+        return new Dictionary<string, string>
         {
-            activeModifiers = ActiveModifiers
+            { "MaxModifiers", SaveUtils.Int(MaxModifiers) },
+            { "ActiveModifiers", SaveUtils.StringList(ActiveModifiers) }
         };
     }
 
-    public void LoadState(object data)
+    public void RestoreSaveData(Dictionary<string, string> data)
     {
-        var save = (SaveData)data;
-        ActiveModifiers = save.activeModifiers;
+        if (data.TryGetValue("MaxModifiers", out var max))
+            MaxModifiers = SaveUtils.ToInt(max);
+
+        if (data.TryGetValue("ActiveModifiers", out var mods))
+            ActiveModifiers = SaveUtils.ToStringList(mods);
     }
 }

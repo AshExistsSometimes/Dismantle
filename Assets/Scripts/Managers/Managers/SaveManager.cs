@@ -1,17 +1,18 @@
-using System.IO;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
 
-    public string SavePath = "Save Path";
     private const string SaveFileName = "DismantleSave.sav";
     private string savePath;
+    public string ReadOnlySavePath;
 
-    private Dictionary<string, ISaveable> saveables = new();
-    private Dictionary<string, string> serializedData = new();
+    private readonly Dictionary<string, ISaveable> saveables = new();
 
     private void Awake()
     {
@@ -25,32 +26,50 @@ public class SaveManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         savePath = Path.Combine(Application.persistentDataPath, SaveFileName);
+
         Debug.Log($"[SaveManager] Save path: {savePath}");
-        SavePath = savePath;
+
+        ReadOnlySavePath = savePath;
     }
 
-    public void Register(string key, ISaveable saveable)
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (!saveables.ContainsKey(key))
-            saveables.Add(key, saveable);
+        SaveGame();
     }
 
+    public void Register(ISaveable saveable)
+    {
+        if (!saveables.ContainsKey(saveable.SaveKey))
+            saveables.Add(saveable.SaveKey, saveable);
+    }
+
+    public void Unregister(ISaveable saveable)
+    {
+        if (saveables.ContainsKey(saveable.SaveKey))
+            saveables.Remove(saveable.SaveKey);
+    }
+
+    [ContextMenu("Save Game")]
     public void SaveGame()
     {
-        serializedData.Clear();
+        StringBuilder builder = new StringBuilder();
 
-        foreach (var pair in saveables)
+        foreach (var saveable in saveables.Values)
         {
-            string json = JsonUtility.ToJson(pair.Value.SaveState(), true);
-            serializedData.Add(pair.Key, json);
+            builder.AppendLine($"{saveable.SaveKey}:");
+
+            var data = saveable.CaptureSaveData();
+            foreach (var pair in data)
+                builder.AppendLine($"{pair.Key} - {pair.Value}");
+
+            builder.AppendLine();
         }
 
-        string wrapperJson = JsonUtility.ToJson(new SaveWrapper(serializedData), true);
-        File.WriteAllText(savePath, wrapperJson);
-
+        File.WriteAllText(savePath, builder.ToString());
         Debug.Log("[SaveManager] Game saved");
     }
 
+    [ContextMenu("Load Game")]
     public void LoadGame()
     {
         if (!File.Exists(savePath))
@@ -59,16 +78,44 @@ public class SaveManager : MonoBehaviour
             return;
         }
 
-        string wrapperJson = File.ReadAllText(savePath);
-        SaveWrapper wrapper = JsonUtility.FromJson<SaveWrapper>(wrapperJson);
+        string[] lines = File.ReadAllLines(savePath);
 
-        foreach (var pair in wrapper.data)
+        ISaveable current = null;
+        Dictionary<string, string> buffer = new();
+
+        foreach (string line in lines)
         {
-            if (saveables.TryGetValue(pair.Key, out var saveable))
+            if (string.IsNullOrWhiteSpace(line))
             {
-                saveable.LoadState(JsonUtility.FromJson(pair.Value, saveable.SaveState().GetType()));
+                if (current != null)
+                {
+                    current.RestoreSaveData(buffer);
+                    buffer.Clear();
+                    current = null;
+                }
+                continue;
             }
+
+            if (line.EndsWith(":"))
+            {
+                string key = line.Replace(":", "");
+                saveables.TryGetValue(key, out current);
+                continue;
+            }
+
+            if (current == null) continue;
+
+            int splitIndex = line.IndexOf(" - ");
+            if (splitIndex <= 0) continue;
+
+            string dataKey = line[..splitIndex];
+            string value = line[(splitIndex + 3)..];
+
+            buffer[dataKey] = value;
         }
+
+        if (current != null)
+            current.RestoreSaveData(buffer);
 
         Debug.Log("[SaveManager] Game loaded");
     }
@@ -76,16 +123,5 @@ public class SaveManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveGame();
-    }
-
-    [System.Serializable]
-    private class SaveWrapper
-    {
-        public Dictionary<string, string> data;
-
-        public SaveWrapper(Dictionary<string, string> data)
-        {
-            this.data = data;
-        }
     }
 }

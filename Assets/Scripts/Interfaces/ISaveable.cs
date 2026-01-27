@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+
 public interface ISaveable
 {
-    object SaveState();
-    void LoadState(object state);
+    string SaveKey { get; }
+    Dictionary<string, string> CaptureSaveData();
+    void RestoreSaveData(Dictionary<string, string> data);
 }
 

@@ -270,6 +270,8 @@ GameObject:
   - component: {fileID: 774890085}
   - component: {fileID: 774890084}
   - component: {fileID: 774890083}
+  - component: {fileID: 774890090}
+  - component: {fileID: 774890089}
   m_Layer: 0
   m_Name: '> GameManager'
   m_TagString: Untagged
@@ -378,7 +380,12 @@ MonoBehaviour:
   IsPaused: 0
   UIOpen: 0
   PlayerDead: 0
-  LevelsUnlocked: []
+  LevelProgression:
+  - LevelID: 0.1_Tutorial
+    Unlocked: 1
+    Played: 0
+    BestTime: 0
+    BestRank: 8
   TotalPlaytime: 0
   CurrentDate: 
 --- !u!114 &774890087
@@ -393,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffcbc46914eb1534c96fcff35a9adeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SavePath: Save Path
+  ReadOnlySavePath: 
 --- !u!4 &774890088
 Transform:
   m_ObjectHideFlags: 0
@@ -409,6 +416,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &774890089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774890082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2231608b6d3cb4383822f645e161c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectedLevel: {fileID: 0}
+--- !u!114 &774890090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774890082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9632e7227f87af94c90aefdb8d763682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 774890086}
+  PauseMenuPrefab: {fileID: 0}
+  CanPause: 1
 --- !u!1 &914851157
 GameObject:
   m_ObjectHideFlags: 0

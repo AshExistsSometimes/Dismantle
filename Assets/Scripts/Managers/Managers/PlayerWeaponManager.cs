@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +7,14 @@ public enum PlayerWeapon
 {
     Grapple,
     Revolver,
-    Shotgun
+    Shotgun,
+    None
 }
 
 public class PlayerWeaponManager : MonoBehaviour, ISaveable
 {
+    public string SaveKey => "PlayerWeaponManager";
+
     [Header("Weapon State")]
     public PlayerWeapon EquippedWeapon;
 
@@ -64,8 +68,23 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     private PlayerWeapon pendingDisableWeapon = PlayerWeapon.Grapple;
     private bool disableOnAnimEnd;
 
+
+    private void Awake()
+    {
+        SaveManager.Instance?.Register(this);
+    }
     private void Start()
     {
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.Register(this);
+            Debug.Log("[ModifierManager] Registered with SaveManager.");
+        }
+        else
+        {
+            Debug.LogError("[ModifierManager] SaveManager not found!");
+        }
+
         UpdateHUDIcon();
         UpdateSecondaryHUDIcon();
 
@@ -79,8 +98,6 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
             if (w != EquippedWeapon)
                 DisableWeaponObject(w);
         }
-
-        SaveManager.Instance.Register("Weapons", this);
     }
 
     private void Update()
@@ -379,15 +396,6 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
         public PlayerWeapon lastRegularWeapon;
     }
 
-    public object SaveState()
-    {
-        return new SaveData
-        {
-            equippedWeapon = EquippedWeapon,
-            lastRegularWeapon = lastRegularWeapon
-        };
-    }
-
     public void LoadState(object data)
     {
         var save = (SaveData)data;
@@ -396,5 +404,39 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
 
         ApplyImmediateRotation(PlayerWeapon.Revolver, EquippedWeapon == PlayerWeapon.Revolver);
         ApplyImmediateRotation(PlayerWeapon.Shotgun, EquippedWeapon == PlayerWeapon.Shotgun);
+    }
+
+    public Dictionary<string, string> CaptureSaveData()
+    {
+        return new Dictionary<string, string>
+        {
+            { "EquippedWeapon", EquippedWeapon.ToString() },
+            { "LastRegularWeapon", lastRegularWeapon.ToString() },
+        };
+    }
+
+    public void RestoreSaveData(Dictionary<string, string> data)
+    {
+        if (data.TryGetValue("EquippedWeapon", out var equipped))
+        {
+            if (Enum.TryParse<PlayerWeapon>(equipped, out var parsed))
+                EquippedWeapon = parsed;
+            else
+                EquippedWeapon = PlayerWeapon.Revolver; // fallback
+        }
+
+        if (data.TryGetValue("LastRegularWeapon", out var last))
+        {
+            if (Enum.TryParse<PlayerWeapon>(last, out var parsed))
+                lastRegularWeapon = parsed;
+            else
+                lastRegularWeapon = PlayerWeapon.Revolver; // fallback
+        }
+
+        ApplyImmediateRotation(PlayerWeapon.Revolver, EquippedWeapon == PlayerWeapon.Revolver);
+        ApplyImmediateRotation(PlayerWeapon.Shotgun, EquippedWeapon == PlayerWeapon.Shotgun);
+        SyncWeaponVisibility();
+        UpdateHUDIcon();
+        UpdateSecondaryHUDIcon();
     }
 }
