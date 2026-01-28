@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour, ISaveable
     public float TotalPlaytime;
     public string CurrentDate;
 
+    [Header("Player References")]
+    public PlayerController playerController;
+
     public string SaveKey => "GameManager";
 
     private void Awake()
@@ -59,7 +62,8 @@ public class GameManager : MonoBehaviour, ISaveable
         if (!IsPaused)
             TotalPlaytime += Time.deltaTime;
     }
-
+    
+    // Saving //
     public Dictionary<string, string> CaptureSaveData()
     {
         Dictionary<string, string> data = new();
@@ -139,8 +143,7 @@ public class GameManager : MonoBehaviour, ISaveable
             }
             else
             {
-                // Example:
-                // 0.1_Tutorial - BestTime=00:07:23.53 | Rank=A
+                // 0.1_Tutorial - BestTime = 00:07:23.53 | Rank = A
 
                 string[] parts = line.Split(" - ");
                 string id = parts[0];
@@ -174,5 +177,31 @@ public class GameManager : MonoBehaviour, ISaveable
                 });
             }
         }
+    }
+
+    // Dialogue //
+
+    public void EnterDialogue()
+    {
+        UIOpen = true;
+        IsPaused = true;
+
+        if (playerController != null)
+            playerController.enabled = false;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    public void ExitDialogue()
+    {
+        UIOpen = false;
+        IsPaused = false;
+
+        if (playerController != null)
+            playerController.enabled = true;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

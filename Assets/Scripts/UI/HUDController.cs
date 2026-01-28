@@ -29,6 +29,10 @@ public class HUDController : MonoBehaviour
     public Image EquipmentIcon;
     public Image SecondaryEquipmentIcon;
 
+    [Header("References")]
+    public TMP_Text InteractionText;
+
+
 
 
     private void Awake()
@@ -44,6 +48,8 @@ public class HUDController : MonoBehaviour
         {
             Debug.LogWarning("HUDController: WeaponManager not found.");
         }
+
+        UIManager.Instance.InteractText = InteractionText;
     }
 
     private void Start()

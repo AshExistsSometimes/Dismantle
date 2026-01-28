@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62c061032d12e546869f729df0bdef6, type: 3}
+  m_Name: Momo_Character
+  m_EditorClassIdentifier: 
+  CharacterName: Momo
+  Emotions:
+  - EmotionName: Neutral
+    Icon: {fileID: 21300000, guid: 51c14a7980a3cc247927d01abde41775, type: 3}
+  - EmotionName: Happy
+    Icon: {fileID: 21300000, guid: 19a8cf4e7c63c8c429272da51aeeea38, type: 3}
+  - EmotionName: Sad
+    Icon: {fileID: 21300000, guid: 2958ea2d5a1e2cc438534498b9ced7cf, type: 3}
+  - EmotionName: Angry
+    Icon: {fileID: 21300000, guid: 1e9adac556766e6458498756dba560c2, type: 3}
+  - EmotionName: Surprised
+    Icon: {fileID: 21300000, guid: dd10c35c76661854e86cb257e0152eee, type: 3}
+  - EmotionName: Thinking
+    Icon: {fileID: 21300000, guid: 5fe8620e5f6ebf94ea7dd34ef2b1364a, type: 3}
+  VoiceBlip: {fileID: 8300000, guid: 4a24442165130184fb66000a28bf1e1c, type: 3}
+  PitchRange: {x: 0.95, y: 1.05}

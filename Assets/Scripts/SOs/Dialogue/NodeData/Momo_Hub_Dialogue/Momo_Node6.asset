@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6c839934c9b8a4d804c579039a7afc, type: 3}
+  m_Name: Momo_Node6
+  m_EditorClassIdentifier: 
+  Speaker: {fileID: 11400000, guid: 07978621786266741aeaac21dca7fd42, type: 2}
+  Emotion: Angry
+  DialogueText: And now I'm angry because i need to show off all of the portraits
+    >:(
+  HasButtons: 0
+  Buttons: []
+  CharactersPerSecondOverride: -1

@@ -254,6 +254,11 @@ public class PlayerController : MonoBehaviour
         UpdateHeadbob();
     }
 
+    private void Start()
+    {
+        GameManager.Instance.playerController = this;
+    }
+
     #endregion
 
     #region Input

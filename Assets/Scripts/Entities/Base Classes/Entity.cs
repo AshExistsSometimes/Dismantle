@@ -7,6 +7,8 @@ public class Entity : MonoBehaviour, IDamagable
 {
     // VARIABLES //
 
+    public bool canUpdateOutline = true;
+
     // IDENTITY
     [Header("<color=#42f2ff><size=110%><b>Identity")]
 
@@ -168,6 +170,8 @@ public class Entity : MonoBehaviour, IDamagable
 
     private void UpdateOutline()
     {
+        if (!canUpdateOutline) { return; }
+
         if (!OutlineEnabled || outline == null || player == null)
         {
             if (outline != null)

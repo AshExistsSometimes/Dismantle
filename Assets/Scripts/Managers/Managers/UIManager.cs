@@ -1,11 +1,20 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance;
+
     [Header("References")]
     public GameManager gameManager;
     public GameObject PauseMenuPrefab;
+
+    [Space]
+
+    public TMP_Text InteractText;
+    public string InteractionText = "Press [E] to Interact";
+    private string defaultInteractionText;
 
     [Header("Pause Control")]
     public bool CanPause = true;
@@ -18,11 +27,21 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         if (gameManager == null)
             gameManager = GameManager.Instance;
 
         EvaluateScenePauseState();
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        defaultInteractionText = InteractionText;
     }
 
     private void OnDestroy()
@@ -119,5 +138,20 @@ public class UIManager : MonoBehaviour
         gameManager.IsPaused = false;
         gameManager.UIOpen = false;
         Time.timeScale = 1f;
+    }
+
+    public void ShowInteractText(bool show, string text)
+    {
+        if (InteractText != null)
+            InteractText.gameObject.SetActive(show);
+
+        if (text == null)
+        {
+            InteractText.text = defaultInteractionText;
+        }
+        else
+        {
+            InteractText.text = text;
+        }
     }
 }

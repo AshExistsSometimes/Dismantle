@@ -64,9 +64,6 @@ PrefabInstance:
       addedObject: {fileID: 6956192621171200423}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 886dff4de405b6d4fbcb07d923b9a791, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1487230164189571553}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 886dff4de405b6d4fbcb07d923b9a791, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5260901696818224598}
   m_SourcePrefab: {fileID: 100100000, guid: 886dff4de405b6d4fbcb07d923b9a791, type: 3}
 --- !u!1 &8642494495349160529 stripped
@@ -119,42 +116,6 @@ CapsuleCollider:
   m_Height: 1.5803627
   m_Direction: 1
   m_Center: {x: 0.012059212, y: 0.82486373, z: -0.018735886}
---- !u!114 &1487230164189571553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8642494495349160529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07f535e21bec672419fb9982ddd14983, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Momo
-  type: 2
-  OutlineEnabled: 1
-  outline: {fileID: 0}
-  MaxOutlineThickness: 3
-  OutlineColours:
-    Hostile: {r: 0, g: 0, b: 0, a: 0}
-    Boss: {r: 0, g: 0, b: 0, a: 0}
-    NPC: {r: 0, g: 0, b: 0, a: 1}
-  HP: 100
-  MaxHP: 100
-  AttackDamage: 5
-  AttackRate: 1
-  regenHP: 0
-  HPRegenRate: 1
-  HPRegenAmount: 1
-  DefaultSpeed: 5
-  effects: 0
-  NoAI: 1
-  Essential: 1
-  Immortal: 1
-  WanderRadius: 3
-  Wanders: 0
-  Interactable: 0
 --- !u!114 &5260901696818224598
 MonoBehaviour:
   m_ObjectHideFlags: 0

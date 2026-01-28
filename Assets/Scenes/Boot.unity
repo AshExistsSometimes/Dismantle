@@ -272,6 +272,7 @@ GameObject:
   - component: {fileID: 774890083}
   - component: {fileID: 774890090}
   - component: {fileID: 774890089}
+  - component: {fileID: 774890091}
   m_Layer: 0
   m_Name: '> GameManager'
   m_TagString: Untagged
@@ -388,6 +389,7 @@ MonoBehaviour:
     BestRank: 8
   TotalPlaytime: 0
   CurrentDate: 
+  playerController: {fileID: 0}
 --- !u!114 &774890087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +446,22 @@ MonoBehaviour:
   gameManager: {fileID: 774890086}
   PauseMenuPrefab: {fileID: 0}
   CanPause: 1
+--- !u!114 &774890091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774890082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25602089d618114d8d9480fa814e185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UI: {fileID: 0}
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &914851157
 GameObject:
   m_ObjectHideFlags: 0
