@@ -445,6 +445,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 774890086}
   PauseMenuPrefab: {fileID: 0}
+  InteractText: {fileID: 0}
+  InteractionText: Press [E] to Interact
   CanPause: 1
 --- !u!114 &774890091
 MonoBehaviour:

@@ -7881,7 +7881,7 @@ MonoBehaviour:
   GravityModifier: 7
   MaxFallSpeed: 40
   playerCam: {fileID: 5435516869541009223}
-  mouseSensitivity: 100
+  mouseSensitivity: 300
   maxLookAngle: 85
   SlideFOV: 80
   SlideFOVSpeed: 0.5

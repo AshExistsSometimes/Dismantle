@@ -17,4 +17,4 @@ MonoBehaviour:
   DialogueText: also I can talk REEEAAAAALLLYYYY SLOOOOOWWWWLLLYYY
   HasButtons: 0
   Buttons: []
-  CharactersPerSecondOverride: 10
+  CharactersPerSecondOverride: 4
