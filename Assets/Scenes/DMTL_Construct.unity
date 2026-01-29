@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 37000933c467986409cc772958373688, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -84636,9 +84636,10 @@ MonoBehaviour:
   IsPaused: 0
   UIOpen: 0
   PlayerDead: 0
-  LevelsUnlocked: []
+  LevelProgression: []
   TotalPlaytime: 0
   CurrentDate: 
+  playerController: {fileID: 0}
 --- !u!4 &1011319063
 Transform:
   m_ObjectHideFlags: 0
@@ -84770,7 +84771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffcbc46914eb1534c96fcff35a9adeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SavePath: Save Path
+  ReadOnlySavePath: 
 --- !u!1001 &1011656629
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -85408,6 +85409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f535e21bec672419fb9982ddd14983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUpdateOutline: 1
   Name: NPC
   type: 2
   OutlineEnabled: 1
@@ -85431,7 +85433,6 @@ MonoBehaviour:
   Immortal: 0
   WanderRadius: 3
   Wanders: 0
-  Interactable: 0
 --- !u!1001 &1017813867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90274,6 +90275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f535e21bec672419fb9982ddd14983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUpdateOutline: 1
   Name: NPC
   type: 2
   OutlineEnabled: 1
@@ -90297,7 +90299,6 @@ MonoBehaviour:
   Immortal: 0
   WanderRadius: 3
   Wanders: 0
-  Interactable: 1
 --- !u!4 &1083826594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2128717113348053275, guid: 118349a98bb7c7849b5cf20c210b50d0, type: 3}
@@ -133110,6 +133111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1bd4451e41e3e4b88cf579a7a9f4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUpdateOutline: 1
   Name: Entity
   type: 0
   OutlineEnabled: 1
@@ -136128,6 +136130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1bd4451e41e3e4b88cf579a7a9f4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUpdateOutline: 1
   Name: Entity
   type: 0
   OutlineEnabled: 1
@@ -138647,6 +138650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1bd4451e41e3e4b88cf579a7a9f4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canUpdateOutline: 1
   Name: Entity
   type: 0
   OutlineEnabled: 1
@@ -181992,6 +181996,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8108650851529875838, guid: 47bac2d6ae3911c40abeafac24a3c2d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304452534999674833, guid: 47bac2d6ae3911c40abeafac24a3c2d9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304452534999674833, guid: 47bac2d6ae3911c40abeafac24a3c2d9, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304452534999674833, guid: 47bac2d6ae3911c40abeafac24a3c2d9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304452534999674833, guid: 47bac2d6ae3911c40abeafac24a3c2d9, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8374136939774615097, guid: 47bac2d6ae3911c40abeafac24a3c2d9, type: 3}
