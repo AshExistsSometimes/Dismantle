@@ -19,7 +19,7 @@ TagManager:
   - Entity/Enemy
   - Interactable
   - Pickup
-  - 
+  - OverlayCamera
   - 
   - 
   - 
