@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: bdae70b8bbe2720428bf6fbcaac4b3f9
+guid: 5fc8367f05a31cb48b88583e5633d1ba
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: NPC Base.png
-    second: {fileID: 2100000, guid: 50995641c45905f4b85853ede88200e3, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: NPC Clothes.png
-    second: {fileID: 2100000, guid: f51445629ac7f4c41b9e52a4ea9a55ac, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: NPCHair.png
-    second: {fileID: 2100000, guid: 4147ab379d017394abee04d97d88e761, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -84,7 +69,7 @@ ModelImporter:
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
