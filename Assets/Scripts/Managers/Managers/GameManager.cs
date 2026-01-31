@@ -110,6 +110,10 @@ public class GameManager : MonoBehaviour, ISaveable
 
     public void RestoreSaveData(Dictionary<string, string> data)
     {
+        // --------------------
+        // Basic stats
+        // --------------------
+
         if (data.TryGetValue("CurrentPlaytime", out var timeString))
         {
             if (TimeSpan.TryParse(timeString, out var time))
@@ -121,61 +125,94 @@ public class GameManager : MonoBehaviour, ISaveable
             CurrentDate = date;
         }
 
+        // --------------------
+        // Level progression
+        // --------------------
+
         if (!data.TryGetValue("Levels", out var levelsBlock))
             return;
 
         LevelProgression.Clear();
 
+        if (string.IsNullOrWhiteSpace(levelsBlock))
+            return;
+
         string[] lines = levelsBlock.Split('\n');
 
         foreach (string line in lines)
         {
+            // Skip empty or placeholder lines
+            if (string.IsNullOrWhiteSpace(line))
+                continue;
+
+            if (line == "(none)")
+                continue;
+
+            // --------------------
+            // Unplayed level
+            // --------------------
+
             if (line.Contains("Unplayed"))
             {
-                string id = line.Split(" - ")[0];
+                string[] parts = line.Split(" - ");
+
+                if (parts.Length < 1)
+                    continue;
 
                 LevelProgression.Add(new LevelProgress
                 {
-                    LevelID = id,
+                    LevelID = parts[0],
                     Unlocked = true,
                     Played = false
                 });
+
+                continue;
             }
-            else
+
+            // --------------------
+            // Played level
+            // Expected format:
+            // ID - BestTime = xx | Rank = X
+            // --------------------
+
+            string[] playedParts = line.Split(" - ");
+
+            if (playedParts.Length < 2)
             {
-                // 0.1_Tutorial - BestTime = 00:07:23.53 | Rank = A
-
-                string[] parts = line.Split(" - ");
-                string id = parts[0];
-
-                string[] values = parts[1].Split('|');
-
-                float bestTime = 0f;
-                Rank bestRank = Rank.F;
-
-                foreach (var v in values)
-                {
-                    if (v.Contains("BestTime"))
-                    {
-                        string timeStr = v.Split('=')[1].Trim();
-                        if (TimeSpan.TryParse(timeStr, out var ts))
-                            bestTime = (float)ts.TotalSeconds;
-                    }
-                    else if (v.Contains("Rank"))
-                    {
-                        Enum.TryParse(v.Split('=')[1].Trim(), out bestRank);
-                    }
-                }
-
-                LevelProgression.Add(new LevelProgress
-                {
-                    LevelID = id,
-                    Unlocked = true,
-                    Played = true,
-                    BestTime = bestTime,
-                    BestRank = bestRank
-                });
+                Debug.LogWarning($"[GameManager] Invalid level save line skipped: '{line}'");
+                continue;
             }
+
+            string levelID = playedParts[0];
+            string[] values = playedParts[1].Split('|');
+
+            float bestTime = 0f;
+            Rank bestRank = Rank.F;
+
+            foreach (var value in values)
+            {
+                if (value.Contains("BestTime"))
+                {
+                    string[] split = value.Split('=');
+                    if (split.Length > 1 && TimeSpan.TryParse(split[1].Trim(), out var ts))
+                        bestTime = (float)ts.TotalSeconds;
+                }
+                else if (value.Contains("Rank"))
+                {
+                    string[] split = value.Split('=');
+                    if (split.Length > 1)
+                        Enum.TryParse(split[1].Trim(), out bestRank);
+                }
+            }
+
+            LevelProgression.Add(new LevelProgress
+            {
+                LevelID = levelID,
+                Unlocked = true,
+                Played = true,
+                BestTime = bestTime,
+                BestRank = bestRank
+            });
         }
     }
 

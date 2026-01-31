@@ -18,30 +18,30 @@ public class Rotate : MonoBehaviour
 
         if (RotateX)
         {
-            RotateObjectX(XRotationSpeed / 10f);
+            RotateObjectX(XRotationSpeed * 10f);
         }
 
         if (RotateY)
         {
-            RotateObjectY(YRotationSpeed / 10f);
+            RotateObjectY(YRotationSpeed * 10f);
         }
 
         if (RotateZ)
         {
-            RotateObjectZ(ZRotationSpeed / 10f);
+            RotateObjectZ(ZRotationSpeed * 10f);
         }
     }
 
     public void RotateObjectX(float XRotSpeed)
     {
-        gameObject.transform.Rotate(XRotSpeed, 0f, 0f);
+        gameObject.transform.Rotate(XRotSpeed * Time.deltaTime, 0f, 0f);
     }
     public void RotateObjectY(float YRotSpeed)
     {
-        gameObject.transform.Rotate(0f, YRotSpeed, 0f);
+        gameObject.transform.Rotate(0f, YRotSpeed * Time.deltaTime, 0f);
     }
     public void RotateObjectZ(float ZRotSpeed)
     {
-        gameObject.transform.Rotate(0f, 0f, ZRotSpeed);
+        gameObject.transform.Rotate(0f, 0f, ZRotSpeed * Time.deltaTime);
     }
 }

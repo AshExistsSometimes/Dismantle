@@ -85,9 +85,10 @@ public class LevelManager : MonoBehaviour
         EnemiesKilled++;
     }
 
-    public void AddTicket()
+    public void AddTicket(int tickets)
     {
-        CollectedTickets++;
+        CollectedTickets = (CollectedTickets + tickets);
+        Debug.Log("New Ticket Amount: " + CollectedTickets);
     }
 
     // --------------------
