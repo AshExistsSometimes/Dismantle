@@ -224,7 +224,11 @@ public class GameManager : MonoBehaviour, ISaveable
         IsPaused = true;
 
         if (playerController != null)
+        {
             playerController.enabled = false;
+            playerController.rb.linearVelocity = Vector3.zero;
+        }
+            
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

@@ -143,7 +143,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Private Fields
-    private Rigidbody rb;
+    public Rigidbody rb;
 
     private float xRotation;
     private float horizontalInput;
