@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7879512140485786493}
   - component: {fileID: 1324614585533259656}
   - component: {fileID: 3156844793523738634}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: L_Rebar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

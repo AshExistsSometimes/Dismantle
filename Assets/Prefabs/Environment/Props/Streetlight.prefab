@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8700617353114198275, guid: 1565c707dd1bad3438a0abbc03c20680, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1565c707dd1bad3438a0abbc03c20680, type: 3}
       propertyPath: m_LocalPosition.x
@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fa6e097e13893b04889ab7ea253e9031, type: 2}
     - target: {fileID: -7646536464628468267, guid: 1565c707dd1bad3438a0abbc03c20680, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -1055321964298668871, guid: 1565c707dd1bad3438a0abbc03c20680, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -66,15 +66,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 605da4772ffde4348a915766e67c48b8, type: 2}
     - target: {fileID: -1051610642983722090, guid: 1565c707dd1bad3438a0abbc03c20680, type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -923326879212824360, guid: 1565c707dd1bad3438a0abbc03c20680, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1565c707dd1bad3438a0abbc03c20680, type: 3}
       propertyPath: m_Name
       value: Streetlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1565c707dd1bad3438a0abbc03c20680, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

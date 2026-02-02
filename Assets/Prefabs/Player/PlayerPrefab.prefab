@@ -7099,7 +7099,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 16383
+    m_Bits: 114687
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -7722,7 +7722,7 @@ GameObject:
   - component: {fileID: 6774584301194589729}
   - component: {fileID: 3091394333564307481}
   - component: {fileID: 6078304688693473827}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -7951,7 +7951,7 @@ MonoBehaviour:
     m_Bits: 192
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 98496
   WallRunForce: 15
   MaxWallRunTime: 3
   MaxWallRunSpeed: 12
@@ -8002,12 +8002,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  movementLocked: 1
+  movementLocked: 0
   swinging: 0
   groundCheckDistance: 1.1
   groundMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 98496
   GravityModifier: 7
   MaxFallSpeed: 100
   playerCam: {fileID: 5435516869541009223}
@@ -8059,6 +8059,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentState: 0
+  rb: {fileID: 0}
 --- !u!114 &1842976668115631832
 MonoBehaviour:
   m_ObjectHideFlags: 0

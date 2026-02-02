@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2420183350339963598}
   - component: {fileID: 3715326221883279200}
   - component: {fileID: 3473812160057908083}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: ValveHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 1471258972594455576}
   - component: {fileID: 7678895579720942285}
   - component: {fileID: 2561787312974127633}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: ValveBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,7 +226,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 782220649343183153}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Valve
   m_TagString: Untagged
   m_Icon: {fileID: 0}

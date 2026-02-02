@@ -57,9 +57,6 @@ public class Entity : MonoBehaviour, IDamagable
     public int HP = 100;
     public int MaxHP = 100;
     [Space]
-    public int AttackDamage = 5;
-    public float AttackRate = 1f;
-    [Space]
     public bool regenHP = false;
     public float HPRegenRate = 1f;
     public int HPRegenAmount = 1;

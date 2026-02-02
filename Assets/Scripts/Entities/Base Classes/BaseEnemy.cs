@@ -6,8 +6,9 @@ public enum EnemyModifier { Common, Rare, Legendary }
 public class BaseEnemy : Entity
 {
     [Header("<color=#A61A21><size=110%><b>Enemy Stats")]
-    public int Damage = 10;
     public EnemyModifier Modifier = EnemyModifier.Common;
+    public int AttackDamage = 5;
+    public float AttackRate = 1f; 
 
     [Header("<color=#D71C74><size=110%><b>Detection")]
     public LayerMask targetLayer;
@@ -20,7 +21,7 @@ public class BaseEnemy : Entity
     protected Transform target;
     protected float attackCooldown;
 
-    private new void Awake()
+    protected virtual void Awake()
     {
         base.Awake();
 
@@ -136,8 +137,8 @@ public class BaseEnemy : Entity
         IDamagable damagable = target.GetComponent<IDamagable>();
         if (damagable != null)
         {
-            damagable.TakeDamage(Damage);
-            Debug.Log($"{name} attacked {target.name} for {Damage} damage.");
+            damagable.TakeDamage(AttackDamage);
+            Debug.Log($"{name} attacked {target.name} for {AttackDamage} damage.");
         }
     }
 

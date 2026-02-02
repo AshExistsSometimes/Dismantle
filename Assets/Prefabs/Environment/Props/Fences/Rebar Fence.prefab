@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5168935785923380004}
   - component: {fileID: 3151188137716757478}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Rebar Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,6 +68,10 @@ PrefabInstance:
     - target: {fileID: 6927729344683163492, guid: 264427c68766bfc44baa466b381ac9f2, type: 3}
       propertyPath: m_Name
       value: S_Rebar (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927729344683163492, guid: 264427c68766bfc44baa466b381ac9f2, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7140768065635124310, guid: 264427c68766bfc44baa466b381ac9f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -172,6 +176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: M_Rebar (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7403576324117306962, guid: ff20cfe889c71434ab3339e84c199678, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1882434224743038312, guid: ff20cfe889c71434ab3339e84c199678, type: 3}
     m_RemovedGameObjects: []
@@ -194,6 +202,10 @@ PrefabInstance:
     - target: {fileID: 6927729344683163492, guid: 264427c68766bfc44baa466b381ac9f2, type: 3}
       propertyPath: m_Name
       value: S_Rebar (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927729344683163492, guid: 264427c68766bfc44baa466b381ac9f2, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7140768065635124310, guid: 264427c68766bfc44baa466b381ac9f2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,6 +309,10 @@ PrefabInstance:
     - target: {fileID: 7403576324117306962, guid: ff20cfe889c71434ab3339e84c199678, type: 3}
       propertyPath: m_Name
       value: M_Rebar (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403576324117306962, guid: ff20cfe889c71434ab3339e84c199678, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1882434224743038312, guid: ff20cfe889c71434ab3339e84c199678, type: 3}

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4921840290400479725}
   - component: {fileID: 2164009300015366790}
   - component: {fileID: 1834416261590625500}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4641936296985597290}
   - component: {fileID: 8897096609076963066}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Ad2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 972297830916611554}
   - component: {fileID: 5838785379091643240}
   - component: {fileID: 566543441325218966}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: AdvertisementSign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 5046598810398494397}
   - component: {fileID: 4690701339978726882}
   - component: {fileID: 2454902193655624080}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -464,7 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7859677841872076418}
   - component: {fileID: 6483956884461633277}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Ad1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

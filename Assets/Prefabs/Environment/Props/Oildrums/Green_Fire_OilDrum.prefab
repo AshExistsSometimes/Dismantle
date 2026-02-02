@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4837375631812902265}
   - component: {fileID: 3343564044091172156}
   - component: {fileID: -8552618186316339933}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Green_Fire_OilDrum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 5524768860008733960}
   - component: {fileID: 8917195161625272521}
   - component: {fileID: 169321612843945410}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,7 +243,7 @@ GameObject:
   - component: {fileID: 7713155303945995002}
   - component: {fileID: 2484421743356863916}
   - component: {fileID: 2571909837428661248}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}

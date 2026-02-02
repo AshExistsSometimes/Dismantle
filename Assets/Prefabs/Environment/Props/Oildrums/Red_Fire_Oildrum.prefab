@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1165042946364437810}
   - component: {fileID: 5667371065919058390}
   - component: {fileID: 5948712980996846710}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4846,7 +4846,7 @@ GameObject:
   - component: {fileID: 6661945869171842598}
   - component: {fileID: 7093935836648741438}
   - component: {fileID: -6460902193329212728}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Red_Fire_Oildrum
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4956,7 +4956,7 @@ GameObject:
   - component: {fileID: 8081077340655893168}
   - component: {fileID: 1464720791708687897}
   - component: {fileID: 7682881974740690602}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

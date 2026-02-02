@@ -44353,6 +44353,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2128717113348053275, guid: 4ac2622444f971a489725a479c1a679f, type: 3}
   m_PrefabInstance: {fileID: 497886319}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &498075876
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 498075878}
+  - component: {fileID: 498075877}
+  m_Layer: 0
+  m_Name: NavMesh Creator
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &498075877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498075876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 192
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 14ed3bedbbb309c4cbcbe681ea9047b6, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &498075878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498075876}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &498475483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88787,8 +88851,6 @@ MonoBehaviour:
     NPC: {r: 0, g: 0, b: 0, a: 1}
   HP: 100
   MaxHP: 100
-  AttackDamage: 5
-  AttackRate: 1
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
@@ -93785,8 +93847,6 @@ MonoBehaviour:
     NPC: {r: 0, g: 0, b: 0, a: 1}
   HP: 100
   MaxHP: 100
-  AttackDamage: 5
-  AttackRate: 1
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
@@ -138072,8 +138132,6 @@ MonoBehaviour:
     NPC: {r: 0, g: 0, b: 0, a: 0}
   HP: 100
   MaxHP: 100
-  AttackDamage: 5
-  AttackRate: 1
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
@@ -138082,8 +138140,9 @@ MonoBehaviour:
   NoAI: 0
   Essential: 0
   Immortal: 0
-  Damage: 10
   Modifier: 0
+  AttackDamage: 5
+  AttackRate: 1
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -141091,8 +141150,6 @@ MonoBehaviour:
     NPC: {r: 0, g: 0, b: 0, a: 0}
   HP: 100
   MaxHP: 100
-  AttackDamage: 5
-  AttackRate: 1
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
@@ -141101,8 +141158,9 @@ MonoBehaviour:
   NoAI: 0
   Essential: 0
   Immortal: 0
-  Damage: 10
   Modifier: 1
+  AttackDamage: 5
+  AttackRate: 1
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -143677,8 +143735,6 @@ MonoBehaviour:
     NPC: {r: 0, g: 0, b: 0, a: 0}
   HP: 100
   MaxHP: 100
-  AttackDamage: 5
-  AttackRate: 1
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
@@ -143687,8 +143743,9 @@ MonoBehaviour:
   NoAI: 0
   Essential: 0
   Immortal: 0
-  Damage: 10
   Modifier: 2
+  AttackDamage: 5
+  AttackRate: 1
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -188532,11 +188589,100 @@ PrefabInstance:
       propertyPath: m_Name
       value: 8_UG
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6467926305426136200, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8462369169845873684, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6001448052567626804}
+    - targetCorrespondingSourceObject: {fileID: 8462369169845873684, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6001448052567626803}
   m_SourcePrefab: {fileID: 100100000, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
+--- !u!1 &6001448052567626801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8462369169845873684, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
+  m_PrefabInstance: {fileID: 6001448052567626800}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6001448052567626802 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5556448445228204966, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
+  m_PrefabInstance: {fileID: 6001448052567626800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001448052567626801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &6001448052567626803
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001448052567626801}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &6001448052567626804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001448052567626801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c902bd7ac3dd0c41af04de82587c1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canUpdateOutline: 1
+  Name: 8_UG
+  type: 0
+  OutlineEnabled: 1
+  outline: {fileID: 6001448052567626802}
+  MaxOutlineThickness: 3
+  OutlineColours:
+    Hostile: {r: 1, g: 0, b: 0, a: 0}
+    Boss: {r: 0, g: 0, b: 0, a: 0}
+    NPC: {r: 0, g: 0, b: 0, a: 0}
+  HP: 100
+  MaxHP: 100
+  regenHP: 0
+  HPRegenRate: 1
+  HPRegenAmount: 1
+  DefaultSpeed: 5
+  effects: 0
+  NoAI: 0
+  Essential: 0
+  Immortal: 0
+  Modifier: 0
+  AttackDamage: 5
+  AttackRate: 1
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  SightRange: 10
+  AttackDistance: 2
+  CanChangeClass: 1
+  IdleRoamDistance: 5
+  IdleStillDuration: 2
+  IdleRoamDuration: 3
 --- !u!1001 &6045567503678740477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189467,3 +189613,4 @@ SceneRoots:
   - {fileID: 270110192}
   - {fileID: 4145434328337239126}
   - {fileID: 1417063577}
+  - {fileID: 498075878}

@@ -392,7 +392,8 @@ GameObject:
   - component: {fileID: 4492786144577136542}
   - component: {fileID: 9153347397424024927}
   - component: {fileID: 5556448445228204966}
-  - component: {fileID: 6467926305426136200}
+  - component: {fileID: 3293569372670530542}
+  - component: {fileID: 7666923483335670225}
   m_Layer: 11
   m_Name: 8_UG
   m_TagString: Untagged
@@ -408,14 +409,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8462369169845873684}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
+  m_LocalPosition: {x: 0, y: 0, z: 30}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 267351550791595378}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!135 &9153347397424024927
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -455,7 +456,29 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &6467926305426136200
+--- !u!195 &3293569372670530542
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462369169845873684}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &7666923483335670225
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -464,39 +487,102 @@ MonoBehaviour:
   m_GameObject: {fileID: 8462369169845873684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea1bd4451e41e3e4b88cf579a7a9f4f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c902bd7ac3dd0c41af04de82587c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Enemy
+  canUpdateOutline: 1
+  Name: DEBUG 8_UG
   type: 0
   OutlineEnabled: 1
   outline: {fileID: 0}
   MaxOutlineThickness: 3
   OutlineColours:
-    Hostile: {r: 0, g: 0, b: 0, a: 0}
+    Hostile: {r: 1, g: 0, b: 0, a: 0}
     Boss: {r: 0, g: 0, b: 0, a: 0}
     NPC: {r: 0, g: 0, b: 0, a: 0}
   HP: 100
   MaxHP: 100
-  AttackDamage: 5
-  AttackRate: 1
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
-  DefaultSpeed: 5
+  DefaultSpeed: 3
   effects: 0
   NoAI: 0
   Essential: 0
   Immortal: 0
-  Damage: 10
-  AttackRate: 1
   Modifier: 0
+  AttackDamage: 10
+  AttackRate: 1
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
-  SightRange: 10
+  SightRange: 16
   AttackDistance: 2
   CanChangeClass: 1
+  Head: {fileID: 2880017615239799694}
+  SightBlockingLayers:
+    serializedVersion: 2
+    m_Bits: 98496
+  LoseTargetDelay: 1
+  IdleRoamDistance: 7
+  IdlePauseTime: 2
+  HeadTurnSpeed: 6
+  MaxHeadYaw: 60
+  PlayDuration: 5
+  PlayCooldown: 10
+  PlaySpinCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0041656494
+      value: -0.002380371
+      inSlope: 2.977855
+      outSlope: 2.977855
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3
+      value: 0.87857145
+      inSlope: 1.7924988
+      outSlope: 1.7924988
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.7
+      value: 0.87857145
+      inSlope: -1.8046522
+      outSlope: -1.8046522
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.9958191
+      value: -0.009525299
+      inSlope: -3.0021615
+      outSlope: -3.0021615
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  MaxPlaySpinSpeed: 125000
+  DoDebugLogs: 0
 --- !u!1 &8759672153077063066
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 619398220196670869}
   - component: {fileID: 6652181667079760088}
   - component: {fileID: 8334148541031035988}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Overgrowth_Giant_Flat
   m_TagString: Untagged
   m_Icon: {fileID: 0}

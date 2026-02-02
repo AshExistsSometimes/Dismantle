@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2543494902147206059}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Green_Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6117892840018452905}
   - component: {fileID: 3946382273663038944}
   - component: {fileID: 965618780082618566}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: MetalBarrier_Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}

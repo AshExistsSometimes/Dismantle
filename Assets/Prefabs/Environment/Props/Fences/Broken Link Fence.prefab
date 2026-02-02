@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 657738422584801980, guid: 0997dd0569195bc4d94defdb8fbbd1e5, type: 3}
       propertyPath: m_Name
-      value: Broken Link Fence Variant
+      value: Broken Link Fence
       objectReference: {fileID: 0}
     - target: {fileID: 890281073865154232, guid: 0997dd0569195bc4d94defdb8fbbd1e5, type: 3}
       propertyPath: m_Name

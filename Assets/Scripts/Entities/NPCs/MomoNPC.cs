@@ -19,7 +19,7 @@ public class MomoNPC : BaseNPC, IInteractable
     // Interaction // 
     public void OnHoverStart()
     {
-        Debug.Log("[Momo] The Player is looking at me");
+        Debug.Log("[" + name + "] The Player is looking at me");
         canUpdateOutline = false;
         UIManager.Instance.ShowInteractText(true, "Press [E] to talk to Momo");
         SetOutline(Color.white, 5f);
@@ -27,7 +27,7 @@ public class MomoNPC : BaseNPC, IInteractable
 
     public void OnHoverStop()
     {
-        Debug.Log("[Momo] The Player has stopped looking at me");
+        Debug.Log("[" + name + "] The Player has stopped looking at me");
         SetOutline(defaultOutlineColour, defaultOutlineWidth);
         UIManager.Instance.ShowInteractText(false, null);
         canUpdateOutline = true;
@@ -35,7 +35,7 @@ public class MomoNPC : BaseNPC, IInteractable
 
     public void OnInteract()
     {
-        Debug.Log("[Momo] The Player is talking to me");
+        Debug.Log("[" + name + "] The Player is talking to me");
         DialogueManager.Instance.StartDialogue(Dialogue);
     }
 

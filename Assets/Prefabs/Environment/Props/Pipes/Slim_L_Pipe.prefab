@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4025799446698461850}
   - component: {fileID: 8194145202588339397}
   - component: {fileID: 8482738693567430674}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Slim_L_Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

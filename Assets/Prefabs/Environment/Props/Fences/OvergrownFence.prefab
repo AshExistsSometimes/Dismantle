@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3731063696523018502}
   - component: {fileID: 4892924260942281342}
   - component: {fileID: 867361959595012228}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Chain Links
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 4718220995430757593}
   - component: {fileID: 4069482887883051957}
   - component: {fileID: 5162734257008089347}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Overgrowth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3314549722806937569}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: OvergrownFence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 4768507870468976036}
   - component: {fileID: 1888367719866411377}
   - component: {fileID: 58741063344338204}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Overgrowth (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   - component: {fileID: 8319886698623636720}
   - component: {fileID: 7258271667275518374}
   - component: {fileID: 233274462085806659}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: FencePost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3797940243254206663}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Chainlink Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}

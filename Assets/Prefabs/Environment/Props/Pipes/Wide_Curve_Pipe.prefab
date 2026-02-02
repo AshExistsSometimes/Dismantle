@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5498985070585655585}
   - component: {fileID: 3361732017210168689}
   - component: {fileID: 1571292115004855419}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Wide_Curve_Pipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}

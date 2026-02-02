@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2934020319532147836}
   - component: {fileID: 6875942831514991877}
   - component: {fileID: -8107769574387409959}
-  m_Layer: 6
+  m_Layer: 15
   m_Name: Yellow_OilDrum_Closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
