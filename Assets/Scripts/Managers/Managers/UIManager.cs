@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     public bool CanPause = true;
 
     private GameObject pauseMenuInstance;
+    private PauseMenuController pauseMenuController;
 
     // --------------------
     // Unity
@@ -64,6 +65,9 @@ public class UIManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        pauseMenuInstance = null;
+        pauseMenuController = null;
+
         EvaluateScenePauseState();
     }
 
@@ -119,26 +123,39 @@ public class UIManager : MonoBehaviour
         if (pauseMenuInstance == null)
         {
             pauseMenuInstance = Instantiate(PauseMenuPrefab);
+
+            pauseMenuController = pauseMenuInstance.GetComponent<PauseMenuController>();
+
+            if (pauseMenuController == null)
+                Debug.LogError("PauseMenuPrefab is missing a PauseMenuController component.");
         }
         else
         {
             pauseMenuInstance.SetActive(true);
         }
 
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         gameManager.IsPaused = true;
         gameManager.UIOpen = true;
         Time.timeScale = 0f;
     }
 
-    private void ClosePauseMenu()
+    public void ClosePauseMenu()
     {
         if (pauseMenuInstance != null)
             pauseMenuInstance.SetActive(false);
 
+        if (pauseMenuController != null)
+            pauseMenuController.CloseSettings();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         gameManager.IsPaused = false;
         gameManager.UIOpen = false;
         Time.timeScale = 1f;
     }
+
 
     public void ShowInteractText(bool show, string text)
     {

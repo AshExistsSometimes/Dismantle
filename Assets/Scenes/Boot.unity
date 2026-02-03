@@ -273,6 +273,7 @@ GameObject:
   - component: {fileID: 774890090}
   - component: {fileID: 774890089}
   - component: {fileID: 774890091}
+  - component: {fileID: 774890092}
   m_Layer: 0
   m_Name: '> GameManager'
   m_TagString: Untagged
@@ -444,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 774890086}
-  PauseMenuPrefab: {fileID: 0}
+  PauseMenuPrefab: {fileID: 2291749798096265212, guid: ecda595f0cf62e1459ecc2c753c20988, type: 3}
   InteractText: {fileID: 0}
   InteractionText: Press [E] to Interact
   CanPause: 1
@@ -464,6 +465,19 @@ MonoBehaviour:
   OnDialogueEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &774890092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774890082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d500d0aa9b2f8646b9cef04ff000b2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseSensitivity: 0
 --- !u!1 &914851157
 GameObject:
   m_ObjectHideFlags: 0

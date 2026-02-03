@@ -99,6 +99,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
             audioSource = gameObject.AddComponent<AudioSource>();
@@ -160,6 +161,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         StartCoroutine(StartupSequence());
     }
 

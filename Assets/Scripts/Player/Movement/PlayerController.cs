@@ -173,6 +173,7 @@ public class PlayerController : MonoBehaviour
         if (SettingsManager.Instance !=null)
         {
             mouseSensitivity = SettingsManager.Instance.MouseSensitivity;
+            Debug.Log("Sensitivity: " +  mouseSensitivity + " - Settings Recorded Sensitivity = " + SettingsManager.Instance.MouseSensitivity);
         }
 
         rb = GetComponent<Rigidbody>();

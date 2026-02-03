@@ -6,6 +6,7 @@ public class SettingsManager : MonoBehaviour
 {
     [HideInInspector]
     public float MouseSensitivity;
+    public Color AccentColour;
 
     public static SettingsManager Instance { get; private set; }
 
@@ -133,6 +134,18 @@ public class SettingsManager : MonoBehaviour
         CurrentSettings.menuAccentColour = colour;
         SaveSettings();
         ApplyMenu();
+        AccentColour = colour;
+    }
+
+    public void SetPauseMenuAccentColour(Color colour)
+    {
+        CurrentSettings.menuAccentColour = colour;
+
+        for (int i = 0; i < accentReceivers.Count; i++)
+        {
+            if (accentReceivers[i] != null)
+                accentReceivers[i].Apply(CurrentSettings.menuAccentColour);
+        }
     }
 
     private void ApplyMenu()
