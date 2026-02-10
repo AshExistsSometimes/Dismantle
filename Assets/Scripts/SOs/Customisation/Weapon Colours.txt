@@ -1,0 +1,35 @@
+PURCHASABLE COLOURS: [16]
+Black	  - #
+D. Gray   - #
+L. Gray	  - #
+White	  - #e8f5f4
+Red	  - #cc3632
+Orange	  - #cc6d32
+Yellow	  - #e1d025
+Lime	  - #90d036
+Green	  - #37824a
+Turquoise - #59dda2
+L. Blue	  - #35d1c0
+D. Blue	  - #3e5cab
+Purple	  - #6f3eab
+Pink	  - #e993eb
+Rose	  - #dd598e
+Brown	  - #855635
+
+PURCHASABLE GLOW COLOURS: [9]
+
+White	 - #
+Red 	 - #
+Orange	 - #
+Yellow	 - #
+Green	 - #
+L. Blue	 - #
+D. Blue	 - #
+Purple	 - #
+Pink	 - #
+
+SLOTS COLOURS: [16]
+Gold
+Silver
+Void
+Galaxy

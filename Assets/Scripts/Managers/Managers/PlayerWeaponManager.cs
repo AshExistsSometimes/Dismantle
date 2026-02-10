@@ -14,6 +14,8 @@ public enum PlayerWeapon
 public class PlayerWeaponManager : MonoBehaviour, ISaveable
 {
     public string SaveKey => "PlayerWeaponManager";
+    public static PlayerWeaponManager Instance;
+
 
     [Header("Weapon State")]
     public PlayerWeapon EquippedWeapon;
@@ -71,6 +73,14 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         SaveManager.Instance?.Register(this);
     }
     private void Start()

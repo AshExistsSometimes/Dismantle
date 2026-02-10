@@ -7,9 +7,12 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Weapons")]
     public GameObject Revolver;
+    public Transform RevolverFirePoint;
     public Transform RevolverPivot;
 
     public GameObject Shotgun;
+    public Transform ShotgunPrimaryFirePoint;
+    public Transform ShotgunSecondaryFirePoint;
     public Transform ShotgunPivot;
 
     public GameObject Sword; // Reference only rn
@@ -51,6 +54,16 @@ public class PlayerCombat : MonoBehaviour
     public float SwordFireRate = 3f; // Max 3 Swings a second
     public float ParryWindow = 0.25f;
 
+    [Header("Prefabs")]
+    public ShotgunBullet ShotgunBulletPrefab;
+    public BolaProjectile BolaProjectilePrefab;
+
+    [Header("Revolver Visuals")]
+    public LineRenderer RevolverLineRenderer;
+    public float RevolverRange = 100f;
+    public float RevolverLineDuration = 0.05f;
+
+
 
     private PlayerWeapon currentWeapon;
 
@@ -78,15 +91,20 @@ public class PlayerCombat : MonoBehaviour
     [HideInInspector]
     public bool DefaultsCached = false;
 
+    private float nextShotgunFireTime;
+    private float nextRevolverFireTime;
+    private float nextBolaFireTime;
+    private float nextRicochetFireTime;
+
     // ---------
     private void Awake()
     {
-        PlayerWeaponManager weaponManager =
-            FindFirstObjectByType<PlayerWeaponManager>();
+        PlayerWeaponManager weaponManager = PlayerWeaponManager.Instance;
 
         if (weaponManager == null)
         {
             Debug.LogError("PlayerWeaponManager not found!");
+            weaponManager = PlayerWeaponManager.Instance;
             return;
         }
 
@@ -111,15 +129,15 @@ public class PlayerCombat : MonoBehaviour
 
     private void UpdateActiveWeapon()
     {
-        if (weaponManager == null) return;
+        if (weaponManager == null)
+        {
+            Debug.LogError("PlayerWeaponManager not found, retrying...");
+            weaponManager = PlayerWeaponManager.Instance;
+            return;
+        }
 
         // Get the currently equipped weapon
         currentWeapon = weaponManager.EquippedWeapon;
-
-        // Debug to see active weapon
-        // Debug.Log("Current Weapon: " + currentWeapon);
-
-        // Here we could do additional per-frame checks based on active weapon
     }
 
     private void HandleInput()
@@ -168,6 +186,42 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log("Shotgun Primary Fire");
         // [Projectile] Fire a scatter of projectiles at random directions in a cone, that do damage equal to the shotguns overall damage / the number of projectiles, will do less damage at greater distances (Falloff)
         // Determine damage falloff with an animation curve, round damage to closest int
+
+        if (Time.time < nextShotgunFireTime)
+            return;
+
+        nextShotgunFireTime = Time.time + (1f / ShotgunFireRate);
+
+        float damagePerPellet = MaxShotgunDamage / MaxShotgunProjectiles;
+
+        for (int i = 0; i < MaxShotgunProjectiles; i++)
+        {
+            Vector3 direction = GetRandomConeDirection(
+                ShotgunPrimaryFirePoint.forward,
+                ShotgunSpreadAngle
+            );
+
+            ShotgunBullet bullet = Instantiate(
+                ShotgunBulletPrefab,
+                ShotgunPrimaryFirePoint.position,
+                Quaternion.LookRotation(direction)
+            );
+
+            bullet.Fire(direction, damagePerPellet, ShotgunFalloffCurve);
+        }
+    }
+
+    private Vector3 GetRandomConeDirection(Vector3 forward, float angle)
+    {
+        float radius = Mathf.Tan(angle * Mathf.Deg2Rad);
+        Vector2 random = Random.insideUnitCircle * radius;
+
+        Vector3 direction =
+            forward +
+            ShotgunPrimaryFirePoint.right * random.x +
+            ShotgunPrimaryFirePoint.up * random.y;
+
+        return direction.normalized;
     }
 
     private void ShotgunAltFire()
@@ -176,6 +230,23 @@ public class PlayerCombat : MonoBehaviour
         // Bola - [Projectile] A bola is launched from the bottom of the shotgun, on contacting the ground or any enemies, it will lose all velocity, freeze in place (become kinematic) then pull in all surrounding enemies in a radius around the hit location and hold them still for a short time (can be done by enabling NoAI, then disabling it), doing a small amount of damage
 
         // Everything with the Base class BaseEnemy in the radius is dragged towards the bola, and has its AI switched off for BolaHoldTime
+
+        if (Time.time < nextBolaFireTime)
+            return;
+
+        nextBolaFireTime = Time.time + BolaCooldown;
+
+        BolaProjectile bola = Instantiate(
+            BolaProjectilePrefab,
+            ShotgunSecondaryFirePoint.position,
+            Quaternion.Euler(0, 0, 0)
+        );
+
+        bola.pullRange = BolaPullRange;
+        bola.holdTime = BolaHoldTime;
+        bola.damage = BolaDamage;
+
+        bola.Fire(ShotgunSecondaryFirePoint.forward * 25f);
     }
 
     // ------------------------------
@@ -185,6 +256,47 @@ public class PlayerCombat : MonoBehaviour
     {
         Debug.Log("Revolver Primary Fire");
         // [Hitscan] Fire a single shot that does medium damage (eg: 5)
+
+        if (Time.time < nextRevolverFireTime)
+            return;
+
+        nextRevolverFireTime = Time.time + (1f / RevolverFireRate);
+
+        Vector3 start = RevolverFirePoint.position;
+        Vector3 dir = RevolverFirePoint.forward;
+        Vector3 end = start + dir * RevolverRange;
+
+        if (Physics.Raycast(start, dir, out RaycastHit hit, RevolverRange))
+        {
+            end = hit.point;
+
+            Entity entity = hit.collider.GetComponentInParent<Entity>();
+            if (entity != null)
+            {
+                entity.TakeDamage(RevolverDamage);
+            }
+        }
+
+        DrawRevolverLine(start, end);
+    }
+
+    private void DrawRevolverLine(Vector3 start, Vector3 end)
+    {
+        if (RevolverLineRenderer == null)
+            return;
+
+        RevolverLineRenderer.positionCount = 2;
+        RevolverLineRenderer.SetPosition(0, start);
+        RevolverLineRenderer.SetPosition(1, end);
+
+        CancelInvoke(nameof(ClearRevolverLine));
+        Invoke(nameof(ClearRevolverLine), RevolverLineDuration);
+    }
+
+    private void ClearRevolverLine()
+    {
+        if (RevolverLineRenderer != null)
+            RevolverLineRenderer.positionCount = 0;
     }
 
     private void RevolverAltFire()

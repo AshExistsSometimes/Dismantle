@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 576012b555d33ee4791ac4974c777e86, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -119,6 +119,80 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &65064042
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 613128705}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.17299938
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.046361566
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.481
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6247192850025358407, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ddff920d5ab3174693c8c289690185d, type: 2}
+    - target: {fileID: 919132149155446097, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: m_Name
+      value: CyberShotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992162561955027420, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ddff920d5ab3174693c8c289690185d, type: 2}
+    - target: {fileID: 4294318129967512882, guid: cb56161f38d076e438e5863c27061773, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ddff920d5ab3174693c8c289690185d, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cb56161f38d076e438e5863c27061773, type: 3}
+--- !u!4 &65064043 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cb56161f38d076e438e5863c27061773, type: 3}
+  m_PrefabInstance: {fileID: 65064042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &131934830
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +330,40 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &613128704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 613128705}
+  m_Layer: 0
+  m_Name: Galaxy Skin Showcase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &613128705
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613128704}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.367, y: 1.14, z: 7.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1563892290}
+  - {fileID: 65064043}
+  - {fileID: 1863726623}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &774890082
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MouseSensitivity: 0
+  AccentColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &914851157
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +764,72 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239644768}
   m_CullTransparentMesh: 1
+--- !u!1001 &1563892289
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 613128705}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.25916576
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3436594
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.248144
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: m_Name
+      value: CyberPistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 8878328441200777984, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ddff920d5ab3174693c8c289690185d, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+--- !u!4 &1563892290 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7b96cdf7a764196448a5d8736ad830b9, type: 3}
+  m_PrefabInstance: {fileID: 1563892289}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1692811756
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +909,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1863726622
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 613128705}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6652725513331149018, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5ddff920d5ab3174693c8c289690185d, type: 2}
+    - target: {fileID: 919132149155446097, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+      propertyPath: m_Name
+      value: CyberSword
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+--- !u!4 &1863726623 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 17526099c8d872f45b08eb1f696527a3, type: 3}
+  m_PrefabInstance: {fileID: 1863726622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2022719338
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,3 +1030,4 @@ SceneRoots:
   - {fileID: 131934833}
   - {fileID: 914851161}
   - {fileID: 1692811759}
+  - {fileID: 613128705}
