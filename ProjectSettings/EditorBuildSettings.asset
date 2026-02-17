@@ -15,6 +15,21 @@ EditorBuildSettings:
     path: Assets/Scenes/0.0_Hub.unity
     guid: 39a069497759acc4f950d92829cfaa14
   - enabled: 1
+    path: Assets/Scenes/Levels/Bounty_1/1.1_Tutorial.unity
+    guid: c2c86f09b08d0e44da3121d751b09ef3
+  - enabled: 1
+    path: Assets/Scenes/Levels/Bounty_1/1.3_WorldsEndLane.unity
+    guid: 28cbc65db3709b34db5e403f4ab4ac27
+  - enabled: 1
+    path: Assets/Scenes/Levels/Bounty_1/1.3_WorldsEndLane_Boss.unity
+    guid: 6370b97ceefe49746b6c3fd047a5e5aa
+  - enabled: 1
+    path: Assets/Scenes/Levels/Bounty_2/2.3_Leviathan.unity
+    guid: 8a525ba11362829428d7d29609ebb5d2
+  - enabled: 1
+    path: Assets/Scenes/Levels/Bounty_3/3.3_Europa.unity
+    guid: f9fb4d877a084f542b7547846753d7c6
+  - enabled: 1
     path: Assets/Scenes/DEBUG/DMTL_Portal.unity
     guid: 949048a59b7ed5a4b8173b9b62d6a7d0
   - enabled: 1
