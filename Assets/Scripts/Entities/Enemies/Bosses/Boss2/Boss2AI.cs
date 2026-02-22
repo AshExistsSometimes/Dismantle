@@ -13,6 +13,7 @@ public class Boss2AI : MonoBehaviour, IDamagable
     [Header("Health")]
     public int MaxHealth = 200;
     public int currentHealth;
+    public float BossArmour = 2f;
 
     [Header("Movement Area")]
     [Range(0f, 90f)]
@@ -173,11 +174,13 @@ public class Boss2AI : MonoBehaviour, IDamagable
     }
 
     // -------------------------------
-    // DAMAGE SYSTEM
+    // Health / Damage
     // -------------------------------
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        int damageTaken = Mathf.FloorToInt(damage / BossArmour);
+
+        currentHealth -= damageTaken;
 
         if (currentHealth <= 0)
         {
