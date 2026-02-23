@@ -126,7 +126,7 @@ MonoBehaviour:
   x1Ticket: {fileID: 8047506895599045981, guid: 1c79b8797f871d94492fa3cea9a36462, type: 3}
   x5Ticket: {fileID: 8486639320633383697, guid: 6ff2f6d5a834a0040b4f5175e1f7a68f, type: 3}
   x5TicketSpawner: 0
-  spawnRandomTicket: 0
+  spawnRandomTicket: 1
   x5TicketChance: 0.2
 --- !u!1 &4185306053700955103
 GameObject:
