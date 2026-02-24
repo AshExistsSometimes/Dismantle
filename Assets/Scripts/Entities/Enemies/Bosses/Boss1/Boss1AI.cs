@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss1AI : MonoBehaviour, IDamagable
@@ -27,10 +28,39 @@ public class Boss1AI : MonoBehaviour, IDamagable
 
     private Coroutine movementRoutine;
 
+    [SerializeField] private Color damageFlashColor = Color.red;
+    [SerializeField] private float damageFlashTime = 0.075f;
+
+    private Material[] cachedMaterials;
+    private Color[] originalColors;
+    private Coroutine flashRoutine;
+
     private void Start()
     {
         currentHealth = MaxHealth;
         startHeight = gameObject.transform.position.y;
+
+
+        CacheMaterials();
+    }
+
+    private void CacheMaterials()
+    {
+        List<Material> mats = new List<Material>();
+
+        var renderers = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            mats.AddRange(renderers[i].materials);
+        }
+
+        cachedMaterials = mats.ToArray();
+        originalColors = new Color[cachedMaterials.Length];
+
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            originalColors[i] = cachedMaterials[i].color;
+        }
     }
 
     private void Update()
@@ -90,8 +120,12 @@ public class Boss1AI : MonoBehaviour, IDamagable
     public void TakeDamage(int damage)
     {
         int damageTaken = Mathf.FloorToInt(damage / BossArmour);
+        if (damageTaken > 1) { damageTaken = 1; }
 
         currentHealth -= damageTaken;
+        FlashDamageIndicator();
+
+        Debug.Log("Boss 1 took " + damageTaken + " damage, out of the " + damage + " damage that was dealt by the player");
 
         if (currentHealth <= 0)
         {
@@ -99,11 +133,33 @@ public class Boss1AI : MonoBehaviour, IDamagable
         }
     }
 
+    private void FlashDamageIndicator()
+    {
+        if (flashRoutine != null)
+            StopCoroutine(flashRoutine);
+
+        flashRoutine = StartCoroutine(DamageFlashRoutine());
+    }
+
+    private IEnumerator DamageFlashRoutine()
+    {
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            cachedMaterials[i].color = damageFlashColor;
+        }
+
+        yield return new WaitForSeconds(damageFlashTime);
+
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            cachedMaterials[i].color = originalColors[i];
+        }
+    }
 
     public void Die()
     {
         BossActive = false;
         StopAllCoroutines();
-        Debug.Log("Boss 2 died");
+        Debug.Log("Boss 1 died");
     }
 }

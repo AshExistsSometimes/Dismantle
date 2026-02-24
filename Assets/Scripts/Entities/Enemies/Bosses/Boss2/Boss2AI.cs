@@ -39,14 +39,56 @@ public class Boss2AI : MonoBehaviour, IDamagable
 
     private Vector2 currentRot; // x = pitch, y = yaw
     private Vector2 targetRot;
+    private bool switchingPhases = false;
 
     private List<Vector2> pathPoints = new List<Vector2>();
+
+    [SerializeField] private Color damageFlashColor = Color.red;
+    [SerializeField] private float damageFlashTime = 0.075f;
+
+    private Material[] cachedMaterials;
+    private Color[] originalColors;
+    private Coroutine flashRoutine;
+
+    public enum Phase
+    {
+        Inactive,
+        Phase1,
+        Phase2
+    }
+
+    public Phase CurrentPhase = Phase.Inactive;
 
     private void Awake()
     {
         currentHealth = MaxHealth;
+
+        CurrentPhase = BossActive ? Phase.Phase1 : Phase.Inactive;
+
+
         currentRot = Vector2.zero;
         BossPivotPoint.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
+        CacheMaterials();
+    }
+
+    private void CacheMaterials()
+    {
+        List<Material> mats = new List<Material>();
+
+        var renderers = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            mats.AddRange(renderers[i].materials);
+        }
+
+        cachedMaterials = mats.ToArray();
+        originalColors = new Color[cachedMaterials.Length];
+
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            originalColors[i] = cachedMaterials[i].color;
+        }
     }
 
     private void Update()
@@ -178,9 +220,21 @@ public class Boss2AI : MonoBehaviour, IDamagable
     // -------------------------------
     public void TakeDamage(int damage)
     {
+        if (switchingPhases || !BossActive) { return; }
+
+
         int damageTaken = Mathf.FloorToInt(damage / BossArmour);
+        if (damageTaken > 1) { damageTaken = 1; }
 
         currentHealth -= damageTaken;
+        FlashDamageIndicator();
+
+        Debug.Log("Boss 2 took " + damageTaken + " damage, out of the " + damage + " damage that was dealt by the player");
+
+        if ((CurrentPhase != Phase.Phase2) && (currentHealth <= (MaxHealth / 2)))
+        {
+            StartCoroutine(SwitchToPhase2());
+        }
 
         if (currentHealth <= 0)
         {
@@ -193,6 +247,50 @@ public class Boss2AI : MonoBehaviour, IDamagable
         BossActive = false;
         StopAllCoroutines();
         Debug.Log("Boss 2 died");
+    }
+
+    private void FlashDamageIndicator()
+    {
+        if (flashRoutine != null)
+            StopCoroutine(flashRoutine);
+
+        flashRoutine = StartCoroutine(DamageFlashRoutine());
+    }
+
+    private IEnumerator DamageFlashRoutine()
+    {
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            cachedMaterials[i].color = damageFlashColor;
+        }
+
+        yield return new WaitForSeconds(damageFlashTime);
+
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            cachedMaterials[i].color = originalColors[i];
+        }
+    }
+
+    // -------------------------------
+    // Phase Management
+    // -------------------------------
+
+    private IEnumerator SwitchToPhase2()
+    {
+        switchingPhases = true;
+
+        // Any animations or VFX go here
+
+        CurrentPhase = Phase.Phase2;
+        yield return new WaitForSeconds(0.1f);
+        switchingPhases = false;
+    }
+
+    public void ActivateBoss()
+    {
+        CurrentPhase = Phase.Phase1;
+        BossActive = true;
     }
 
     // -------------------------------

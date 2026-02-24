@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 801112245}
   - component: {fileID: 801112244}
   - component: {fileID: 801112243}
-  m_Layer: 8
+  m_Layer: 17
   m_Name: Boss 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,6 +331,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   BobIntensity: 1.75
+  damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  damageFlashTime: 0.075
 --- !u!65 &801112244
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9473,7 +9475,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 114687
+    m_Bits: 245759
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

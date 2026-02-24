@@ -57,10 +57,10 @@ public class ShotgunBullet : MonoBehaviour
 
         int finalDamage = Mathf.RoundToInt(maxDamage * falloff);
 
-        Entity entity = hit.collider.GetComponentInParent<Entity>();
-        if (entity != null)
+        IDamagable damagableTarget = hit.collider.GetComponentInParent<IDamagable>();
+        if (damagableTarget != null)
         {
-            entity.TakeDamage(finalDamage);
+            damagableTarget.TakeDamage(finalDamage);
         }
 
         Destroy(gameObject);

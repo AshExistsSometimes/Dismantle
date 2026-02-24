@@ -26591,7 +26591,7 @@ GameObject:
   - component: {fileID: 1311966720}
   - component: {fileID: 1311966719}
   - component: {fileID: 1311966722}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Boss 2 - Leviathan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26738,6 +26738,9 @@ MonoBehaviour:
   GizmoSphereSize: 0.5
   GizmoDistanceFromCentre: 2
   BezierDetail: 24
+  damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  damageFlashTime: 0.075
+  CurrentPhase: 0
 --- !u!1 &1323406759
 GameObject:
   m_ObjectHideFlags: 0
@@ -40601,7 +40604,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 114687
+    m_Bits: 245759
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

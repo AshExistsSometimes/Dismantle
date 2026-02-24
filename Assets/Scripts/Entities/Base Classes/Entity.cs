@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -63,6 +64,13 @@ public class Entity : MonoBehaviour, IDamagable
 
     private Coroutine regenCoroutine = null;
 
+    [SerializeField] protected Color damageFlashColor = Color.red;
+    [SerializeField] protected float damageFlashTime = 0.075f;
+
+    protected Material[] cachedMaterials;
+    protected Color[] originalColors;
+    protected Coroutine flashRoutine;
+
     // MOVEMENT
     [Header("<color=#ffec70><size=110%><b>Movement")]
 
@@ -100,6 +108,7 @@ public class Entity : MonoBehaviour, IDamagable
     {
         EnsureOutline();
         CachePlayer();
+        CacheMaterials();
         outlineThickness = MaxOutlineThickness;
     }
 
@@ -121,11 +130,36 @@ public class Entity : MonoBehaviour, IDamagable
         }
 
         HP -= damage;
+        FlashDamageIndicator();
+        Debug.Log(name + " took " + damage + " damage");
 
         if (HP <= 0 && !Essential) { Die(); }
         else if (HP <= 0 && Essential && regenCoroutine == null)
         {
             regenCoroutine = StartCoroutine(RegenToFull(HPRegenRate / 100f));
+        }
+    }
+
+    protected void FlashDamageIndicator()
+    {
+        if (flashRoutine != null)
+            StopCoroutine(flashRoutine);
+
+        flashRoutine = StartCoroutine(DamageFlashRoutine());
+    }
+
+    protected IEnumerator DamageFlashRoutine()
+    {
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            cachedMaterials[i].color = damageFlashColor;
+        }
+
+        yield return new WaitForSeconds(damageFlashTime);
+
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            cachedMaterials[i].color = originalColors[i];
         }
     }
 
@@ -222,5 +256,24 @@ public class Entity : MonoBehaviour, IDamagable
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
             player = playerObj.transform;
+    }
+
+    private void CacheMaterials()
+    {
+        List<Material> mats = new List<Material>();
+
+        var renderers = GetComponentsInChildren<Renderer>();
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            mats.AddRange(renderers[i].materials);
+        }
+
+        cachedMaterials = mats.ToArray();
+        originalColors = new Color[cachedMaterials.Length];
+
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            originalColors[i] = cachedMaterials[i].color;
+        }
     }
 }

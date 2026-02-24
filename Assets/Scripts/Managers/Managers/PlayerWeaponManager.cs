@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,10 +43,48 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     public bool ShotgunEnabled = true;
     public bool RevolverEnabled = true;
 
-    [Header("Weapon GameObjects")]
+    [Header("<b>Weapon Animation Values")]
+    [Header("Revolver")]
     public GameObject RevolverObject;
+    public AnimationCurve RevolverFireRecoilAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    public float RevolverRecoilAnimSpeed = 0.5f;
+    public float RevolverRecoilRotation = 25f;
+
+    public Vector3 RevolverPivotDefaultEuler = new Vector3(0f, -180f, 0f);
+    public Vector3 ShotgunPivotDefaultEuler = new Vector3(0f, -180f, 0f);
+
+    [Header("Revolver Alt Fire - Spin")]
+    public float RevolverSpinSpeed = 720f; // degrees per second max
+    public float RevolverPivotTargetZ = 15f; // target Z rotation while spinning
+
+    private bool isRevolverSpinning = false;
+    private float currentRevolverSpinSpeed = 0f; // current speed for spin-up
+    [Space]
+    [Header("Shotgun")]
     public GameObject ShotgunObject;
+    public AnimationCurve ShotgunFireRecoilAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    public float ShotgunRecoilAnimSpeed = 0.5f;
+    public float ShotgunRecoilRotation = 14f;
+    [Space]
     public GameObject SwordObject;
+
+    [Header("Shotgun Components")]
+    public GameObject ShotgunPump;
+    public AnimationCurve ShotgunPumpAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    public float ShotgunPumpAnimSpeed = 0.6f;
+    [Space]
+    public GameObject BolaEnclosure;
+    public AnimationCurve BolaOpenAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    public float BolaOpenAnimSpeed = 0.1f;
+    public AnimationCurve BolaCloseAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    public float BolaCloseAnimSpeed = 0.5f;
+    [Space]
+    public GameObject ShotgunMuzzleFlash;
+
+    [Header("Revolver Components")]
+    public GameObject RevolverDrum;
+    public GameObject RevolverMuzzleFlash;
+    public GameObject RevolverBody;
 
     // --------------------
     // Weapon Animation
@@ -115,6 +154,9 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
         HandleGrappleInput();
         HandleWeaponScroll();
         UpdateWeaponAnimation();
+
+        if (!isRevolverSpinning) { return; }
+        UpdateRevolverSpin(Time.deltaTime);
     }
 
     // --------------------
@@ -275,9 +317,20 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
         Transform pivot = GetPivot(weapon);
         if (pivot == null) return;
 
+        Vector3 baseEuler = GetPivotDefault(weapon);
         pivot.localRotation = Quaternion.Euler(
-            equipped ? EquippedRotation : UnequippedRotation
+            baseEuler + (equipped ? EquippedRotation : UnequippedRotation)
         );
+    }
+
+    private Vector3 GetPivotDefault(PlayerWeapon weapon)
+    {
+        return weapon switch
+        {
+            PlayerWeapon.Revolver => RevolverPivotDefaultEuler,
+            PlayerWeapon.Shotgun => ShotgunPivotDefaultEuler,
+            _ => Vector3.zero
+        };
     }
 
     private Transform GetPivot(PlayerWeapon weapon)
@@ -364,19 +417,36 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     }
 
     public void RegisterWeapons(
-        GameObject revolver,
-        Transform revolverPivot,
-        GameObject shotgun,
-        Transform shotgunPivot,
-        GameObject sword = null
-    )
+    GameObject revolver,
+    GameObject revolverBody,
+    Transform revolverPivot,
+    GameObject revolverDrum,
+    GameObject revolverMuzzleFlash,
+    GameObject shotgun,
+    Transform shotgunPivot,
+    GameObject shotgunFlash,
+    GameObject shotgunPump,
+    GameObject bolaEnclosure,
+    GameObject sword = null
+)
     {
+        // Revolver
         RevolverObject = revolver;
+        RevolverBody = revolverBody;
         RevolverPivot = revolverPivot;
+        RevolverDrum = revolverDrum;
+        RevolverMuzzleFlash = revolverMuzzleFlash;
 
+        // Shotgun
         ShotgunObject = shotgun;
         ShotgunPivot = shotgunPivot;
+        ShotgunMuzzleFlash = shotgunFlash;
+        ShotgunPump = shotgunPump;
 
+        // Bola enclosure
+        BolaEnclosure = bolaEnclosure;
+
+        // Sword
         SwordObject = sword;
 
         // Ensure only the equipped weapon is visible
@@ -393,6 +463,202 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
 
         // Sword later
     }
+
+    // --------------------
+    // Weapon Fire Animation Logic
+    // --------------------
+
+    #region Revolver Animations
+    // Revolver
+    public void FireRevolverAnimation()
+    {
+        if (RevolverMuzzleFlash != null)
+            StartCoroutine(RevolverMuzzleFlashRoutine());
+
+        if (RevolverPivot != null)
+            StartCoroutine(RevolverRecoilRoutine());
+    }
+
+    private IEnumerator RevolverMuzzleFlashRoutine()
+    {
+        RevolverMuzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.075f);
+        RevolverMuzzleFlash.SetActive(false);
+    }
+
+    private IEnumerator RevolverRecoilRoutine()
+    {
+        Vector3 baseEuler = RevolverPivotDefaultEuler;
+
+        float timer = 0f;
+        while (timer < RevolverRecoilAnimSpeed)
+        {
+            timer += Time.deltaTime;
+            float t = Mathf.Clamp01(timer / RevolverRecoilAnimSpeed);
+            float curveValue = RevolverFireRecoilAnimation.Evaluate(t);
+            RevolverPivot.localRotation = Quaternion.Euler(
+                baseEuler + new Vector3(curveValue * RevolverRecoilRotation, 0f, 0f)
+            );
+            yield return null;
+        }
+
+        // Reset rotation at the end
+        RevolverPivot.localRotation = Quaternion.Euler(baseEuler);
+    }
+
+    public void DrumNextBulletAnimation()
+    {
+        if (RevolverDrum == null) return;
+
+        // Revolver has 6 chambers -> 360 / 6 = 60 degrees
+        RevolverDrum.transform.Rotate(Vector3.forward, 60f, Space.Self);
+    }
+
+    public void RevolverSpinAnimation(bool spinning)
+    {
+        isRevolverSpinning = spinning;
+    }
+
+    private void UpdateRevolverSpin(float deltaTime)
+    {
+        if (RevolverBody == null || RevolverPivot == null) return;
+
+        float targetSpeed = isRevolverSpinning ? RevolverSpinSpeed : 0f;
+        currentRevolverSpinSpeed = Mathf.MoveTowards(currentRevolverSpinSpeed, targetSpeed, RevolverSpinSpeed * deltaTime * 2f);
+
+        RevolverBody.transform.Rotate(Vector3.right, currentRevolverSpinSpeed * deltaTime, Space.Self);
+
+        Vector3 baseline = RevolverPivotDefaultEuler;
+        Vector3 rot = RevolverPivot.localEulerAngles;
+        float currentZ = rot.z;
+        if (currentZ > 180f) currentZ -= 360f;
+
+        float targetZ = isRevolverSpinning ? RevolverPivotDefaultEuler.z + RevolverPivotTargetZ : RevolverPivotDefaultEuler.z;
+        rot.z = Mathf.Lerp(currentZ, targetZ, deltaTime * 5f);
+        RevolverPivot.localEulerAngles = rot;
+    }
+
+    public void StopRevolverSpin()
+    {
+        isRevolverSpinning = false;
+
+        // Snap back to baseline instantly
+        if (RevolverBody != null)
+            RevolverBody.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        if (RevolverPivot != null)
+            RevolverPivot.localRotation = Quaternion.Euler(RevolverPivotDefaultEuler);
+    }
+    #endregion
+
+    #region Shotgun Animations
+    // Shotgun
+    public void FireShotgunAnimation()
+    {
+        if (ShotgunMuzzleFlash != null)
+            StartCoroutine(ShotgunMuzzleFlashRoutine());
+
+        if (ShotgunPivot != null)
+            StartCoroutine(ShotgunRecoilRoutine());
+    }
+
+    private IEnumerator ShotgunMuzzleFlashRoutine()
+    {
+        ShotgunMuzzleFlash.SetActive(true);
+        yield return new WaitForSeconds(0.075f);
+        ShotgunMuzzleFlash.SetActive(false);
+    }
+
+    private IEnumerator ShotgunRecoilRoutine()
+    {
+        if (ShotgunPivot == null) yield break;
+
+        Vector3 baseEuler = ShotgunPivotDefaultEuler;
+
+        float timer = 0f;
+        while (timer < ShotgunRecoilAnimSpeed)
+        {
+            timer += Time.deltaTime;
+            float t = Mathf.Clamp01(timer / ShotgunRecoilAnimSpeed);
+            float curveValue = ShotgunFireRecoilAnimation.Evaluate(t);
+
+            // Recoil relative to pivot baseline
+            ShotgunPivot.localRotation = Quaternion.Euler(
+                baseEuler + new Vector3(curveValue * ShotgunRecoilRotation, 0f, 0f)
+            );
+
+            yield return null;
+        }
+
+        // Reset to baseline
+        ShotgunPivot.localRotation = Quaternion.Euler(baseEuler);
+    }
+
+    public void PumpShotgun()
+    {
+        if (ShotgunPump == null) return;
+        StartCoroutine(ShotgunPumpRoutine());
+    }
+
+    private IEnumerator ShotgunPumpRoutine()
+    {
+        Vector3 startPos = ShotgunPump.transform.localPosition;
+        Vector3 endPos = startPos + new Vector3(0f, 0f, -0.4f);
+
+        float timer = 0f;
+        while (timer < ShotgunPumpAnimSpeed)
+        {
+            timer += Time.deltaTime;
+            float t = Mathf.Clamp01(timer / ShotgunPumpAnimSpeed);
+            float curveT = ShotgunPumpAnimation.Evaluate(t);
+            ShotgunPump.transform.localPosition = Vector3.Lerp(startPos, endPos, curveT);
+            yield return null;
+        }
+
+        // Reset pump back to start
+        ShotgunPump.transform.localPosition = startPos;
+    }
+
+    // Bola enclosure
+    public void OpenBolaEnclosure()
+    {
+        if (BolaEnclosure == null) return;
+        StartCoroutine(BolaEnclosureRoutine(-50f, BolaOpenAnimation, BolaOpenAnimSpeed));
+    }
+
+    public void CloseBolaEnclosure()
+    {
+        if (BolaEnclosure == null) return;
+        StartCoroutine(BolaEnclosureRoutine(0f, BolaCloseAnimation, BolaCloseAnimSpeed));
+    }
+
+    private IEnumerator BolaEnclosureRoutine(float targetXRot, AnimationCurve curve, float duration)
+    {
+        float timer = 0f;
+        float startRot = BolaEnclosure.transform.localEulerAngles.x;
+
+        // Fix angle wrapping
+        if (startRot > 180f) startRot -= 360f;
+
+        while (timer < duration)
+        {
+            timer += Time.deltaTime;
+            float t = Mathf.Clamp01(timer / duration);
+            float curveValue = curve.Evaluate(t);
+            float rotX = Mathf.Lerp(startRot, targetXRot, curveValue);
+            Vector3 rot = BolaEnclosure.transform.localEulerAngles;
+            rot.x = rotX;
+            BolaEnclosure.transform.localEulerAngles = rot;
+            yield return null;
+        }
+
+        // Ensure final rotation
+        Vector3 finalRot = BolaEnclosure.transform.localEulerAngles;
+        finalRot.x = targetXRot;
+        BolaEnclosure.transform.localEulerAngles = finalRot;
+    }
+    #endregion
+    // Sword
+    // TO DO LATER
 
 
     // --------------------

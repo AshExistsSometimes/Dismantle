@@ -21,6 +21,8 @@ public class BaseEnemy : Entity
     protected Transform target;
     protected float attackCooldown;
 
+    
+
     protected virtual void Awake()
     {
         base.Awake();
@@ -141,6 +143,9 @@ public class BaseEnemy : Entity
             Debug.Log($"{name} attacked {target.name} for {AttackDamage} damage.");
         }
     }
+
+
+    
 
     // --------------------
     // Gizmos for Debugging

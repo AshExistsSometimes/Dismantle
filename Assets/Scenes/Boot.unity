@@ -401,8 +401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f54e23ccb4b67d4485e96b7f032f48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EquippedWeapon: 0
-  lastRegularWeapon: 1
+  EquippedWeapon: 2
+  lastRegularWeapon: 2
   GrappleKey: 304
   ParryKey: 102
   GrappleIcon: {fileID: 21300000, guid: 55a928525d782714f8412fca2f2a90cc, type: 3}
@@ -414,8 +414,190 @@ MonoBehaviour:
   ShotgunEnabled: 1
   RevolverEnabled: 1
   RevolverObject: {fileID: 0}
+  RevolverFireRecoilAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.09520167
+      value: 0.1517182
+      inSlope: 5.055928
+      outSlope: 5.055928
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.3116455
+      value: 0.9880142
+      inSlope: 0.5239388
+      outSlope: 0.5239388
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.07959976
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RevolverRecoilAnimSpeed: 0.35
+  RevolverRecoilRotation: 35
+  RevolverPivotDefaultEuler: {x: 0, y: -180, z: 0}
+  ShotgunPivotDefaultEuler: {x: 0, y: -180, z: 0}
+  RevolverSpinSpeed: 1440
+  RevolverPivotTargetZ: 45
   ShotgunObject: {fileID: 0}
+  ShotgunFireRecoilAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.09520167
+      value: 0.1517182
+      inSlope: 5.055928
+      outSlope: 5.055928
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.26007843
+      value: 0.9900551
+      inSlope: 0.047590025
+      outSlope: 0.047590025
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.11207569
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ShotgunRecoilAnimSpeed: 0.5
+  ShotgunRecoilRotation: 30
   SwordObject: {fileID: 0}
+  ShotgunPump: {fileID: 0}
+  ShotgunPumpAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.68722534
+      value: 0.98571396
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ShotgunPumpAnimSpeed: 0.3
+  BolaEnclosure: {fileID: 0}
+  BolaOpenAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BolaOpenAnimSpeed: 0.1
+  BolaCloseAnimation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  BolaCloseAnimSpeed: 0.5
+  ShotgunMuzzleFlash: {fileID: 0}
+  RevolverDrum: {fileID: 0}
+  RevolverMuzzleFlash: {fileID: 0}
+  RevolverBody: {fileID: 0}
   RevolverPivot: {fileID: 0}
   ShotgunPivot: {fileID: 0}
   EquipCurve:

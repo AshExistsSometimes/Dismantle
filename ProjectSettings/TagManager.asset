@@ -22,7 +22,7 @@ TagManager:
   - OverlayCamera
   - Ground/Prop/Grapplable
   - Ground/Prop/Not Grapplable
-  - 
+  - Entity/Boss
   - 
   - 
   - 
