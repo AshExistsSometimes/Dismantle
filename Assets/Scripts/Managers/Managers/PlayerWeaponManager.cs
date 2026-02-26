@@ -43,12 +43,24 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     public bool ShotgunEnabled = true;
     public bool RevolverEnabled = true;
 
-    [Header("<b>Weapon Animation Values")]
-    [Header("Revolver")]
+    [Header("<b><size=150%>Weapon Animation Values")]//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    [Header("<b><size=110%><color=#15D7ED>Revolver")]
+    [Header("<b><i><size=105%><color=#1EA9BA>References")]
     public GameObject RevolverObject;
+    public Transform RevolverPivot;
+    public GameObject RevolverDrum;
+    public GameObject RevolverMuzzleFlash;
+    public GameObject RevolverBody;
+    [Header("<b><i><size=105%><color=#1EA9BA>Animation Values")]
+    [Header("Recoil Rotation")]
     public AnimationCurve RevolverFireRecoilAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float RevolverRecoilAnimSpeed = 0.5f;
     public float RevolverRecoilRotation = 25f;
+    [Space]
+    [Header("Recoil Pushback")]
+    // Needs to move the Revolver pivot on the local Z axis position, from its current position, to the currentPos + MaxPushback, over the time of PushbackAnimSpeed
+    public AnimationCurve RevolverFireRecoilPushbackAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    public float RevolverRecoilPushbackAnimSpeed = 0.5f;
 
     public Vector3 RevolverPivotDefaultEuler = new Vector3(0f, -180f, 0f);
     public Vector3 ShotgunPivotDefaultEuler = new Vector3(0f, -180f, 0f);
@@ -60,39 +72,58 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     private bool isRevolverSpinning = false;
     private float currentRevolverSpinSpeed = 0f; // current speed for spin-up
     [Space]
-    [Header("Shotgun")]
+    [Header("Muzzle Flash")]
+    [Space]
+    [Header("<b><size=110%><color=#ED3215>Shotgun")]
+    [Header("<b><i><size=105%><color=#BA321E>References")]
     public GameObject ShotgunObject;
+    public Transform ShotgunPivot;
+    public GameObject ShotgunPump;
+    public GameObject BolaEnclosure;
+    public GameObject ShotgunMuzzleFlash;
+    [Header("<b><i><size=105%><color=#BA321E>Animation Values")]
+    [Header("Recoil Rotation")]
     public AnimationCurve ShotgunFireRecoilAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float ShotgunRecoilAnimSpeed = 0.5f;
     public float ShotgunRecoilRotation = 14f;
     [Space]
-    public GameObject SwordObject;
-
-    [Header("Shotgun Components")]
-    public GameObject ShotgunPump;
+    [Header("Recoil Pushback")]
+    // Needs to move the Shotgun pivot on the local Z axis position, from its current position, to the currentPos + MaxPushback, over the time of PushbackAnimSpeed
+    public AnimationCurve ShotgunFireRecoilPushbackAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    public float ShotgunRecoilPushbackAnimSpeed = 0.5f;
+    public float ShotgunRecoilPushbackMaxPushback = -0.3f;
+    [Space]
+    [Header("Pump")]
     public AnimationCurve ShotgunPumpAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float ShotgunPumpAnimSpeed = 0.6f;
     [Space]
-    public GameObject BolaEnclosure;
+    [Header("Bola")]
     public AnimationCurve BolaOpenAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float BolaOpenAnimSpeed = 0.1f;
+    [Space]
     public AnimationCurve BolaCloseAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float BolaCloseAnimSpeed = 0.5f;
     [Space]
-    public GameObject ShotgunMuzzleFlash;
+    [Header("<b><size=110%><color=#FAE016>Sword")]
+    [Header("<b><i><size=105%><color=#B5A422>References")]
+    public GameObject SwordObject;
+    public GameObject SwordHitbox;
+    [Header("<b><i><size=105%><color=#B5A422>Animation Values")]
+    public AnimationCurve SwordSwingAnimCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+    public float SwordSwingSpeed = 0.5f;
+    [Space]
+    [Space]
+    [Header("<b><size=110%><color=#2BDE18>General")]
+    public float MuzzleFlashTime = 0.075f;
 
-    [Header("Revolver Components")]
-    public GameObject RevolverDrum;
-    public GameObject RevolverMuzzleFlash;
-    public GameObject RevolverBody;
 
     // --------------------
     // Weapon Animation
     // --------------------
 
-    [Header("Weapon Animation")]
-    public Transform RevolverPivot;
-    public Transform ShotgunPivot;
+    [Header("Weapon Equipping")]
+
+
 
     [Tooltip("0 = unequipped, 1 = equipped (supports overshoot)")]
     public AnimationCurve EquipCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
@@ -482,7 +513,7 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     private IEnumerator RevolverMuzzleFlashRoutine()
     {
         RevolverMuzzleFlash.SetActive(true);
-        yield return new WaitForSeconds(0.075f);
+        yield return new WaitForSeconds(MuzzleFlashTime);
         RevolverMuzzleFlash.SetActive(false);
     }
 
@@ -564,7 +595,7 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     private IEnumerator ShotgunMuzzleFlashRoutine()
     {
         ShotgunMuzzleFlash.SetActive(true);
-        yield return new WaitForSeconds(0.075f);
+        yield return new WaitForSeconds(MuzzleFlashTime);
         ShotgunMuzzleFlash.SetActive(false);
     }
 

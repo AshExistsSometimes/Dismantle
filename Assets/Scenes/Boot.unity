@@ -595,6 +595,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   BolaCloseAnimSpeed: 0.5
   ShotgunMuzzleFlash: {fileID: 0}
+  MuzzleFlashTime: 0.125
   RevolverDrum: {fileID: 0}
   RevolverMuzzleFlash: {fileID: 0}
   RevolverBody: {fileID: 0}
