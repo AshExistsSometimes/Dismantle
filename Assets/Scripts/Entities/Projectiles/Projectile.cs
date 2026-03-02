@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour, IParryable
                 return;
         }
 
-        IDamagable dmg = other.GetComponent<IDamagable>();
+        IDamagable dmg = other.GetComponentInParent<IDamagable>();
         if (dmg != null)
         {
             dmg.TakeDamage(damage);
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour, IParryable
     public void Parry(Transform cameraTransform)
     {
         direction = cameraTransform.forward.normalized;
+        speed = speed * 1.5f;
         targetingPlayer = false;
     }
 }
-

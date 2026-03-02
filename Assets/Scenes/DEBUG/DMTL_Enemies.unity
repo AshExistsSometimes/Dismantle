@@ -741,6 +741,7 @@ GameObject:
   - component: {fileID: 975755237}
   - component: {fileID: 975755236}
   - component: {fileID: 975755239}
+  - component: {fileID: 975755240}
   m_Layer: 11
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -793,6 +794,8 @@ MonoBehaviour:
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
+  damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  damageFlashTime: 0.075
   DefaultSpeed: 5
   effects: 0
   NoAI: 0
@@ -860,6 +863,55 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &975755240
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975755235}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!1 &1062078453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8462369169845873684, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
+  m_PrefabInstance: {fileID: 1080435034}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1062078459
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062078453}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.6
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!1001 &1080435034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -915,7 +967,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8462369169845873684, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1062078459}
   m_SourcePrefab: {fileID: 100100000, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
 --- !u!1 &1179986662
 GameObject:

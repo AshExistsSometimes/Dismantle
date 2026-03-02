@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IParryable
 {
-    void Parry()
+    void Parry(Transform cameraTransform)
     {
         
     }

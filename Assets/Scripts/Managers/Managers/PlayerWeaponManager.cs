@@ -44,6 +44,8 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     public bool RevolverEnabled = true;
 
     [Header("<b><size=150%>Weapon Animation Values")]//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // REVOLVER //
     [Header("<b><size=110%><color=#15D7ED>Revolver")]
     [Header("<b><i><size=105%><color=#1EA9BA>References")]
     public GameObject RevolverObject;
@@ -61,9 +63,11 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     // Needs to move the Revolver pivot on the local Z axis position, from its current position, to the currentPos + MaxPushback, over the time of PushbackAnimSpeed
     public AnimationCurve RevolverFireRecoilPushbackAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float RevolverRecoilPushbackAnimSpeed = 0.5f;
+    public float RevolverRecoilPushbackMaxPushback = -0.3f;
+    public Vector3 revolverPivotDefaultLocalPos;
 
     public Vector3 RevolverPivotDefaultEuler = new Vector3(0f, -180f, 0f);
-    public Vector3 ShotgunPivotDefaultEuler = new Vector3(0f, -180f, 0f);
+    
 
     [Header("Revolver Alt Fire - Spin")]
     public float RevolverSpinSpeed = 720f; // degrees per second max
@@ -74,6 +78,8 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     [Space]
     [Header("Muzzle Flash")]
     [Space]
+
+    // SHOTGUN //
     [Header("<b><size=110%><color=#ED3215>Shotgun")]
     [Header("<b><i><size=105%><color=#BA321E>References")]
     public GameObject ShotgunObject;
@@ -92,6 +98,10 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     public AnimationCurve ShotgunFireRecoilPushbackAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float ShotgunRecoilPushbackAnimSpeed = 0.5f;
     public float ShotgunRecoilPushbackMaxPushback = -0.3f;
+    public Vector3 shotgunPivotDefaultLocalPos;
+
+    public Vector3 ShotgunPivotDefaultEuler = new Vector3(0f, -180f, 0f);
+
     [Space]
     [Header("Pump")]
     public AnimationCurve ShotgunPumpAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
@@ -104,15 +114,20 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     public AnimationCurve BolaCloseAnimation = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float BolaCloseAnimSpeed = 0.5f;
     [Space]
+
+    // SWORD / PARRY //
     [Header("<b><size=110%><color=#FAE016>Sword")]
     [Header("<b><i><size=105%><color=#B5A422>References")]
     public GameObject SwordObject;
-    public GameObject SwordHitbox;
+    public ParryHitbox SwordHitbox;
     [Header("<b><i><size=105%><color=#B5A422>Animation Values")]
     public AnimationCurve SwordSwingAnimCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
     public float SwordSwingSpeed = 0.5f;
+    public float SwordMaxSwingAngle = 90f; // degrees
     [Space]
     [Space]
+
+    // GENERAL //
     [Header("<b><size=110%><color=#2BDE18>General")]
     public float MuzzleFlashTime = 0.075f;
 
@@ -140,6 +155,7 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     private PlayerWeapon pendingDisableWeapon = PlayerWeapon.Grapple;
     private bool disableOnAnimEnd;
 
+    public PlayerCombat PCReference;
 
     private void Awake()
     {
@@ -178,6 +194,12 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
             if (w != EquippedWeapon)
                 DisableWeaponObject(w);
         }
+
+        if (RevolverPivot != null)
+            revolverPivotDefaultLocalPos = RevolverPivot.localPosition;
+
+        if (ShotgunPivot != null)
+            shotgunPivotDefaultLocalPos = ShotgunPivot.localPosition;
     }
 
     private void Update()
@@ -318,7 +340,7 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
             );
         }
 
-        // **Disable the weapon only after unequip animation finishes**
+        // Disable the weapon after unequip animation finishes
         if (t >= 1f)
         {
             isAnimating = false;
@@ -458,7 +480,8 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     GameObject shotgunFlash,
     GameObject shotgunPump,
     GameObject bolaEnclosure,
-    GameObject sword = null
+    GameObject sword,
+    ParryHitbox swordHitbox = null
 )
     {
         // Revolver
@@ -479,6 +502,7 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
 
         // Sword
         SwordObject = sword;
+        SwordHitbox = swordHitbox;
 
         // Ensure only the equipped weapon is visible
         SyncWeaponVisibility();
@@ -520,21 +544,36 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     private IEnumerator RevolverRecoilRoutine()
     {
         Vector3 baseEuler = RevolverPivotDefaultEuler;
+        Vector3 basePos = revolverPivotDefaultLocalPos;
 
         float timer = 0f;
+
         while (timer < RevolverRecoilAnimSpeed)
         {
             timer += Time.deltaTime;
             float t = Mathf.Clamp01(timer / RevolverRecoilAnimSpeed);
-            float curveValue = RevolverFireRecoilAnimation.Evaluate(t);
+
+            float rotCurve = RevolverFireRecoilAnimation.Evaluate(t);
+            float pushCurve = RevolverFireRecoilPushbackAnimation.Evaluate(t);
+
+            // Rotation recoil
             RevolverPivot.localRotation = Quaternion.Euler(
-                baseEuler + new Vector3(curveValue * RevolverRecoilRotation, 0f, 0f)
+                baseEuler + new Vector3(rotCurve * RevolverRecoilRotation, 0f, 0f)
             );
+
+            // Pushback recoil (local Z)
+            RevolverPivot.localPosition = basePos + new Vector3(
+                0f,
+                0f,
+                pushCurve * RevolverRecoilPushbackMaxPushback
+            );
+
             yield return null;
         }
 
-        // Reset rotation at the end
+        // Reset both
         RevolverPivot.localRotation = Quaternion.Euler(baseEuler);
+        RevolverPivot.localPosition = revolverPivotDefaultLocalPos;
     }
 
     public void DrumNextBulletAnimation()
@@ -604,24 +643,36 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
         if (ShotgunPivot == null) yield break;
 
         Vector3 baseEuler = ShotgunPivotDefaultEuler;
+        Vector3 basePos = shotgunPivotDefaultLocalPos;
 
         float timer = 0f;
+
         while (timer < ShotgunRecoilAnimSpeed)
         {
             timer += Time.deltaTime;
             float t = Mathf.Clamp01(timer / ShotgunRecoilAnimSpeed);
-            float curveValue = ShotgunFireRecoilAnimation.Evaluate(t);
 
-            // Recoil relative to pivot baseline
+            float rotCurve = ShotgunFireRecoilAnimation.Evaluate(t);
+            float pushCurve = ShotgunFireRecoilPushbackAnimation.Evaluate(t);
+
+            // Rotation recoil
             ShotgunPivot.localRotation = Quaternion.Euler(
-                baseEuler + new Vector3(curveValue * ShotgunRecoilRotation, 0f, 0f)
+                baseEuler + new Vector3(rotCurve * ShotgunRecoilRotation, 0f, 0f)
+            );
+
+            // Pushback recoil (local Z)
+            ShotgunPivot.localPosition = basePos + new Vector3(
+                0f,
+                0f,
+                pushCurve * ShotgunRecoilPushbackMaxPushback
             );
 
             yield return null;
         }
 
-        // Reset to baseline
+        // Reset both
         ShotgunPivot.localRotation = Quaternion.Euler(baseEuler);
+        ShotgunPivot.localPosition = shotgunPivotDefaultLocalPos;
     }
 
     public void PumpShotgun()
@@ -689,7 +740,58 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     }
     #endregion
     // Sword
-    // TO DO LATER
+    #region Sword Animations
+
+    private bool swordBusy = false;
+
+    public void PlaySwordParry(float parryWindow, float cooldown)
+    {
+        if (swordBusy) return;
+        StartCoroutine(SwordParryRoutine(parryWindow, cooldown));
+    }
+
+    private IEnumerator SwordParryRoutine(float parryWindow, float cooldown)
+    {
+        swordBusy = true;
+
+        if (SwordObject != null)
+            SwordObject.SetActive(true);
+
+        if (SwordHitbox != null)
+            SwordHitbox.SetActive(true);
+
+        // Cache starting rotation
+        Quaternion startRot = SwordObject.transform.localRotation;
+        Quaternion targetRot = startRot * Quaternion.Euler(0f, SwordMaxSwingAngle, 0f);
+
+        float timer = 0f;
+
+        while (timer < SwordSwingSpeed)
+        {
+            timer += Time.deltaTime;
+            float t = Mathf.Clamp01(timer / SwordSwingSpeed);
+            float curve = SwordSwingAnimCurve.Evaluate(t);
+
+            SwordObject.transform.localRotation = Quaternion.Slerp(startRot, targetRot, curve);
+
+            yield return null;
+        }
+
+        // Snap back cleanly
+        SwordObject.transform.localRotation = startRot;
+
+        if (SwordHitbox != null)
+            SwordHitbox.SetActive(false);
+
+        if (SwordObject != null)
+            SwordObject.SetActive(false);
+
+        yield return new WaitForSeconds(cooldown);
+
+        swordBusy = false;
+    }
+
+    #endregion
 
 
     // --------------------

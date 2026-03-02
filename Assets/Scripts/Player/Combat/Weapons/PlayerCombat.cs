@@ -51,6 +51,7 @@ public class PlayerCombat : MonoBehaviour
     public float RicochetCooldown = 5f; // 5s Cooldown
 
     [Header("Sword")]
+    public ParryHitbox SwordHitbox;
     public int SwordDamage = 30;
     public float SwordFireRate = 3f; // Max 3 Swings a second
     public float ParryWindow = 0.25f;
@@ -121,6 +122,8 @@ public class PlayerCombat : MonoBehaviour
             return;
         }
 
+        weaponManager.PCReference = this;
+
         weaponManager.RegisterWeapons(
         Revolver,
         RevolverGun,
@@ -132,8 +135,12 @@ public class PlayerCombat : MonoBehaviour
         ShotgunMuzzleFlash,
         ShotgunPump,
         BolaEnclosure,
-        Sword
+        Sword,
+        SwordHitbox
     );
+
+        if (SwordHitbox != null)
+            SwordHitbox.Init(this);
 
         CacheAllDefaults();
     }
@@ -384,15 +391,18 @@ public class PlayerCombat : MonoBehaviour
     // ------------------------------
     // PARRY/SLICE
     // ------------------------------
+
+    private float nextSwordFireTime;
     private void MeleeAttack()
     {
         Debug.Log("Parry");
-        // Hits enemies in close range, dealing high damage (potentially cuts them in 2 if it lands the final blow)
-        // Parry Projectiles
+        if (Time.time < nextSwordFireTime)
+            return;
 
-        // Make a trigger ParryHitbox active for ParryWindow seconds
-        // If anything with IParryable is in the hitbox, run its Parry() function
-        // If anything with IDamagable is in the hitbox, run its Damage() function, inputting SwordDamage
+        nextSwordFireTime = Time.time + (1f / SwordFireRate);
+
+        if (weaponManager != null)
+            weaponManager.PlaySwordParry(ParryWindow, 1f / SwordFireRate);
     }
 
     // -----------------------------
