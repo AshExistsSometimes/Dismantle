@@ -10,15 +10,18 @@ public class LevelSO : ScriptableObject
     [Header("Enemies")]
     public int EnemiesInLevel;
 
+    [Header("UI")]
+    public string LevelName;
+    public Sprite LevelIcon;
+
     [Header("Time Rank Thresholds (seconds)")]
     public List<RankTimeFrame> TimeRanks = new();
 
     [Header("Score Rank Thresholds")]
     public List<RankScoreFrame> ScoreRanks = new();
 
-    [Header("Management")]
-    public bool Unlocked = false;
-    public bool Played = false;
+    [Header("Development")]
+    public bool IsImplemented = true; // false = Under Development
 }
 
 [System.Serializable]

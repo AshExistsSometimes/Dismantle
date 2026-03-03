@@ -16,6 +16,12 @@ public class LevelManager : MonoBehaviour
     public int EnemiesInLevel { get; private set; }
     public int CollectedTickets { get; private set; }
 
+    [Header("Levels Final Stats")]
+    public float LevelEndTime;
+    public float LevelEndScore;
+    public int LevelEndKilCount;
+    public int LevelEndTickets;
+
     [Header("State")]
     public bool TimerRunning { get; private set; }
 
@@ -57,6 +63,27 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(level.SceneName);
     }
 
+    public void LevelComplete()
+    {
+        StopTimer();
+        LevelEndCaptureStats();
+
+        LevelProgressManager.Instance.UnlockNextImplementedLevel(SelectedLevel);
+
+        SaveManager.Instance.SaveGame();
+
+        OpenLevelEndScreen();
+    }
+
+    public void ReturnToHub()
+    {
+        //LevelProgressManager.Instance.UpdateProgress(SelectedLevel, LevelEndTime, rank);
+        SaveManager.Instance.SaveGame();
+
+        SceneManager.LoadScene("0.0_Hub");
+    }
+
+
     // --------------------
     // Timer
     // --------------------
@@ -92,6 +119,16 @@ public class LevelManager : MonoBehaviour
     }
 
     // --------------------
+    // Final Stat Calculations
+    // --------------------
+
+    private void CalculateRankings()
+    {
+
+    }
+
+
+    // --------------------
     // Helpers
     // --------------------
 
@@ -102,5 +139,19 @@ public class LevelManager : MonoBehaviour
         EnemiesKilled = 0;
         CollectedTickets = 0;
         TimerRunning = false;
+    }
+
+    private void LevelEndCaptureStats()
+    {
+        LevelEndTime = LevelTime;
+        LevelEndScore = Score;
+        LevelEndKilCount = EnemiesKilled;
+        LevelEndTickets = CollectedTickets;
+    }
+
+    private void OpenLevelEndScreen()
+    {
+        // TEMPORARY
+        ReturnToHub();
     }
 }

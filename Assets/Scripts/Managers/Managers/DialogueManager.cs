@@ -34,7 +34,7 @@ public class DialogueManager : MonoBehaviour
             return;
 
         UI.gameObject.SetActive(true);
-        GameManager.Instance.EnterDialogue();
+        GameManager.Instance.UIPauseGame();
 
         currentDialogue = dialogue;
         currentIndex = 0;
@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
         UI.Close();
         UI.gameObject.SetActive(false);
 
-        GameManager.Instance.ExitDialogue();
+        GameManager.Instance.UIUnpauseGame();
 
         OnDialogueEnd?.Invoke();
         OnDialogueEnd.RemoveAllListeners();

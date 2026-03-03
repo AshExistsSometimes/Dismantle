@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour, ISaveable
 
     // Dialogue //
 
-    public void EnterDialogue()
+    public void UIPauseGame()
     {
         UIOpen = true;
         IsPaused = true;
@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviour, ISaveable
         Cursor.visible = true;
     }
 
-    public void ExitDialogue()
+    public void UIUnpauseGame()
     {
         UIOpen = false;
         IsPaused = false;

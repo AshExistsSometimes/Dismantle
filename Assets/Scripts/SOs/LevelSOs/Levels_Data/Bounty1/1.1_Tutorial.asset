@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ae9287f2bada2343a95b3ea72d2ddca, type: 3}
-  m_Name: 0.1_Tutorial
+  m_Name: 1.1_Tutorial
   m_EditorClassIdentifier: 
-  SceneName: 0.1_Tutorial
+  SceneName: 1.1_Tutorial
   EnemiesInLevel: 0
+  LevelName: Kinetic Disassembly 101
+  LevelIcon: {fileID: 21300000, guid: c63dfa0eed2bfff43b554f78e1c8d4d1, type: 3}
   TimeRanks:
   - Rank: 0
     MaxTime: 0
@@ -48,3 +50,4 @@ MonoBehaviour:
     MinScore: 0
   - Rank: 7
     MinScore: 0
+  IsImplemented: 1
