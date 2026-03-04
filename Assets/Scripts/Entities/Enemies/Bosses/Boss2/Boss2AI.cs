@@ -29,6 +29,8 @@ public class Boss2AI : MonoBehaviour, IDamagable
     public int PathPoints = 3; // how many winding points between start and end
     public float BezierStrength = 15f; // how far it can curve off straight path
 
+    public string BossName = "Boss 2";
+
     [Header("Debug")]
     public bool DrawGizmos = true;
     public float GizmoSphereSize = 0.3f;

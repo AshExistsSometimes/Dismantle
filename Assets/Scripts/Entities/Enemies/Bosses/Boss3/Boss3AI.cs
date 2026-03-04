@@ -38,6 +38,8 @@ public class Boss3AI : MonoBehaviour, IDamagable
 
     public float Phase2HeightDifference = 20f;
 
+    public string BossName = "Boss 3";
+
     [SerializeField] private Color damageFlashColor = Color.red;
     [SerializeField] private float damageFlashTime = 0.075f;
 

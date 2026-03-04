@@ -42,6 +42,8 @@ public class LevelManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        TimerRunning = true;
     }
 
     private void Update()

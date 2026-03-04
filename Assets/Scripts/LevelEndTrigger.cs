@@ -13,6 +13,8 @@ public class LevelEndTrigger : MonoBehaviour
 
         triggered = true;
 
+        PlayerWeaponManager.Instance.ShotgunEnabled = true;
+
         LevelManager.Instance.LevelComplete();
         DialogueManager.Instance.InHub = true;
     }

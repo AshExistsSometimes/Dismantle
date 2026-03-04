@@ -25,6 +25,8 @@ public class Boss1AI : MonoBehaviour, IDamagable
 
     private float startHeight = 0f;
 
+    public string BossName = "Boss 1";
+
 
     private Coroutine movementRoutine;
 
