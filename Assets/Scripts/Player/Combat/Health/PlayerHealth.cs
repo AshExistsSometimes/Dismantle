@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamagable
 {
@@ -34,6 +35,8 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     private Coroutine regenCoroutine = null;
     [SerializeField]
     private float RegenDelayTimer;
+
+    
 
     //
 
@@ -124,6 +127,10 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public void Die()
     {
         // fade in death screen and turn off player controller and duel hooks scripts (LEAVE THIS FOR NOW)
+
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
+
         Debug.Log("[!] : Player has died");
     }
 
