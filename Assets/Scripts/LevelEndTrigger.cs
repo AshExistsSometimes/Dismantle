@@ -14,5 +14,6 @@ public class LevelEndTrigger : MonoBehaviour
         triggered = true;
 
         LevelManager.Instance.LevelComplete();
+        DialogueManager.Instance.InHub = true;
     }
 }

@@ -167,6 +167,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void HandleInput()
     {
+        if (!PlayerWeaponManager.Instance.EquipmentEnabled) { return; }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             MeleeAttack();

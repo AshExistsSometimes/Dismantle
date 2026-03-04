@@ -17,12 +17,13 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
     public string SaveKey => "PlayerWeaponManager";
     public static PlayerWeaponManager Instance;
 
+    public bool EquipmentEnabled = true;
 
     [Header("Weapon State")]
     public PlayerWeapon EquippedWeapon;
 
     [SerializeField]
-    private PlayerWeapon lastRegularWeapon = PlayerWeapon.Revolver;
+    public PlayerWeapon lastRegularWeapon = PlayerWeapon.Revolver;
 
     [Header("Input")]
     public KeyCode GrappleKey = KeyCode.LeftShift;
@@ -204,7 +205,12 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
 
     private void Update()
     {
-        HandleGrappleInput();
+        if (!EquipmentEnabled) return;
+
+        if (GrappleEnabled)
+        {
+            HandleGrappleInput();
+        }
         HandleWeaponScroll();
         UpdateWeaponAnimation();
 
@@ -460,6 +466,12 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
         Color c = image.color;
         c.a = alpha;
         image.color = c;
+    }
+
+    public void RefreshWeaponUI()
+    {
+        UpdateHUDIcon();
+        UpdateSecondaryHUDIcon();
     }
 
     public void RegisterHUD(HUDController hud)

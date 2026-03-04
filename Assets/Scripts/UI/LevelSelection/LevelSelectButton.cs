@@ -24,6 +24,9 @@ public class LevelSelectButton : MonoBehaviour
 
     public static LevelSelectButton currentSelected;
 
+    private Coroutine colorRoutine;
+    public float ColorLerpSpeed = 8f;
+
     public void Setup(LevelSO levelSO)
     {
         level = levelSO;
@@ -107,12 +110,16 @@ public class LevelSelectButton : MonoBehaviour
 
         LevelManager.Instance.SelectedLevel = level;
 
-        Background.color = SelectedColor;
+        StartColorLerp(SelectedColor);
+
+        LevelSelectMenu menu = GetComponentInParent<LevelSelectMenu>();
+        if (menu != null)
+            menu.ScrollToButton(this);
     }
 
     public void Deselect()
     {
-        Background.color = NormalColor;
+        StartColorLerp(NormalColor);
     }
 
     private string FormatTime(float seconds)
@@ -127,5 +134,31 @@ public class LevelSelectButton : MonoBehaviour
         {
             return $"{time.Minutes:00}:{time.Seconds:00}.{time.Milliseconds:000}";
         }
+    }
+
+
+
+
+    private void StartColorLerp(Color target)
+    {
+        if (colorRoutine != null)
+            StopCoroutine(colorRoutine);
+
+        colorRoutine = StartCoroutine(LerpColor(target));
+    }
+
+    private System.Collections.IEnumerator LerpColor(Color target)
+    {
+        Color start = Background.color;
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            t += Time.unscaledDeltaTime * ColorLerpSpeed;
+            Background.color = Color.Lerp(start, target, t);
+            yield return null;
+        }
+
+        Background.color = target;
     }
 }

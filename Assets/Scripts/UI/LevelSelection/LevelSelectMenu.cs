@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelSelectMenu : MonoBehaviour
 {
@@ -9,10 +10,28 @@ public class LevelSelectMenu : MonoBehaviour
     [Header("UI")]
     public Transform BountyListParent;
     public BountyBoxUI BountyBoxPrefab;
+    public ScrollRect scrollRect;
+
+    public GameObject PlayerUI;
+
+    private bool LevelSelectOpen = false;
 
     private void OnEnable()
     {
         BuildMenu();
+    }
+
+    private void Update()
+    {
+        if (!LevelSelectOpen)
+        {
+            return;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Escape) && LevelSelectOpen)
+        {
+            CloseMenu();
+        }
     }
 
     public void BuildMenu()
@@ -44,13 +63,36 @@ public class LevelSelectMenu : MonoBehaviour
 
     public void CloseMenu()
     {
+        LevelSelectOpen = false;
         gameObject.SetActive(false);
         GameManager.Instance.UIUnpauseGame();
+        PlayerUI.SetActive(true);
+        UIManager.Instance.CanPause = true;
     }
 
     public void OpenMenu()
     {
+        LevelSelectOpen = true;
         GameManager.Instance.UIPauseGame();
+        UIManager.Instance.CanPause = false;
+        PlayerUI.SetActive(false);
         gameObject.SetActive(true);
+    }
+
+    public void ScrollToButton(LevelSelectButton button)
+    {
+        Canvas.ForceUpdateCanvases();
+
+        RectTransform content = scrollRect.content;
+        RectTransform target = button.GetComponent<RectTransform>();
+
+        float contentHeight = content.rect.height;
+        float viewportHeight = scrollRect.viewport.rect.height;
+
+        float targetY = Mathf.Abs(target.anchoredPosition.y);
+
+        float normalized = Mathf.Clamp01(targetY / (contentHeight - viewportHeight));
+
+        scrollRect.verticalNormalizedPosition = 1f - normalized;
     }
 }

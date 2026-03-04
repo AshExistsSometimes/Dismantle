@@ -5,6 +5,8 @@ public class PlayerInventoryManager : MonoBehaviour, ISaveable
 {
     public string SaveKey => "PlayerInventoryManager";
 
+    public static PlayerInventoryManager Instance;
+
     [Header("Economy")]
     public int PlayerMoney;
     public int PlayerTickets;
@@ -16,6 +18,14 @@ public class PlayerInventoryManager : MonoBehaviour, ISaveable
 
     private void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
         SaveManager.Instance?.Register(this);
     }
 

@@ -42,6 +42,8 @@ public class DialogueUI : MonoBehaviour
     {
         DialogueManager.Instance.UI = this;
         gameObject.SetActive(false);
+
+        DialogueText.richText = true;
     }
 
     private void Update()
@@ -167,11 +169,28 @@ public class DialogueUI : MonoBehaviour
         isTyping = true;
         DialogueText.text = "";
 
-        foreach (char c in fullText)
+        int i = 0;
+
+        while (i < fullText.Length)
         {
+            // If we hit a rich text tag, type it instantly
+            if (fullText[i] == '<')
+            {
+                int tagEnd = fullText.IndexOf('>', i);
+
+                if (tagEnd != -1)
+                {
+                    // Append full tag instantly
+                    DialogueText.text += fullText.Substring(i, tagEnd - i + 1);
+                    i = tagEnd + 1;
+                    continue;
+                }
+            }
+
+            // Normal visible character
+            char c = fullText[i];
             DialogueText.text += c;
 
-            // VOICE SFX: put AudioSource clip in CharacterSO, pitch randomization included
             if (!char.IsWhiteSpace(c) && currentNode?.Speaker?.VoiceBlip != null)
             {
                 VoiceSource.pitch = Random.Range(
@@ -183,6 +202,8 @@ public class DialogueUI : MonoBehaviour
 
             float delay = 1f / (currentCharactersPerSecond * typingSpeedMultiplier);
             yield return new WaitForSeconds(delay);
+
+            i++;
         }
 
         isTyping = false;

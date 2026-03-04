@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speaker: {fileID: 11400000, guid: 07978621786266741aeaac21dca7fd42, type: 2}
   Emotion: Happy
-  DialogueText: Hi! I'm Momo
+  DialogueText: To select the bounty you want to go for, just use this terminal!
   HasButtons: 0
   Buttons: []
+  CharactersPerSecondOverride: -1

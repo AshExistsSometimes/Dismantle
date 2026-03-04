@@ -127,6 +127,8 @@ public class DualHooks : MonoBehaviour
 
     private void Update()
     {
+        if (!PlayerWeaponManager.Instance.GrappleEnabled) return;
+
         if (!dualGrappleActive)
             HandleHookInput();
 

@@ -732,4 +732,50 @@ public class MainMenuManager : MonoBehaviour
         inputLocked = false;
     }
 
+    public void PlayButtonLogic()
+    {
+        if (inputLocked)
+            return;
+
+        PlayClick();
+
+        if (LevelProgressManager.Instance == null)
+        {
+            Debug.LogError("LevelProgressManager not found.");
+            return;
+        }
+
+        if (LevelProgressManager.Instance.AllLevels.Count == 0)
+        {
+            Debug.LogError("No levels assigned to LevelProgressManager.");
+            return;
+        }
+
+        // Tutorial is element 0
+        LevelSO tutorialLevel = LevelProgressManager.Instance.AllLevels[0];
+        var tutorialProgress = LevelProgressManager.Instance.GetProgress(tutorialLevel);
+
+        if (tutorialProgress != null && tutorialProgress.Played)
+        {
+            // If Tutorial completed: go to Hub
+            StartCoroutine(LoadSceneByName("0.0_Hub"));
+        }
+        else
+        {
+            // If Tutorial not completed: load tutorial scene
+            StartCoroutine(LoadSceneByName(tutorialLevel.SceneName));
+        }
+
+
+    }
+
+    private IEnumerator LoadSceneByName(string sceneName)
+    {
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!loadOperation.isDone)
+        {
+            yield return null;
+        }
+    }
 }

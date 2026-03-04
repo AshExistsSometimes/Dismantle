@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviour
 
     public UnityEvent OnDialogueEnd;
 
+    public bool InHub = false;
+
     private void Awake()
     {
         if (Instance != null)
@@ -32,6 +34,11 @@ public class DialogueManager : MonoBehaviour
 
         if (dialogue == null || dialogue.Nodes.Count == 0)
             return;
+
+        if (!InHub)
+        {
+            PlayerWeaponManager.Instance.EquipmentEnabled = false;
+        }
 
         UI.gameObject.SetActive(true);
         GameManager.Instance.UIPauseGame();
@@ -72,6 +79,11 @@ public class DialogueManager : MonoBehaviour
         OnDialogueEnd.RemoveAllListeners();
 
         currentDialogue = null;
+
+        if (!InHub)
+        {
+            PlayerWeaponManager.Instance.EquipmentEnabled = true;
+        }
     }
 
 

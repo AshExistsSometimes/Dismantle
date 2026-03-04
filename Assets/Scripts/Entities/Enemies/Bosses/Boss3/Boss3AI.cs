@@ -174,7 +174,7 @@ public class Boss3AI : MonoBehaviour, IDamagable
     {
         BossActive = false;
         StopAllCoroutines();
-        Debug.Log("Boss 3 died");
+        LevelManager.Instance.LevelComplete();
     }
 
 
