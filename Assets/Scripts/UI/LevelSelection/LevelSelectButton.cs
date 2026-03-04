@@ -76,13 +76,23 @@ public class LevelSelectButton : MonoBehaviour
         // Implemented and Unlocked
         Button.interactable = true;
 
-        BestTime.text = progress.Played
-            ? FormatTime(progress.BestTime)
-            : "--";
+        if (!progress.Played)
+        {
+            BestTime.text = "--:--";
+        }
+        else
+        {
+            BestTime.text = FormatTime(progress.BestTime);
+        }
 
-        BestRank.text = progress.Played
-            ? progress.BestRank.ToString()
-            : "-";
+        if (!progress.Played)
+        {
+            BestRank.text = " ";
+        }
+        else
+        {
+            BestRank.text = progress.BestRank.ToString();
+        }
 
         Button.onClick.RemoveAllListeners();
         Button.onClick.AddListener(Select);

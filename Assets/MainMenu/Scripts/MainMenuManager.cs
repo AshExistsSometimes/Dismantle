@@ -763,6 +763,7 @@ public class MainMenuManager : MonoBehaviour
         else
         {
             // If Tutorial not completed: load tutorial scene
+            LevelManager.Instance.SelectedLevel = tutorialLevel;
             StartCoroutine(LoadSceneByName(tutorialLevel.SceneName));
         }
 

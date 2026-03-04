@@ -68,6 +68,8 @@ public class LevelManager : MonoBehaviour
         ResetLevelStats();
 
         SceneManager.LoadScene(level.SceneName);
+
+        TimerRunning = true;
     }
 
     public void LevelComplete()
@@ -280,14 +282,41 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
-        float newBestTime = progress.BestTime <= 0f
-            ? levelCompletionTime
-            : Mathf.Min(progress.BestTime, levelCompletionTime);
+        // -------------------------
+        // BEST TIME
+        // -------------------------
 
-        Rank newBestRank = RankToPoints(levelOverallRanking) >
-                           RankToPoints(progress.BestRank)
-            ? levelOverallRanking
-            : progress.BestRank;
+        float newBestTime;
+
+        // If no time recorded OR recorded time is invalid
+        if (progress.BestTime <= 0f)
+        {
+            newBestTime = levelCompletionTime;
+        }
+        else if (levelCompletionTime <= 0f)
+        {
+            // Ignore invalid run times
+            newBestTime = progress.BestTime;
+        }
+        else
+        {
+            newBestTime = Mathf.Min(progress.BestTime, levelCompletionTime);
+        }
+
+        // -------------------------
+        // BEST RANK
+        // -------------------------
+
+        Rank newBestRank;
+
+        if (RankToPoints(levelOverallRanking) > RankToPoints(progress.BestRank))
+            newBestRank = levelOverallRanking;
+        else
+            newBestRank = progress.BestRank;
+
+        // -------------------------
+        // APPLY
+        // -------------------------
 
         LevelProgressManager.Instance.UpdateProgress(
             SelectedLevel,

@@ -1604,7 +1604,7 @@ GameObject:
   - component: {fileID: 390949823}
   - component: {fileID: 390949822}
   - component: {fileID: 390949825}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Switch Weapon / Shotgun Dialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3195,7 +3195,7 @@ GameObject:
   - component: {fileID: 885236707}
   - component: {fileID: 885236706}
   - component: {fileID: 885236709}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger 3 - A (No Grapple Yet)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3697,7 +3697,7 @@ GameObject:
   - component: {fileID: 999739538}
   - component: {fileID: 999739537}
   - component: {fileID: 999739540}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger 3 - B (Grapple Unlocked)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8437,7 +8437,7 @@ GameObject:
   - component: {fileID: 1703349817}
   - component: {fileID: 1703349816}
   - component: {fileID: 1703349819}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trigger 3 - Level End
   m_TagString: Untagged
   m_Icon: {fileID: 0}

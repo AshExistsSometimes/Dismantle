@@ -15,7 +15,7 @@ MonoBehaviour:
   SceneName: 3.3_Europa
   EnemiesInLevel: 0
   LevelName: Europa
-  LevelIcon: {fileID: 0}
+  LevelIcon: {fileID: 21300000, guid: 64ecf5d16b2f5e246a4ea1d43f5fb7ea, type: 3}
   TimeRanks: []
   ScoreRanks: []
   IsImplemented: 1
