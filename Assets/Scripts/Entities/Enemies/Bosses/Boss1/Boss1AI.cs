@@ -158,6 +158,8 @@ public class Boss1AI : MonoBehaviour, IDamagable
 
     public void Die()
     {
+        LevelManager.Instance.EnemyWasKilled();
+
         BossActive = false;
         StopAllCoroutines();
         Debug.Log("Boss 1 died");

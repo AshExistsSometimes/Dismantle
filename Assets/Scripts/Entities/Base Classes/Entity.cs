@@ -165,6 +165,7 @@ public class Entity : MonoBehaviour, IDamagable
 
     public virtual void Die()
     {
+        LevelManager.Instance.EnemyWasKilled();
         gameObject.SetActive(false);
     }
 

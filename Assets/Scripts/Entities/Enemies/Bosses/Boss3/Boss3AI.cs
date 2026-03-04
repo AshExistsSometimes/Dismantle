@@ -172,6 +172,8 @@ public class Boss3AI : MonoBehaviour, IDamagable
 
     public void Die()
     {
+        LevelManager.Instance.EnemyWasKilled();
+
         BossActive = false;
         StopAllCoroutines();
         LevelManager.Instance.LevelComplete();
