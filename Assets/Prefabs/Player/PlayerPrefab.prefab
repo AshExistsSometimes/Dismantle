@@ -5498,6 +5498,135 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3973675569129966467}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5311419437739771253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1881295784127769821}
+  - component: {fileID: 3759747047295081433}
+  m_Layer: 14
+  m_Name: WeaponAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1881295784127769821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311419437739771253}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7101302908995303149}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &3759747047295081433
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311419437739771253}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5339451219534009797
 GameObject:
   m_ObjectHideFlags: 0
@@ -9641,6 +9770,13 @@ MonoBehaviour:
   ShotgunSecondaryFirePoint: {fileID: 5073332565840260974}
   ShotgunPivot: {fileID: 6154693861010998175}
   Sword: {fileID: 701739138986542886}
+  WeaponAudioSource: {fileID: 3759747047295081433}
+  ShotgunFireSFX: {fileID: 8300000, guid: 875fcb8bf4c386242a890ec235b44a3e, type: 3}
+  ShotgunFireRelativeVolume: 1
+  ShotgunReloadSFX: {fileID: 8300000, guid: 13b7aec09bb5fb94f81039dd9acfa519, type: 3}
+  ShotgunReloadRelativeVolume: 1
+  RevolverFireSFX: {fileID: 8300000, guid: 8b92a26c785437e44a2bbc867c597a7c, type: 3}
+  RevolverFireRelativeVolume: 0.7
   MaxShotgunDamage: 40
   ShotgunFalloffCurve:
     serializedVersion: 2
@@ -9677,6 +9813,11 @@ MonoBehaviour:
   RevolverFireRate: 2
   MaxRicochetTargets: 5
   RicochetCooldown: 5
+  RevolverBulletHolePrefab: {fileID: 3425053649847906841, guid: a948ff08c3cea614d8e0d3a80397bc8a, type: 3}
+  MaxBulletHoles: 10
+  BulletHoleLayerMask:
+    serializedVersion: 2
+    m_Bits: 99264
   SwordHitbox: {fileID: 8353230737019208391}
   SwordDamage: 30
   SwordFireRate: 3
@@ -11037,6 +11178,7 @@ Transform:
   m_Children:
   - {fileID: 4879356694061107210}
   - {fileID: 6154693861010998175}
+  - {fileID: 1881295784127769821}
   m_Father: {fileID: 101501235017181657}
   m_LocalEulerAnglesHint: {x: -6.57, y: -8.922, z: 0.967}
 --- !u!1 &8983895560946855339

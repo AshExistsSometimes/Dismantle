@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
@@ -17,9 +19,24 @@ public class PlayerCombat : MonoBehaviour
     public Transform ShotgunPivot;
 
     public GameObject Sword; // Reference only rn
-    
+
+    [Header("Audio")]
+    public AudioSource WeaponAudioSource;
+    [Space]
+    public AudioClip ShotgunFireSFX;
+    [Range(0f, 1f)]
+    public float ShotgunFireRelativeVolume = 1f;
+    public AudioClip ShotgunReloadSFX;
+    [Range(0f, 1f)]
+    public float ShotgunReloadRelativeVolume = 1f;
+    [Space]
+    public AudioClip RevolverFireSFX;
+    [Range(0f, 1f)]
+    public float RevolverFireRelativeVolume = 0.7f;
 
     [Header("Shotgun - Primary")]
+    [Space]
+
     public float MaxShotgunDamage = 20f;
     public AnimationCurve ShotgunFalloffCurve;
 
@@ -39,6 +56,7 @@ public class PlayerCombat : MonoBehaviour
 
 
     [Header("Revolver - Primary")]
+    
     public int RevolverDamage = 10;
 
     public float RevolverFireRate = 2f; // Max 2 shots every second
@@ -49,6 +67,13 @@ public class PlayerCombat : MonoBehaviour
     private int RicochetTargets;
 
     public float RicochetCooldown = 5f; // 5s Cooldown
+
+    [Header("Revolver Effects")]
+    public GameObject RevolverBulletHolePrefab;  // Prefab of the decal
+    public int MaxBulletHoles = 20;              // Maximum number of decals
+    public LayerMask BulletHoleLayerMask;        // Only place decals on these layers
+
+    private Queue<GameObject> revolverBulletHoles = new Queue<GameObject>();
 
     [Header("Sword")]
     public ParryHitbox SwordHitbox;
@@ -113,7 +138,7 @@ public class PlayerCombat : MonoBehaviour
     // ---------
     private void Awake()
     {
-        PlayerWeaponManager weaponManager = PlayerWeaponManager.Instance;
+        weaponManager = PlayerWeaponManager.Instance;
 
         if (weaponManager == null)
         {
@@ -231,6 +256,24 @@ public class PlayerCombat : MonoBehaviour
 
         float damagePerPellet = MaxShotgunDamage / MaxShotgunProjectiles;
 
+        // SCUFFED, BUT EASIEST WAY TO KEEP SHOTGUNS HAVING PROJECTILES WHILE STILL BEIGN ABLE TO HIT THINGS RIGHT IN FRONT OF THE PLAYER
+        if (Physics.Raycast(PlayerCamera.transform.position,
+                    PlayerCamera.transform.forward,
+                    out RaycastHit closeHit,
+                    2f))
+        {
+            if (!closeHit.collider.CompareTag("Player"))
+            {
+                IDamagable d = closeHit.collider.GetComponentInParent<IDamagable>();
+
+                if (d != null)
+                {
+                    d.TakeDamage(Mathf.RoundToInt(MaxShotgunDamage));
+                }
+            }
+        }
+
+
         for (int i = 0; i < MaxShotgunProjectiles; i++)
         {
             Vector3 direction = GetRandomConeDirection(
@@ -247,6 +290,13 @@ public class PlayerCombat : MonoBehaviour
             bullet.Fire(direction, damagePerPellet, ShotgunFalloffCurve);
         }
 
+        if (WeaponAudioSource != null && ShotgunFireSFX != null)
+        {
+            WeaponAudioSource.pitch = Random.Range(0.95f, 1.05f);
+            WeaponAudioSource.volume = ShotgunFireRelativeVolume;
+            WeaponAudioSource.PlayOneShot(ShotgunFireSFX);
+        }
+
         // Only animate if the shot actually fired
         weaponManager.FireShotgunAnimation();
 
@@ -261,6 +311,13 @@ public class PlayerCombat : MonoBehaviour
     {
         if (weaponManager != null)
             weaponManager.PumpShotgun();
+
+        if (WeaponAudioSource != null && ShotgunReloadSFX != null)
+        {
+            WeaponAudioSource.pitch = Random.Range(0.95f, 1.05f);
+            WeaponAudioSource.volume = ShotgunReloadRelativeVolume;
+            WeaponAudioSource.PlayOneShot(ShotgunReloadSFX);
+        }
     }
 
     private Vector3 GetRandomConeDirection(Vector3 forward, float angle)
@@ -337,12 +394,22 @@ public class PlayerCombat : MonoBehaviour
             {
                 damagable.TakeDamage(RevolverDamage);
             }
+
+            // Spawn bullet hole decal
+            SpawnRevolverBulletHole(hit);
         }
 
         DrawRevolverLine(start, end);
 
         weaponManager.FireRevolverAnimation();
         weaponManager.DrumNextBulletAnimation();
+
+        if (WeaponAudioSource != null && RevolverFireSFX != null)
+        {
+            WeaponAudioSource.pitch = Random.Range(0.95f, 1.05f);
+            WeaponAudioSource.volume = RevolverFireRelativeVolume;
+            WeaponAudioSource.PlayOneShot(RevolverFireSFX);
+        }
     }
 
     private void DrawRevolverLine(Vector3 start, Vector3 end)
@@ -350,18 +417,57 @@ public class PlayerCombat : MonoBehaviour
         if (RevolverLineRenderer == null)
             return;
 
-        RevolverLineRenderer.positionCount = 2;
-        RevolverLineRenderer.SetPosition(0, start);
-        RevolverLineRenderer.SetPosition(1, end);
-
-        CancelInvoke(nameof(ClearRevolverLine));
-        Invoke(nameof(ClearRevolverLine), RevolverLineDuration);
+        StopAllCoroutines();
+        StartCoroutine(RevolverLineRoutine(start, end));
     }
 
     private void ClearRevolverLine()
     {
         if (RevolverLineRenderer != null)
             RevolverLineRenderer.positionCount = 0;
+    }
+
+    private IEnumerator RevolverLineRoutine(Vector3 start, Vector3 end)
+    {
+        RevolverLineRenderer.positionCount = 2;
+
+        float travelTime = 0.02f; // how fast the bullet travels visually
+        float fadeTime = 0.05f;
+
+        float t = 0f;
+
+        RevolverLineRenderer.startWidth = 0.05f;
+        RevolverLineRenderer.endWidth = 0.02f;
+
+        while (t < travelTime)
+        {
+            t += Time.deltaTime;
+
+            float progress = t / travelTime;
+
+            Vector3 current = Vector3.Lerp(start, end, progress);
+
+            RevolverLineRenderer.SetPosition(0, start);
+            RevolverLineRenderer.SetPosition(1, current);
+
+            yield return null;
+        }
+
+        float fade = 0f;
+
+        while (fade < fadeTime)
+        {
+            fade += Time.deltaTime;
+
+            float width = Mathf.Lerp(0.05f, 0f, fade / fadeTime);
+
+            RevolverLineRenderer.startWidth = width;
+            RevolverLineRenderer.endWidth = width;
+
+            yield return null;
+        }
+
+        RevolverLineRenderer.positionCount = 0;
     }
 
     private void ChargeRevolverAltFire()
@@ -387,6 +493,14 @@ public class PlayerCombat : MonoBehaviour
             weaponManager.RevolverSpinAnimation(false);
             weaponManager.StopRevolverSpin();
         }
+
+        if (WeaponAudioSource != null && RevolverFireSFX != null)
+        {
+            WeaponAudioSource.pitch = Random.Range(0.95f, 1.05f);
+            WeaponAudioSource.PlayOneShot(RevolverFireSFX);
+        }
+
+        weaponManager.FireRevolverAnimation();
         weaponManager.DrumNextBulletAnimation();
     }
 
@@ -405,6 +519,37 @@ public class PlayerCombat : MonoBehaviour
 
         if (weaponManager != null)
             weaponManager.PlaySwordParry(ParryWindow, 1f / SwordFireRate);
+    }
+
+    // ------------------------------
+    // EFFECTS
+    // ------------------------------
+
+    private void SpawnRevolverBulletHole(RaycastHit hit)
+    {
+        // Check if hit object is on the allowed layer
+        if (((1 << hit.collider.gameObject.layer) & BulletHoleLayerMask) == 0)
+            return;
+
+        // Instantiate the decal prefab at the hit point with rotation aligned to surface normal
+        GameObject decal = Instantiate(
+            RevolverBulletHolePrefab,
+            hit.point + hit.normal * 0.01f, // small offset to avoid z-fighting
+            Quaternion.LookRotation(-hit.normal)
+        );
+
+        // Parent decal to hit object to follow it if it moves
+        decal.transform.SetParent(hit.collider.transform);
+
+        // Keep track of bullet holes
+        revolverBulletHoles.Enqueue(decal);
+
+        // Remove oldest bullet hole if over limit
+        if (revolverBulletHoles.Count > MaxBulletHoles)
+        {
+            GameObject old = revolverBulletHoles.Dequeue();
+            if (old != null) Destroy(old);
+        }
     }
 
     // -----------------------------
