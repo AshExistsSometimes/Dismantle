@@ -8486,7 +8486,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 245759
+    m_Bits: 1032191
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -9528,7 +9528,7 @@ MonoBehaviour:
   airSlideDownForce: 3.5
   WallLayers:
     serializedVersion: 2
-    m_Bits: 131264
+    m_Bits: 917696
   GroundLayers:
     serializedVersion: 2
     m_Bits: 229568
@@ -9662,7 +9662,7 @@ MonoBehaviour:
   player: {fileID: 2285070146408312610}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 262464
   pm: {fileID: 5523199997798528490}
   maxFuel: 8
   fuel: 8
@@ -9734,19 +9734,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentHP: 100
-  MaxHP: 0
+  MaxHP: 100
   Armour: 0
   ArmourDamageReductionPercent: 50
   damageReduction: 0
-  PassiveRegenRate: 0
-  PassiveRegenDelay: 0
-  PassiveRegenAmount: 0
+  PassiveRegenRate: 4
+  PassiveRegenDelay: 5
+  PassiveRegenAmount: 5
   DefaultMaxHP: 100
-  DefaultPassiveRegenRate: 4
-  DefaultPassiveRegenDelay: 0
-  DefaultPassiveRegenAmount: 5
+  DefaultPassiveRegenRate: 1
+  DefaultPassiveRegenDelay: 7
+  DefaultPassiveRegenAmount: 1
   DefaultArmour: 0
-  PassiveRegeneration: 0
+  PassiveRegeneration: 1
   RegenDelayTimer: 0
 --- !u!114 &6774584301194589729
 MonoBehaviour:

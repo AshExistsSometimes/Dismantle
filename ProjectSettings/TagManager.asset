@@ -23,8 +23,8 @@ TagManager:
   - Ground/Prop/Grapplable
   - Ground/Prop/Not Grapplable
   - Entity/Boss
-  - 
-  - 
+  - Wall/Grapplable
+  - Wall/Not Grapplable
   - 
   - 
   - 
