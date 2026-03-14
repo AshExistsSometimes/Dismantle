@@ -402,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f54e23ccb4b67d4485e96b7f032f48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EquipmentEnabled: 1
   EquippedWeapon: 1
   lastRegularWeapon: 1
   GrappleKey: 304
@@ -462,7 +463,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   RevolverRecoilAnimSpeed: 0.35
-  RevolverRecoilRotation: 35
+  RevolverRecoilRotation: 25
   RevolverFireRecoilPushbackAnimation:
     serializedVersion: 2
     m_Curve:
@@ -568,7 +569,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   ShotgunRecoilAnimSpeed: 0.5
-  ShotgunRecoilRotation: 35
+  ShotgunRecoilRotation: 10
   ShotgunFireRecoilPushbackAnimation:
     serializedVersion: 2
     m_Curve:
@@ -603,7 +604,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   ShotgunRecoilPushbackAnimSpeed: 0.01
-  ShotgunRecoilPushbackMaxPushback: -0.4
+  ShotgunRecoilPushbackMaxPushback: -0.7
   shotgunPivotDefaultLocalPos: {x: 0.066, y: 0.02, z: -0.892}
   ShotgunPivotDefaultEuler: {x: 0, y: -180, z: 0}
   ShotgunPumpAnimation:
@@ -864,6 +865,10 @@ MonoBehaviour:
   LevelEndScore: 0
   LevelEndKilCount: 0
   LevelEndTickets: 0
+  KillCountRank: 0
+  TimeRank: 0
+  ScoreRank: 0
+  OverallRank: 0
 --- !u!114 &774890090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -897,6 +902,7 @@ MonoBehaviour:
   OnDialogueEnd:
     m_PersistentCalls:
       m_Calls: []
+  InHub: 0
 --- !u!114 &774890092
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -133,7 +133,7 @@ public class Entity : MonoBehaviour, IDamagable
         FlashDamageIndicator();
         Debug.Log(name + " took " + damage + " damage");
 
-        if (HP <= 0 && !Essential) { Die(); }
+        if (HP <= 0 && !Essential) { Die(damage); }
         else if (HP <= 0 && Essential && regenCoroutine == null)
         {
             regenCoroutine = StartCoroutine(RegenToFull(HPRegenRate / 100f));
@@ -165,8 +165,17 @@ public class Entity : MonoBehaviour, IDamagable
 
     public virtual void Die()
     {
+        Die(0); // default if no damage info exists
+    }
+
+    public virtual void Die(int killingDamage)
+    {
         LevelManager.Instance.EnemyWasKilled();
-        gameObject.SetActive(false);
+
+        canUpdateOutline = false;
+
+        if (outline != null)
+            outline.OutlineWidth = 0f;
     }
 
     public IEnumerator RegenHPByAmount(int HealAmount, float regenRate)

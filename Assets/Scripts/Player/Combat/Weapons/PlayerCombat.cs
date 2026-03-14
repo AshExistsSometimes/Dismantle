@@ -73,6 +73,8 @@ public class PlayerCombat : MonoBehaviour
     public int MaxBulletHoles = 20;              // Maximum number of decals
     public LayerMask BulletHoleLayerMask;        // Only place decals on these layers
 
+    public GameObject RevolverSparkPrefab;
+
     private Queue<GameObject> revolverBulletHoles = new Queue<GameObject>();
 
     [Header("Sword")]
@@ -397,6 +399,7 @@ public class PlayerCombat : MonoBehaviour
 
             // Spawn bullet hole decal
             SpawnRevolverBulletHole(hit);
+            SpawnRevolverSparks(hit);
         }
 
         DrawRevolverLine(start, end);
@@ -550,6 +553,17 @@ public class PlayerCombat : MonoBehaviour
             GameObject old = revolverBulletHoles.Dequeue();
             if (old != null) Destroy(old);
         }
+    }
+
+    private void SpawnRevolverSparks(RaycastHit hit)
+    {
+        if (RevolverSparkPrefab == null) return;
+
+        GameObject sparks = Instantiate(
+            RevolverSparkPrefab,
+            hit.point + hit.normal * 0.01f, // prevent clipping
+            Quaternion.LookRotation(hit.normal) // Z axis points along normal
+        );
     }
 
     // -----------------------------

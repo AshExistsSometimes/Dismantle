@@ -9818,6 +9818,7 @@ MonoBehaviour:
   BulletHoleLayerMask:
     serializedVersion: 2
     m_Bits: 99264
+  RevolverSparkPrefab: {fileID: 1564769131620181496, guid: b7fc3adf050443245b51ebc60566b480, type: 3}
   SwordHitbox: {fileID: 8353230737019208391}
   SwordDamage: 30
   SwordFireRate: 3

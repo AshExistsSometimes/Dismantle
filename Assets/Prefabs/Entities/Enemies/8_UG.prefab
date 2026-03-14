@@ -492,7 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canUpdateOutline: 1
-  Name: DEBUG 8_UG
+  Name: 8_UG
   type: 0
   OutlineEnabled: 1
   outline: {fileID: 0}
@@ -501,8 +501,8 @@ MonoBehaviour:
     Hostile: {r: 1, g: 0, b: 0, a: 0}
     Boss: {r: 0, g: 0, b: 0, a: 0}
     NPC: {r: 0, g: 0, b: 0, a: 0}
-  HP: 100
-  MaxHP: 100
+  HP: 20
+  MaxHP: 20
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
@@ -516,6 +516,8 @@ MonoBehaviour:
   Modifier: 0
   AttackDamage: 10
   AttackRate: 1
+  DeathForceMultiplier: 1.5
+  BodyLifetime: 15
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -594,8 +596,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8462369169845873684}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
+  m_Mass: 3
+  m_Drag: 0.5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

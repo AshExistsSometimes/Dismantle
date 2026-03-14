@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum EnemyModifier { Common, Rare, Legendary }
 
@@ -8,8 +9,11 @@ public class BaseEnemy : Entity
     [Header("<color=#A61A21><size=110%><b>Enemy Stats")]
     public EnemyModifier Modifier = EnemyModifier.Common;
     public int AttackDamage = 5;
-    public float AttackRate = 1f; 
+    public float AttackRate = 1f;
 
+    [Header("<color=#A61A21><size=110%><b>Ragdoll Values")]
+    public float DeathForceMultiplier = 3f;
+    public float BodyLifetime = 10f;
     [Header("<color=#D71C74><size=110%><b>Detection")]
     public LayerMask targetLayer;
     public float SightRange = 10f;
@@ -21,7 +25,8 @@ public class BaseEnemy : Entity
     protected Transform target;
     protected float attackCooldown;
 
-    
+
+
 
     protected virtual void Awake()
     {
@@ -144,8 +149,51 @@ public class BaseEnemy : Entity
         }
     }
 
+    public override void Die(int killingDamage)
+    {
+        base.Die(killingDamage);
 
-    
+        NoAI = true;
+
+
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent != null)
+        {
+            agent.enabled = false;
+        }
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // Allow physics
+            rb.isKinematic = false;
+            rb.useGravity = true;
+
+            // Remove possible movement locks
+            rb.constraints = RigidbodyConstraints.None;
+
+            Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+            if (player != null)
+            {
+                Vector3 pushDir = (transform.position - player.position).normalized;
+
+                // add a bit of upward kick so bodies don't drag on the floor
+                pushDir += Vector3.up * 0.35f;
+                pushDir.Normalize();
+
+                float force = killingDamage * DeathForceMultiplier;
+
+                rb.AddForce(pushDir * force, ForceMode.Impulse);
+                Debug.Log("Applying death force: " + force);
+            }
+        }
+
+        canUpdateOutline = false;
+
+        Destroy(gameObject, BodyLifetime);
+    }
+
 
     // --------------------
     // Gizmos for Debugging
