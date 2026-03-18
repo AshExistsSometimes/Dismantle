@@ -26,7 +26,8 @@ public class BaseEnemy : Entity
     protected float attackCooldown;
 
 
-
+    [SerializeField]
+    GameObject ragPrefab;
 
     protected virtual void Awake()
     {
@@ -151,6 +152,8 @@ public class BaseEnemy : Entity
 
     public override void Die(int killingDamage)
     {
+        if (isDead) return;
+
         base.Die(killingDamage);
 
         NoAI = true;
@@ -162,6 +165,10 @@ public class BaseEnemy : Entity
             agent.enabled = false;
         }
 
+        Vector3 pushDir = Vector3.zero;
+        Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -172,11 +179,10 @@ public class BaseEnemy : Entity
             // Remove possible movement locks
             rb.constraints = RigidbodyConstraints.None;
 
-            Transform player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
             if (player != null)
             {
-                Vector3 pushDir = (transform.position - player.position).normalized;
+                pushDir = (transform.position - player.position).normalized;
 
                 // add a bit of upward kick so bodies don't drag on the floor
                 pushDir += Vector3.up * 0.35f;
@@ -191,7 +197,11 @@ public class BaseEnemy : Entity
 
         canUpdateOutline = false;
 
-        Destroy(gameObject, BodyLifetime);
+        Explode ex = Instantiate(ragPrefab, transform.position, transform.rotation).GetComponent<Explode>();
+        ex.SetExplode(player.position, killingDamage);
+
+        //Destroy(gameObject, BodyLifetime);
+        Destroy(gameObject);
     }
 
 

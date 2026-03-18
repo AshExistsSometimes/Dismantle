@@ -10,6 +10,8 @@ public class Entity : MonoBehaviour, IDamagable
 
     public bool canUpdateOutline = true;
 
+    protected bool isDead = false;
+
     // IDENTITY
     [Header("<color=#42f2ff><size=110%><b>Identity")]
 
@@ -66,6 +68,7 @@ public class Entity : MonoBehaviour, IDamagable
 
     [SerializeField] protected Color damageFlashColor = Color.red;
     [SerializeField] protected float damageFlashTime = 0.075f;
+    [SerializeField] protected Color DeathColor = Color.gray;
 
     protected Material[] cachedMaterials;
     protected Color[] originalColors;
@@ -163,6 +166,15 @@ public class Entity : MonoBehaviour, IDamagable
         }
     }
 
+    protected void DeathColourEffect()
+    {
+        for (int i = 0; i < cachedMaterials.Length; i++)
+        {
+            originalColors[i] = DeathColor;
+            cachedMaterials[i].color = DeathColor;
+        }
+    }
+
     public virtual void Die()
     {
         Die(0); // default if no damage info exists
@@ -172,10 +184,14 @@ public class Entity : MonoBehaviour, IDamagable
     {
         LevelManager.Instance.EnemyWasKilled();
 
+        DeathColourEffect();
+
         canUpdateOutline = false;
 
         if (outline != null)
             outline.OutlineWidth = 0f;
+
+        isDead = true;
     }
 
     public IEnumerator RegenHPByAmount(int HealAmount, float regenRate)

@@ -8812,7 +8812,7 @@ MonoBehaviour:
   Name: Armourer
   type: 2
   OutlineEnabled: 1
-  outline: {fileID: 0}
+  outline: {fileID: 682873225}
   MaxOutlineThickness: 3
   OutlineColours:
     Hostile: {r: 0, g: 0, b: 0, a: 0}
@@ -21376,7 +21376,7 @@ MonoBehaviour:
   Name: Shopkeeper
   type: 2
   OutlineEnabled: 1
-  outline: {fileID: 0}
+  outline: {fileID: 1836644330}
   MaxOutlineThickness: 3
   OutlineColours:
     Hostile: {r: 0, g: 0, b: 0, a: 0}

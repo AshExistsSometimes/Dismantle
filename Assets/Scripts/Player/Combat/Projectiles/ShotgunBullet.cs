@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class ShotgunBullet : MonoBehaviour
+public class ShotgunBullet : MonoBehaviour, IParryable
 {
     [Header("Config")]
     public float speed = 80f;
@@ -64,5 +64,11 @@ public class ShotgunBullet : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    public void Parry(Transform cameraTransform)
+    {
+        direction = cameraTransform.forward.normalized;
+        speed = speed * 1.5f;
     }
 }

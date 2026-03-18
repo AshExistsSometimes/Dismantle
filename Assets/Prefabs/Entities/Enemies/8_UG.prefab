@@ -495,7 +495,7 @@ MonoBehaviour:
   Name: 8_UG
   type: 0
   OutlineEnabled: 1
-  outline: {fileID: 0}
+  outline: {fileID: 5556448445228204966}
   MaxOutlineThickness: 3
   OutlineColours:
     Hostile: {r: 1, g: 0, b: 0, a: 0}
@@ -508,6 +508,7 @@ MonoBehaviour:
   HPRegenAmount: 1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.075
+  DeathColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0.87058824}
   DefaultSpeed: 3
   effects: 0
   NoAI: 0
@@ -524,6 +525,7 @@ MonoBehaviour:
   SightRange: 16
   AttackDistance: 2
   CanChangeClass: 1
+  ragPrefab: {fileID: 5229003773468803019, guid: dc6f0f850c7ee1543a37723a33a46806, type: 3}
   Head: {fileID: 2880017615239799694}
   SightBlockingLayers:
     serializedVersion: 2

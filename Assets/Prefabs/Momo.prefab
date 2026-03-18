@@ -390,7 +390,7 @@ MonoBehaviour:
   Name: Momo
   type: 2
   OutlineEnabled: 1
-  outline: {fileID: 0}
+  outline: {fileID: 1124354262571448899}
   MaxOutlineThickness: 3
   OutlineColours:
     Hostile: {r: 0, g: 0, b: 0, a: 0}
@@ -401,6 +401,8 @@ MonoBehaviour:
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
+  damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
+  damageFlashTime: 0.075
   DefaultSpeed: 5
   effects: 0
   NoAI: 0
