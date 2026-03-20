@@ -226,7 +226,7 @@ public class GroundedRangedAI : BaseEnemy
         Quaternion armRot = Quaternion.LookRotation(armDir);
         Vector3 localEuler = armRot.eulerAngles;
 
-        Arm.localRotation = Quaternion.Euler(localEuler.x, 0f, 0f);
+        Arm.localRotation = Quaternion.Euler(-localEuler.x, 0f, 0f);
     }
 
     // --------------------
