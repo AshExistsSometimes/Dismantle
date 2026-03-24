@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 572721095}
   - component: {fileID: 572721094}
   - component: {fileID: 572721093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 591115857}
   - component: {fileID: 591115856}
   - component: {fileID: 591115855}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1898,7 +1898,7 @@ GameObject:
   - component: {fileID: 1136161980}
   - component: {fileID: 1136161979}
   - component: {fileID: 1136161978}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2336,7 +2336,7 @@ GameObject:
   - component: {fileID: 1344899068}
   - component: {fileID: 1344899067}
   - component: {fileID: 1344899066}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2498,7 +2498,7 @@ GameObject:
   - component: {fileID: 1431404994}
   - component: {fileID: 1431404993}
   - component: {fileID: 1431404992}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2701,7 +2701,7 @@ GameObject:
   - component: {fileID: 2012575329}
   - component: {fileID: 2012575328}
   - component: {fileID: 2012575327}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
