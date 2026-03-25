@@ -36,13 +36,12 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     [SerializeField]
     private float RegenDelayTimer;
 
-    
-
     //
 
     private void Start()
     {
         ResetValuesToDefault();// Bad for final game, values will need to be set to be accurate to the modifiers the player has active, defaults are meant to be the values the stats get set to when modifiers are removed
+        LevelManager.Instance.playerHP = this;
     }
 
     private void Update()
@@ -127,10 +126,13 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public void Die()
     {
         // fade in death screen and turn off player controller and duel hooks scripts (LEAVE THIS FOR NOW)
+        if (LevelManager.Instance == null)
+        { return; }      
 
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
-
+        // Show Death Screen (there isnt one atm)
+        // Death screen will load last checkpoint when space clicked
+        LevelManager.Instance.LoadLastCheckpoint();
+      
         Debug.Log("[!] : Player has died");
     }
 

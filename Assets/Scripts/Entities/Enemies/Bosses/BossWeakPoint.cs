@@ -75,20 +75,20 @@ public class BossWeakPoint : MonoBehaviour, IDamagable
 
         if (myBoss == 1)
         {
-            calculatedBossDamage = (boss1.MaxHealth / boss1.WeakPoints.Count);
-
+            calculatedBossDamage = ((boss1.MaxHealth / boss1.WeakPoints.Count) * (int)boss1.BossArmour);
+            Debug.Log("Damaging Boss for " +  calculatedBossDamage + " damage");
             boss1.TakeDamage(calculatedBossDamage);
         }
         else if (myBoss == 2)
         {
-            calculatedBossDamage = (boss2.MaxHealth / boss2.WeakPoints.Count);
-
+            calculatedBossDamage = ((boss2.MaxHealth / boss2.WeakPoints.Count) * (int)boss2.BossArmour);
+            Debug.Log("Damaging Boss for " + calculatedBossDamage + " damage");
             boss2.TakeDamage(calculatedBossDamage);
         }
         else if (myBoss == 3)
         {
-            calculatedBossDamage = (boss3.MaxHealth / boss3.WeakPoints.Count);
-
+            calculatedBossDamage = ((boss3.MaxHealth / boss3.WeakPoints.Count) * (int)boss3.BossArmour);
+            Debug.Log("Damaging Boss for " + calculatedBossDamage + " damage");
             boss3.TakeDamage(calculatedBossDamage);
         }
         else

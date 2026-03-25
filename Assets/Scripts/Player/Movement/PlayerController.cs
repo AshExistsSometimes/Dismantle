@@ -192,6 +192,8 @@ public class PlayerController : MonoBehaviour
             originalFOV = playerCam.fieldOfView;
         }
 
+        LevelManager.Instance.player = this;
+
         targetFOV = originalFOV;
     }
 

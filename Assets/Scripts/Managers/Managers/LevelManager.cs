@@ -31,6 +31,13 @@ public class LevelManager : MonoBehaviour
     public Rank ScoreRank;
     public Rank OverallRank;
 
+    [Header("Checkpoint")]
+    public bool HasCheckpoint = false;
+    public Transform LastCheckpoint;
+
+    public PlayerController player;
+    public PlayerHealth playerHP;
+
 
     private void Awake()
     {
@@ -72,6 +79,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(level.SceneName);
 
         TimerRunning = true;
+
+        HasCheckpoint = false;
+
+        player = FindFirstObjectByType<PlayerController>();
+        playerHP = FindFirstObjectByType<PlayerHealth>();
     }
 
     public void LevelComplete()
@@ -362,5 +374,27 @@ public class LevelManager : MonoBehaviour
     {
         // TEMPORARY, will be a screen that shows values of killcount, time and score, and displays all ranks, but not yet
         ReturnToHub();
+    }
+
+    // CHECKPOINTS
+
+    public void SetNewCheckpoint(Transform newTransform)
+    {
+        LastCheckpoint = newTransform;
+    }
+
+    public void LoadLastCheckpoint()
+    {
+        if (!HasCheckpoint)
+        {
+            // Reload Current Scene
+            string currentSceneName = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentSceneName);
+        }
+        else
+        {
+            player.transform.position = LastCheckpoint.position;
+            playerHP.CurrentHP = playerHP.MaxHP;
+        }
     }
 }

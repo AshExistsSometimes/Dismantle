@@ -134,7 +134,7 @@ public class Boss3AI : MonoBehaviour, IDamagable
 
 
         int damageTaken = Mathf.FloorToInt(damage / BossArmour);
-        if (damageTaken > 1) { damageTaken = 1; }
+        if (damageTaken < 1) { damageTaken = 1; }
 
         currentHealth -= damageTaken;
         FlashDamageIndicator();
