@@ -35,6 +35,9 @@ public class Boss3AI : MonoBehaviour, IDamagable
     public int currentHealth;
     public float BossArmour = 2f;
 
+    [Header("Weak Points")]
+    public List<BossWeakPoint> WeakPoints = new List<BossWeakPoint>();
+
 
     public float Phase2HeightDifference = 20f;
 

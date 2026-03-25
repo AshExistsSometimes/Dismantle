@@ -491,9 +491,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossActive: 1
-  MaxHealth: 200
-  currentHealth: 200
-  BossArmour: 2
+  MaxHealth: 300
+  currentHealth: 300
+  BossArmour: 3
+  WeakPoints:
+  - {fileID: 3899102481883672144}
+  - {fileID: 3899102481883672143}
+  - {fileID: 3899102481883672142}
   WalkSpeed: -4
   StepTime: 1.5
   StepHoldTime: 0.225
@@ -3297,8 +3301,86 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5604042434166472112, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3899102481883672144}
+    - targetCorrespondingSourceObject: {fileID: 5752624466961408096, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3899102481883672143}
+    - targetCorrespondingSourceObject: {fileID: 6441142450390458675, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3899102481883672142}
   m_SourcePrefab: {fileID: 100100000, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+--- !u!1 &3899102481883672139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6441142450390458675, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+  m_PrefabInstance: {fileID: 3899102481883672138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3899102481883672140 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5752624466961408096, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+  m_PrefabInstance: {fileID: 3899102481883672138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3899102481883672141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5604042434166472112, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+  m_PrefabInstance: {fileID: 3899102481883672138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3899102481883672142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3899102481883672139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 801112243}
+  boss2: {fileID: 0}
+  boss3: {fileID: 0}
+  maxHealth: 30
+  currentHealth: 20
+  myBoss: 0
+--- !u!114 &3899102481883672143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3899102481883672140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 801112243}
+  boss2: {fileID: 0}
+  boss3: {fileID: 0}
+  maxHealth: 20
+  currentHealth: 20
+  myBoss: 0
+--- !u!114 &3899102481883672144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3899102481883672141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 801112243}
+  boss2: {fileID: 0}
+  boss3: {fileID: 0}
+  maxHealth: 20
+  currentHealth: 20
+  myBoss: 0
 --- !u!4 &5808895693855475095
 Transform:
   m_ObjectHideFlags: 0

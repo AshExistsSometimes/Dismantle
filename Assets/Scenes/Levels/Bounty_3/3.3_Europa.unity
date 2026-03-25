@@ -151083,11 +151083,15 @@ MonoBehaviour:
   FloatHeightVariation: 15
   Speed: 6
   Phase2TransitionSpeed: 2
-  MaxHealth: 100
-  currentHealth: 100
+  MaxHealth: 500
+  currentHealth: 500
   BossArmour: 2
+  WeakPoints:
+  - {fileID: 484496823007077850}
+  - {fileID: 484496823007077849}
+  - {fileID: 484496823007077848}
   Phase2HeightDifference: 20
-  BossName: Boss 3
+  BossName: Europa
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.075
 --- !u!65 &890944087
@@ -358916,8 +358920,86 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8060758428139694096, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 484496823007077850}
+    - targetCorrespondingSourceObject: {fileID: 92313737004730401, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 484496823007077849}
+    - targetCorrespondingSourceObject: {fileID: 2493899071053815914, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 484496823007077848}
   m_SourcePrefab: {fileID: 100100000, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+--- !u!1 &484496823007077845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2493899071053815914, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+  m_PrefabInstance: {fileID: 484496823007077844}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &484496823007077846 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8060758428139694096, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+  m_PrefabInstance: {fileID: 484496823007077844}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &484496823007077847 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 92313737004730401, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+  m_PrefabInstance: {fileID: 484496823007077844}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &484496823007077848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484496823007077845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 0}
+  boss2: {fileID: 0}
+  boss3: {fileID: 890944086}
+  maxHealth: 30
+  currentHealth: 30
+  myBoss: 0
+--- !u!114 &484496823007077849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484496823007077847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 0}
+  boss2: {fileID: 0}
+  boss3: {fileID: 890944086}
+  maxHealth: 30
+  currentHealth: 30
+  myBoss: 0
+--- !u!114 &484496823007077850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484496823007077846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 0}
+  boss2: {fileID: 0}
+  boss3: {fileID: 890944086}
+  maxHealth: 30
+  currentHealth: 30
+  myBoss: 0
 --- !u!1001 &794868063140693245
 PrefabInstance:
   m_ObjectHideFlags: 0

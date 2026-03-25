@@ -50260,9 +50260,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossPivotPoint: {fileID: 1899477312}
   BossActive: 1
-  MaxHealth: 50
-  currentHealth: 50
+  MaxHealth: 300
+  currentHealth: 300
   BossArmour: 2
+  WeakPoints:
+  - {fileID: 1218549059871486170}
+  - {fileID: 1218549059871486169}
+  - {fileID: 1218549059871486168}
+  - {fileID: 1218549059871486167}
+  - {fileID: 1218549059871486166}
   MinPitch: 85
   BossStopTime: {x: 0.5, y: 2.5}
   MoveDuration: 4
@@ -50293,7 +50299,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   PathPoints: 3
   BezierStrength: 24
-  BossName: Boss 2
+  BossName: Leviathan
   DrawGizmos: 0
   GizmoSphereSize: 0.5
   GizmoDistanceFromCentre: 2
@@ -79094,8 +79100,138 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5435907854031760260, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1218549059871486170}
+    - targetCorrespondingSourceObject: {fileID: 973025238366348421, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1218549059871486169}
+    - targetCorrespondingSourceObject: {fileID: 3451289500003399052, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1218549059871486168}
+    - targetCorrespondingSourceObject: {fileID: 6771390084079381357, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1218549059871486167}
+    - targetCorrespondingSourceObject: {fileID: 6777454623799628342, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1218549059871486166}
   m_SourcePrefab: {fileID: 100100000, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+--- !u!1 &1218549059871486161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6777454623799628342, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1218549059871486162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6771390084079381357, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1218549059871486163 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3451289500003399052, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1218549059871486164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 973025238366348421, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1218549059871486165 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5435907854031760260, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1218549059871486166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218549059871486161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 0}
+  boss2: {fileID: 1311966722}
+  boss3: {fileID: 0}
+  maxHealth: 30
+  currentHealth: 30
+  myBoss: 0
+--- !u!114 &1218549059871486167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218549059871486162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 0}
+  boss2: {fileID: 1311966722}
+  boss3: {fileID: 0}
+  maxHealth: 30
+  currentHealth: 30
+  myBoss: 0
+--- !u!114 &1218549059871486168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218549059871486163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 0}
+  boss2: {fileID: 1311966722}
+  boss3: {fileID: 0}
+  maxHealth: 30
+  currentHealth: 30
+  myBoss: 0
+--- !u!114 &1218549059871486169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218549059871486164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 0}
+  boss2: {fileID: 1311966722}
+  boss3: {fileID: 0}
+  maxHealth: 30
+  currentHealth: 30
+  myBoss: 0
+--- !u!114 &1218549059871486170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218549059871486165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f044910bdb8c44b843c3878a74c24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss1: {fileID: 0}
+  boss2: {fileID: 1311966722}
+  boss3: {fileID: 0}
+  maxHealth: 30
+  currentHealth: 30
+  myBoss: 0
 --- !u!1 &1247046494803279503
 GameObject:
   m_ObjectHideFlags: 0

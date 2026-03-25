@@ -15,6 +15,9 @@ public class Boss2AI : MonoBehaviour, IDamagable
     public int currentHealth;
     public float BossArmour = 2f;
 
+    [Header("Weak Points")]
+    public List<BossWeakPoint> WeakPoints = new List<BossWeakPoint>();
+
     [Header("Movement Area")]
     [Range(0f, 90f)]
     public float MinPitch = 85f; // Lowest allowed point on sphere
