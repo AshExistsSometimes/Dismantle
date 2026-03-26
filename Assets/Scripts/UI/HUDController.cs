@@ -32,6 +32,8 @@ public class HUDController : MonoBehaviour
     [Header("References")]
     public TMP_Text InteractionText;
 
+    public GameObject DeathScreen;
+
 
 
 
@@ -114,5 +116,21 @@ public class HUDController : MonoBehaviour
 
         UpdateFuelDisplay(grapple.fuel);
         UpdateFuelDisplayMax(grapple.maxFuel);
+    }
+
+    public void ShowDeathScreen()
+    {
+        if (DeathScreen != null)
+        {
+            DeathScreen.SetActive(true);
+        }
+    }
+
+    public void HideDeathScreen()
+    {
+        if (DeathScreen != null)
+        {
+            DeathScreen.SetActive(false);
+        }
     }
 }

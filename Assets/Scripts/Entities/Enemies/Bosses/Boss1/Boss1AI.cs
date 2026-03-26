@@ -16,6 +16,9 @@ public class Boss1AI : MonoBehaviour, IDamagable
     [Header("Weak Points")]
     public List<BossWeakPoint> WeakPoints = new List<BossWeakPoint>();
 
+    [Header("Turrets")]
+    public List<TurretController> Turrets = new List<TurretController>();
+
     [Header("Movement")]
     public float WalkSpeed = 10f;// How fast the boss moves along the x axis (must be flipped to negative)
     public float StepTime = 2f;// Each step takes 2s, boss moves during this time
@@ -45,6 +48,10 @@ public class Boss1AI : MonoBehaviour, IDamagable
         currentHealth = MaxHealth;
         startHeight = gameObject.transform.position.y;
 
+        foreach (TurretController turret in Turrets)
+        {
+            turret.TurretActive = true;
+        }
 
         CacheMaterials();
     }

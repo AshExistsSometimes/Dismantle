@@ -38,6 +38,9 @@ public class Boss3AI : MonoBehaviour, IDamagable
     [Header("Weak Points")]
     public List<BossWeakPoint> WeakPoints = new List<BossWeakPoint>();
 
+    [Header("Turrets")]
+    public List<TurretController> Turrets = new List<TurretController>();
+
 
     public float Phase2HeightDifference = 20f;
 
@@ -65,7 +68,12 @@ public class Boss3AI : MonoBehaviour, IDamagable
         bossStartY = transform.localPosition.y;
 
         CacheMaterials();
-        
+
+        foreach (TurretController turret in Turrets)
+        {
+            turret.TurretActive = false;
+        }
+
     }
 
     private void CacheMaterials()
@@ -218,5 +226,10 @@ public class Boss3AI : MonoBehaviour, IDamagable
         CurrentPhase = Phase.Phase1;
         targetBaseHeight = bossPivotDefaultPos.position.y;
         BossActive = true;
+
+        foreach (TurretController turret in Turrets)
+        {
+            turret.TurretActive = true;
+        }
     }
 }

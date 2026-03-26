@@ -57,16 +57,14 @@ public class PauseMenuController : MonoBehaviour
 
     public void GoToLastCheckpoint()
     {
-        // no checkpoints yet
-        Debug.Log("NO CHECKPOINT SYSTEM YET");
+        LevelManager.Instance.LoadLastCheckpoint();
     }
 
 
 
     public void RestartLevel()
     {
-        currentScene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadSceneAsync(currentScene);
+        LevelManager.Instance.RestartLevel();
     }
 
 

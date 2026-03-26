@@ -37,6 +37,9 @@ public class LevelManager : MonoBehaviour
 
     public PlayerController player;
     public PlayerHealth playerHP;
+    public HUDController playerHUD;
+
+    private bool DeathScreenActive = false;
 
 
     private void Awake()
@@ -84,6 +87,10 @@ public class LevelManager : MonoBehaviour
 
         player = FindFirstObjectByType<PlayerController>();
         playerHP = FindFirstObjectByType<PlayerHealth>();
+        playerHUD = FindFirstObjectByType<HUDController>();
+
+        if (player == null) { Debug.Log("No PlayerController Found"); }
+        if (playerHP == null) { Debug.Log("No PlayerHealth Found"); }
     }
 
     public void LevelComplete()
@@ -385,16 +392,23 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLastCheckpoint()
     {
+        GameManager.Instance.PlayerDead = false;
+
         if (!HasCheckpoint)
         {
-            // Reload Current Scene
-            string currentSceneName = SceneManager.GetActiveScene().name;
-            SceneManager.LoadScene(currentSceneName);
+            RestartLevel();
         }
         else
         {
             player.transform.position = LastCheckpoint.position;
             playerHP.CurrentHP = playerHP.MaxHP;
         }
+    }
+
+    public void RestartLevel()
+    {
+        // Reload Current Scene
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene(currentSceneName);
     }
 }

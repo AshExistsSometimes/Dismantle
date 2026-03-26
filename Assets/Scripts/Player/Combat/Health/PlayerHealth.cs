@@ -33,6 +33,9 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     public bool PassiveRegeneration = false;
 
     private Coroutine regenCoroutine = null;
+
+    public HUDController playerHUD;
+
     [SerializeField]
     private float RegenDelayTimer;
 
@@ -125,15 +128,12 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     public void Die()
     {
-        // fade in death screen and turn off player controller and duel hooks scripts (LEAVE THIS FOR NOW)
         if (LevelManager.Instance == null)
         { return; }      
 
-        // Show Death Screen (there isnt one atm)
-        // Death screen will load last checkpoint when space clicked
+        Debug.Log("[!] : Player has died");
         LevelManager.Instance.LoadLastCheckpoint();
       
-        Debug.Log("[!] : Player has died");
     }
 
 

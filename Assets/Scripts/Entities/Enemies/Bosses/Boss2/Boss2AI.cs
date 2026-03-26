@@ -18,6 +18,9 @@ public class Boss2AI : MonoBehaviour, IDamagable
     [Header("Weak Points")]
     public List<BossWeakPoint> WeakPoints = new List<BossWeakPoint>();
 
+    [Header("Turrets")]
+    public List<TurretController> Turrets = new List<TurretController>();
+
     [Header("Movement Area")]
     [Range(0f, 90f)]
     public float MinPitch = 85f; // Lowest allowed point on sphere
@@ -75,6 +78,11 @@ public class Boss2AI : MonoBehaviour, IDamagable
         BossPivotPoint.localRotation = Quaternion.Euler(0f, 0f, 0f);
 
         CacheMaterials();
+
+        foreach (TurretController turret in Turrets)
+        {
+            turret.TurretActive = false;
+        }
     }
 
     private void CacheMaterials()
@@ -298,6 +306,11 @@ public class Boss2AI : MonoBehaviour, IDamagable
     {
         CurrentPhase = Phase.Phase1;
         BossActive = true;
+
+        foreach (TurretController turret in Turrets)
+        {
+            turret.TurretActive = true;
+        }
     }
 
     // -------------------------------
