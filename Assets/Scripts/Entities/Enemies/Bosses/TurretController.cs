@@ -53,7 +53,7 @@ public class TurretController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         pitchBaseRot = PitchPivot.localRotation;
-        pitchBaseForward = PitchPivot.forward; // record initial direction
+        pitchBaseForward = PitchPivot.forward.normalized;
 
         if (LaserLine != null)
             LaserLine.enabled = false;
@@ -74,23 +74,34 @@ public class TurretController : MonoBehaviour
         if (player == null) return;
 
         // -------- YAW --------
-        Vector3 toPlayer = player.position - YawPivot.position;
-        toPlayer.y = 0f;
+        Vector3 flatDir = player.position - YawPivot.position;
+        flatDir.y = 0f;
 
-        if (toPlayer.sqrMagnitude > 0.001f)
+        if (flatDir.sqrMagnitude > 0.001f)
         {
-            Quaternion targetYaw = Quaternion.LookRotation(toPlayer);
+            Quaternion targetYaw = Quaternion.LookRotation(flatDir);
             YawPivot.rotation = Quaternion.Slerp(YawPivot.rotation, targetYaw, Time.deltaTime * 5f);
         }
 
         // -------- PITCH --------
-        Vector3 toPlayerWorld = player.position - PitchPivot.position;
 
-        // Compute rotation from the original forward direction
-        Quaternion targetPitch = Quaternion.FromToRotation(pitchBaseForward, toPlayerWorld);
+        // Get direction in YawPivot LOCAL space
+        Vector3 localDir = YawPivot.InverseTransformPoint(player.position);
+
+        // Calculate pitch angle cleanly
+        float pitchAngle = Mathf.Atan2(localDir.y, localDir.z) * Mathf.Rad2Deg;
+
+        // Clamp if needed (prevents flipping)
+        pitchAngle = Mathf.Clamp(pitchAngle, -80f, 80f);
+
+        // Apply using ONLY X axis relative to base rotation
+        Quaternion targetLocal =
+            pitchBaseRot *
+            Quaternion.Euler(-pitchAngle, 0f, 0f);
+
         PitchPivot.localRotation = Quaternion.Slerp(
             PitchPivot.localRotation,
-            pitchBaseRot * targetPitch,
+            targetLocal,
             Time.deltaTime * 5f
         );
     }
