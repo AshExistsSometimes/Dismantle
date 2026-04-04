@@ -27,6 +27,14 @@ public class PauseMenuController : MonoBehaviour
     public List<Image> menuElements = new List<Image>();
     public Color accentColour;
 
+    // SETTINGS CONTROLLER
+    [Space]
+    [Header("Settings tabs")]
+    public GameObject GamePlayTab;
+    public GameObject VideoTab;
+    public GameObject AudioTab;
+    public GameObject UITab;
+
 
     private void Awake()
     {
@@ -133,4 +141,39 @@ public class PauseMenuController : MonoBehaviour
             }
         }
     }
+
+    // SETTINGS CONTROLLER
+
+    public void OpenGameplayMenu()
+    {
+        GamePlayTab.SetActive(true);// <-
+        AudioTab.SetActive(false);
+        VideoTab.SetActive(false);
+        UITab.SetActive(false);
+    }
+
+    public void OpenAudioMenu()
+    {
+        GamePlayTab.SetActive(false);
+        AudioTab.SetActive(true);// <-
+        VideoTab.SetActive(false);
+        UITab.SetActive(false);
+    }
+
+    public void OpenVideoMenu()
+    {
+        GamePlayTab.SetActive(false);
+        AudioTab.SetActive(false);
+        VideoTab.SetActive(true);// <-
+        UITab.SetActive(false);
+    }
+
+    public void OpenUIMenu()
+    {
+        GamePlayTab.SetActive(false);
+        AudioTab.SetActive(false);
+        VideoTab.SetActive(false);
+        UITab.SetActive(true);// <-
+    }
+
 }

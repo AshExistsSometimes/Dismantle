@@ -409,6 +409,6 @@ public class LevelManager : MonoBehaviour
     {
         // Reload Current Scene
         string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        SceneManager.LoadSceneAsync(currentSceneName);
     }
 }

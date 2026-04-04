@@ -17,6 +17,8 @@ public class SettingsManager : MonoBehaviour
     private string SavePath =>
         Path.Combine(Application.persistentDataPath, "UserSettings.Set");
 
+    public PlayerController player;
+
     private void Awake()
     {
         if (Instance != null)
@@ -122,6 +124,12 @@ public class SettingsManager : MonoBehaviour
     private void ApplyGameplay()
     {
         MouseSensitivity = CurrentSettings.mouseSensitivity;
+
+        if (player != null)
+        {
+            player.UpdateSensitivity();
+        }
+
     }
 
     private void ApplyUI()

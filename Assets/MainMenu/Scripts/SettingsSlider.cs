@@ -11,6 +11,7 @@ public class SettingsSlider : MonoBehaviour
     [Header("References")]
     public Slider slider;
     public TMP_Text label;
+    public TMP_Text valueLabel;
 
     [Header("Range")]
     public float minValue = 0f;
@@ -57,12 +58,18 @@ public class SettingsSlider : MonoBehaviour
         suppressCallback = true;
         slider.value = GetValue();
         suppressCallback = false;
+
+        float ValueDisplay = Mathf.Round(slider.value * 100f) * 0.01f;
+        valueLabel.text = "" + ValueDisplay;
     }
 
     private void OnSliderChanged(float value)
     {
         if (suppressCallback)
             return;
+
+        float ValueDisplay = Mathf.Round(slider.value * 100f) * 0.01f;
+        valueLabel.text = "" + ValueDisplay;
 
         SetValue(value);
         SettingsManager.Instance.ApplyAllSettings();

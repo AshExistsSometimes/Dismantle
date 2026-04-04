@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -168,13 +169,14 @@ public class PlayerController : MonoBehaviour
 
     #region Unity Default
 
+    public SettingsManager settings;
+
     private void Awake()
     {
-        if (SettingsManager.Instance !=null)
-        {
-            mouseSensitivity = SettingsManager.Instance.MouseSensitivity;
-            Debug.Log("Sensitivity: " +  mouseSensitivity + " - Settings Recorded Sensitivity = " + SettingsManager.Instance.MouseSensitivity);
-        }
+        settings = SettingsManager.Instance;
+        settings.player = this;
+
+        UpdateSensitivity();
 
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -195,6 +197,15 @@ public class PlayerController : MonoBehaviour
         LevelManager.Instance.player = this;
 
         targetFOV = originalFOV;
+    }
+
+    public void UpdateSensitivity()
+    {
+        if (SettingsManager.Instance != null)
+        {
+            mouseSensitivity = SettingsManager.Instance.MouseSensitivity;
+            Debug.Log("Sensitivity: " + mouseSensitivity + " - Settings Recorded Sensitivity = " + SettingsManager.Instance.MouseSensitivity);
+        }
     }
 
     private void Update()
