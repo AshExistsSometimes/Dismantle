@@ -2,9 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-/// <summary>
-/// Suicide enemy that flashes and explodes when near player.
-/// </summary>
 [RequireComponent(typeof(NavMeshAgent))]
 public class ExplosiveAI : BaseEnemy
 {

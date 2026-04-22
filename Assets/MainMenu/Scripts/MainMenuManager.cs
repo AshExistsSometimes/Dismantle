@@ -37,6 +37,11 @@ public class MainMenuManager : MonoBehaviour
     [Header("Accent Colour")]
     public Color MenuAccentColour = Color.red;
     public List<Image> menuElements = new List<Image>();
+    public HackerTextScroller backgroundText;
+
+    public Renderer backgroundPlaneRenderer;
+    private Material backgroundMatInstance;
+    private static readonly int ColourID = Shader.PropertyToID("_Colour");
 
     [Header("Menu Roots")]
     public RectTransform mainMenuRoot;
@@ -154,6 +159,14 @@ public class MainMenuManager : MonoBehaviour
                     mainMenuBackgroundBasePosition
                     - Vector2.up * mainMenuBackground.rect.height;
             }
+        }
+
+        if (backgroundPlaneRenderer != null)
+        {
+            // Create instance so we don't edit shared material
+            backgroundMatInstance = backgroundPlaneRenderer.material;
+
+            UpdateBackgroundColour();
         }
 
         ForceInitialOffscreenState();
@@ -459,6 +472,8 @@ public class MainMenuManager : MonoBehaviour
         }
 
         ConfirmAccentColour(MenuAccentColour);
+        backgroundText.UpdateColour();
+        UpdateBackgroundColour();
     }
 
     public void ConfirmAccentColour(Color newColour)
@@ -778,5 +793,13 @@ public class MainMenuManager : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    public void UpdateBackgroundColour()
+    {
+        if (backgroundMatInstance == null)
+            return;
+
+        backgroundMatInstance.SetColor(ColourID, MenuAccentColour);
     }
 }
