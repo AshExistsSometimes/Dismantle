@@ -1611,7 +1611,7 @@ GameObject:
   - component: {fileID: 20219218}
   - component: {fileID: 20219217}
   - component: {fileID: 20219216}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1873,7 +1873,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 24559626}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawner Row Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3240,7 +3240,7 @@ GameObject:
   - component: {fileID: 60188467}
   - component: {fileID: 60188466}
   - component: {fileID: 60188465}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10810,7 +10810,7 @@ GameObject:
   - component: {fileID: 143786184}
   - component: {fileID: 143786183}
   - component: {fileID: 143786182}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29591,7 +29591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 356977426}
   - component: {fileID: 356977427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LowerSpawnerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30513,7 +30513,7 @@ GameObject:
   - component: {fileID: 373699354}
   - component: {fileID: 373699353}
   - component: {fileID: 373699352}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41299,6 +41299,10 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -15.614914
       objectReference: {fileID: 0}
+    - target: {fileID: 2452695046307926365, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4341427663829643418, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: CombatDoors.Array.size
       value: 0
@@ -41375,6 +41379,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.03
       objectReference: {fileID: 0}
+    - target: {fileID: 7995091761485504674, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8753358820972112133, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: Enemies.Array.data[0].EnemyPrefab
       value: 
@@ -41382,6 +41390,10 @@ PrefabInstance:
     - target: {fileID: 8933969899561132883, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: m_Name
       value: 'Wave Controller [3]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933969899561132883, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -47447,7 +47459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559980062}
   - component: {fileID: 559980063}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UpperSpawnerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48326,7 +48338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 570881849}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawner Row End
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57959,7 +57971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 675858018}
   - component: {fileID: 675858017}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58464,7 +58476,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 680626554}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawner Row Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68701,7 +68713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 797676308}
   - component: {fileID: 797676309}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UpperSpawnerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74556,7 +74568,7 @@ GameObject:
   - component: {fileID: 864824214}
   - component: {fileID: 864824213}
   - component: {fileID: 864824212}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76881,7 +76893,7 @@ GameObject:
   - component: {fileID: 895064116}
   - component: {fileID: 895064115}
   - component: {fileID: 895064114}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82123,7 +82135,7 @@ GameObject:
   - component: {fileID: 967240919}
   - component: {fileID: 967240918}
   - component: {fileID: 967240917}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91722,7 +91734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1069349695}
   - component: {fileID: 1069349696}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95362,7 +95374,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1119173161}
   - component: {fileID: 1119173162}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UpperSpawnerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95670,7 +95682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1126080329}
   - component: {fileID: 1126080330}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LowerSpawnerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99185,7 +99197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1163648016}
   - component: {fileID: 1163648017}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LowerSpawnerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99497,7 +99509,7 @@ GameObject:
   - component: {fileID: 1169497623}
   - component: {fileID: 1169497622}
   - component: {fileID: 1169497621}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100915,7 +100927,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188914126}
   - component: {fileID: 1188914127}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105357,7 +105369,7 @@ GameObject:
   - component: {fileID: 1246163971}
   - component: {fileID: 1246163970}
   - component: {fileID: 1246163969}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110899,7 +110911,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1310037885}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ShotgunDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112761,7 +112773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1336851209}
   - component: {fileID: 1336851210}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LowerSpawnerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123871,7 +123883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480668918}
   - component: {fileID: 1480668919}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LowerSpawnerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128489,7 +128501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1543703886}
   - component: {fileID: 1543703887}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LowerSpawnerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145432,7 +145444,7 @@ GameObject:
   - component: {fileID: 1735685673}
   - component: {fileID: 1735685672}
   - component: {fileID: 1735685671}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150688,7 +150700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1800420699}
   - component: {fileID: 1800420700}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UpperSpawnerL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159483,7 +159495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1903658791}
   - component: {fileID: 1903658792}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161764,7 +161776,7 @@ GameObject:
   - component: {fileID: 1927209672}
   - component: {fileID: 1927209671}
   - component: {fileID: 1927209670}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165520,6 +165532,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -14.767129
       objectReference: {fileID: 0}
+    - target: {fileID: 1823130969153117752, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452695046307926365, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4341427663829643418, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: TotalWaves
       value: 2
@@ -165592,6 +165612,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5366281906873679683, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7785664621988181720, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.02
@@ -165603,6 +165627,10 @@ PrefabInstance:
     - target: {fileID: 7785664621988181720, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: m_LocalPosition.z
       value: -6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995091761485504674, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8753358820972112133, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: Enemies.Array.size
@@ -165627,6 +165655,10 @@ PrefabInstance:
     - target: {fileID: 8933969899561132883, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: m_Name
       value: 'Wave Controller [2]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933969899561132883, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8933969899561132883, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: m_IsActive
@@ -166667,7 +166699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1984089399}
   - component: {fileID: 1984089398}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169892,7 +169924,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2033644545}
   - component: {fileID: 2033644546}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UpperSpawnerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174321,7 +174353,7 @@ GameObject:
   - component: {fileID: 2081441852}
   - component: {fileID: 2081441851}
   - component: {fileID: 2081441850}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179122,7 +179154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 755203423074757954}
   - component: {fileID: 2237466864848138911}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UpperSpawnerR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179215,7 +179247,7 @@ GameObject:
   - component: {fileID: 2393081075933564441}
   - component: {fileID: 6505696293673200384}
   - component: {fileID: 8018380383100310385}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: 'Wave Controller [4]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179305,7 +179337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 709954521517204814}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179415,7 +179447,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8436502304008619910}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawners
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179686,6 +179718,14 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -11.844292
       objectReference: {fileID: 0}
+    - target: {fileID: 1823130969153117752, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452695046307926365, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4341427663829643418, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: CombatDoors.Array.size
       value: 2
@@ -179734,6 +179774,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5366281906873679683, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7785664621988181720, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.19
@@ -179742,9 +179786,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -6.25
       objectReference: {fileID: 0}
+    - target: {fileID: 7995091761485504674, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8933969899561132883, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
       propertyPath: m_Name
       value: 'Wave Controller [1]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933969899561132883, guid: 9eaac76c15f5f8b4298d998005986618, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -179766,7 +179818,7 @@ GameObject:
   - component: {fileID: 8242583059614508251}
   - component: {fileID: 607648685554269885}
   - component: {fileID: 7318071749059017874}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Combat_Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -45,15 +45,9 @@ public class TurretController : MonoBehaviour
     private Transform player;
     private bool canAttack = true;
 
-    private Quaternion pitchBaseRot;
-    private Vector3 pitchBaseForward;
-
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-
-        pitchBaseRot = PitchPivot.localRotation;
-        pitchBaseForward = PitchPivot.forward.normalized;
 
         if (LaserLine != null)
             LaserLine.enabled = false;
@@ -73,35 +67,40 @@ public class TurretController : MonoBehaviour
     {
         if (player == null) return;
 
-        // -------- YAW --------
-        Vector3 flatDir = player.position - YawPivot.position;
-        flatDir.y = 0f;
+        Vector3 worldDir = player.position - YawPivot.position;
 
-        if (flatDir.sqrMagnitude > 0.001f)
+        // -------- YAW --------
+        Vector3 yawDir = YawPivot.parent.InverseTransformDirection(worldDir);
+        yawDir.y = 0f;
+
+        if (yawDir.sqrMagnitude > 0.001f)
         {
-            Quaternion targetYaw = Quaternion.LookRotation(flatDir);
-            YawPivot.rotation = Quaternion.Slerp(YawPivot.rotation, targetYaw, Time.deltaTime * 5f);
+            float yaw = Mathf.Atan2(yawDir.x, yawDir.z) * Mathf.Rad2Deg;
+
+            Quaternion targetYaw = Quaternion.Euler(0f, yaw, 0f);
+
+            YawPivot.localRotation = Quaternion.Slerp(
+                YawPivot.localRotation,
+                targetYaw,
+                Time.deltaTime * 5f
+            );
         }
 
         // -------- PITCH --------
+        Vector3 pitchDir = YawPivot.InverseTransformDirection(player.position - PitchPivot.position);
 
-        // Get direction in YawPivot LOCAL space
-        Vector3 localDir = YawPivot.InverseTransformPoint(player.position);
+        float pitch = Mathf.Atan2(pitchDir.y, pitchDir.z) * Mathf.Rad2Deg;
 
-        // Calculate pitch angle cleanly
-        float pitchAngle = Mathf.Atan2(localDir.y, localDir.z) * Mathf.Rad2Deg;
+        // flip if needed (depends on your model)
+        pitch = -pitch;
 
-        // Clamp if needed (prevents flipping)
-        pitchAngle = Mathf.Clamp(pitchAngle, -80f, 80f);
+        pitch = Mathf.Clamp(pitch, -80f, 80f);
 
-        // Apply using ONLY X axis relative to base rotation
-        Quaternion targetLocal =
-            pitchBaseRot *
-            Quaternion.Euler(-pitchAngle, 0f, 0f);
+        Quaternion targetPitch = Quaternion.Euler(pitch, 0f, 0f);
 
         PitchPivot.localRotation = Quaternion.Slerp(
             PitchPivot.localRotation,
-            targetLocal,
+            targetPitch,
             Time.deltaTime * 5f
         );
     }

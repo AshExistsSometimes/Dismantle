@@ -10441,7 +10441,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   MaxShotgunProjectiles: 7
-  ShotgunSpreadAngle: 12
+  ShotgunSpreadAngle: 9
   ShotgunFireRate: 1.2
   BolaPullRange: 2.5
   BolaHoldTime: 1

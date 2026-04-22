@@ -6424,7 +6424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 43878027}
   - component: {fileID: 43878028}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -6655,7 +6655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 44968939}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11051,6 +11051,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 368622478}
     m_Modifications:
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: BurstCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: ProjectileSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: ProjectilePrefab
+      value: 
+      objectReference: {fileID: 5033389293101370671, guid: 51f640abaa19e974b9b3a4560de7ea63, type: 3}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: AttackCooldownRange.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: AttackCooldownRange.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2757652959999490289, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
       propertyPath: m_Name
       value: BossTurret
@@ -13427,7 +13447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 89221594}
   - component: {fileID: 89221595}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -30936,6 +30956,22 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3792210422038653290, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Size.z
+      value: 3.235478
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792210422038653290, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0062500015
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792210422038653290, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.y
+      value: -0.006249808
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792210422038653290, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.z
+      value: -1.4489889
+      objectReference: {fileID: 0}
     - target: {fileID: 3846723497819459001, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -31068,9 +31104,57 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 7306710262730234655, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Size.z
+      value: 3.2165287
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306710262730234655, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.x
+      value: 0.0062500425
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306710262730234655, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.y
+      value: -0.006250029
+      objectReference: {fileID: 0}
+    - target: {fileID: 7306710262730234655, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.z
+      value: 1.3895152
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650989544025385425, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Size.z
+      value: 3.7277863
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650989544025385425, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00625001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650989544025385425, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.y
+      value: -0.0062500252
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650989544025385425, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.z
+      value: -1.7076461
+      objectReference: {fileID: 0}
     - target: {fileID: 7677715202944797347, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767551804989429428, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Size.z
+      value: 2.6299853
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767551804989429428, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0062500015
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767551804989429428, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.y
+      value: -0.006250189
+      objectReference: {fileID: 0}
+    - target: {fileID: 7767551804989429428, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Center.z
+      value: 1.1087427
       objectReference: {fileID: 0}
     - target: {fileID: 7972814613284336784, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -31093,6 +31177,10 @@ PrefabInstance:
       value: Platform
       objectReference: {fileID: 0}
     - target: {fileID: 8722759008104813722, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722759008104813722, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -31107,8 +31195,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8722759008104813722, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1769304280}
   m_SourcePrefab: {fileID: 100100000, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+--- !u!1 &182541943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8722759008104813722, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
+  m_PrefabInstance: {fileID: 182541942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &182797945
 GameObject:
   m_ObjectHideFlags: 0
@@ -40578,7 +40674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231330944}
   - component: {fileID: 231330945}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -50005,7 +50101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288201039}
   - component: {fileID: 288201040}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -51522,7 +51618,7 @@ GameObject:
   - component: {fileID: 293300679}
   - component: {fileID: 293300678}
   - component: {fileID: 293300677}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaveSpawner (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51551,6 +51647,12 @@ MonoBehaviour:
   - {fileID: 1615391785}
   WaveTracker: 0
   TotalWaves: 1
+  OnCombatStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCombatEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &293300678
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54656,7 +54758,7 @@ GameObject:
   - component: {fileID: 317604429}
   - component: {fileID: 317604428}
   - component: {fileID: 317604427}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaveSpawner (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54685,6 +54787,12 @@ MonoBehaviour:
   - {fileID: 1530174847}
   WaveTracker: 0
   TotalWaves: 1
+  OnCombatStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCombatEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &317604428
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -71880,7 +71988,7 @@ GameObject:
   - component: {fileID: 417484628}
   - component: {fileID: 417484627}
   - component: {fileID: 417484626}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaveSpawner (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71909,6 +72017,12 @@ MonoBehaviour:
   - {fileID: 603107921}
   WaveTracker: 0
   TotalWaves: 1
+  OnCombatStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCombatEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &417484627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84270,7 +84384,7 @@ GameObject:
   m_Component:
   - component: {fileID: 488752835}
   - component: {fileID: 488752836}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -99625,7 +99739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 553399336}
   - component: {fileID: 553399337}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -101619,7 +101733,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 563812965}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: whatdoor?
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104084,7 +104198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 577398039}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107539,7 +107653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 603107922}
   - component: {fileID: 603107921}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -109509,7 +109623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 615815406}
   - component: {fileID: 615815407}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -122211,7 +122325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 705962913}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130034,7 +130148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 754700018}
   - component: {fileID: 754700019}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -134968,7 +135082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 779008211}
   - component: {fileID: 779008212}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -145680,7 +145794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 846181858}
   - component: {fileID: 846181859}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -156085,7 +156199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916654623}
   - component: {fileID: 916654624}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -156190,7 +156304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 917733696}
   - component: {fileID: 917733697}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -158824,7 +158938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 931235161}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160660,7 +160774,7 @@ GameObject:
   - component: {fileID: 950102766}
   - component: {fileID: 950102765}
   - component: {fileID: 950102764}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaveSpawner (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160689,6 +160803,12 @@ MonoBehaviour:
   - {fileID: 2120893239}
   WaveTracker: 0
   TotalWaves: 1
+  OnCombatStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCombatEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &950102765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -172650,7 +172770,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1023489287}
   - component: {fileID: 1023489288}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -185242,7 +185362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1088374813}
   - component: {fileID: 1088374814}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -186624,7 +186744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1093226691}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: whatdoor?
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186945,7 +187065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095447003}
   - component: {fileID: 1095447002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -190607,7 +190727,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117137101}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: whatdoor?
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208335,7 +208455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1219723678}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: whatdoor?
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227637,7 +227757,7 @@ GameObject:
   - component: {fileID: 1328118948}
   - component: {fileID: 1328118947}
   - component: {fileID: 1328118946}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaveSpawner (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227666,6 +227786,12 @@ MonoBehaviour:
   - {fileID: 1940876576}
   WaveTracker: 0
   TotalWaves: 1
+  OnCombatStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCombatEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1328118947
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -230756,7 +230882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1351641499}
   - component: {fileID: 1351641500}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -231887,7 +232013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1360192507}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248395,7 +248521,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1457921900}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -254052,7 +254178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1492600390}
   - component: {fileID: 1492600391}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -256254,6 +256380,26 @@ PrefabInstance:
     - target: {fileID: 477854940078553836, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: BurstCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: ProjectileSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: ProjectilePrefab
+      value: 
+      objectReference: {fileID: 5033389293101370671, guid: 51f640abaa19e974b9b3a4560de7ea63, type: 3}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: AttackCooldownRange.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: AttackCooldownRange.y
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2757652959999490289, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
       propertyPath: m_Name
@@ -258638,7 +258784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1516558925}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: whatdoor?
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260584,7 +260730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1530174848}
   - component: {fileID: 1530174847}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -268755,7 +268901,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1587734072}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268839,7 +268985,7 @@ GameObject:
   - component: {fileID: 1590897260}
   - component: {fileID: 1590897259}
   - component: {fileID: 1590897258}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WaveSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268868,6 +269014,12 @@ MonoBehaviour:
   - {fileID: 1095447002}
   WaveTracker: 0
   TotalWaves: 1
+  OnCombatStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCombatEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!65 &1590897259
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -273220,7 +273372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1615391786}
   - component: {fileID: 1615391785}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -279967,7 +280119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1668690033}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: whatdoor?
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280197,7 +280349,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1669709572}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284659,7 +284811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1693847876}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297815,6 +297967,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6068859826650528096, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
   m_PrefabInstance: {fileID: 182541942}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1769304280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182541943}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7742157, y: 0.07538605, z: 4.280386}
+  m_Center: {x: 0.013289928, y: 0.012029648, z: -1.6401927}
 --- !u!4 &1769640344 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6068859826650528096, guid: 4479f922372f9ee48b31e4d1077f5730, type: 3}
@@ -298030,7 +298203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1772705773}
   - component: {fileID: 1772705774}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -303402,7 +303575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1806864363}
   - component: {fileID: 1806864364}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -315519,7 +315692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1869893892}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327295,7 +327468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1940876577}
   - component: {fileID: 1940876576}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -331320,7 +331493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957223839}
   - component: {fileID: 1957223840}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -334677,7 +334850,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1980302528}
   - component: {fileID: 1980302529}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -337243,6 +337416,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 368622479}
     m_Modifications:
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: BurstCount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: ProjectileSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: ProjectilePrefab
+      value: 
+      objectReference: {fileID: 5033389293101370671, guid: 51f640abaa19e974b9b3a4560de7ea63, type: 3}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: AttackCooldownRange.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2515262262672633967, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
+      propertyPath: AttackCooldownRange.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2757652959999490289, guid: 51ee1b602ba331f4c95a94b209006224, type: 3}
       propertyPath: m_Name
       value: BossTurret
@@ -339352,7 +339545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2006540507}
   - component: {fileID: 2006540508}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (3)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -347782,7 +347975,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2053672622}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Doors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351807,7 +352000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2082165931}
   - component: {fileID: 2082165932}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -353059,7 +353252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088529774}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SpawnPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354546,7 +354739,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2094819593}
   - component: {fileID: 2094819594}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (2)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -355575,7 +355768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2101164863}
   - component: {fileID: 2101164864}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (1)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
@@ -359084,7 +359277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2120893240}
   - component: {fileID: 2120893239}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawn Point (4)
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}

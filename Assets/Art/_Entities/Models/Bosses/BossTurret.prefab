@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &113351285783668966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8211808517512330012}
+  m_Layer: 17
+  m_Name: X-RotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8211808517512330012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113351285783668966}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.003, y: 0.41875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6244216298217063936}
+  m_Father: {fileID: 8714223555460475532}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2757652959999490289
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,15 +78,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1250ee81ad412634d90b757643aa8cf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TurretActive: 0
   YawPivot: {fileID: 8714223555460475532}
-  PitchPivot: {fileID: 6244216298217063936}
+  PitchPivot: {fileID: 8211808517512330012}
   FirePoint: {fileID: 1810525568120848576}
   ProjectilePrefab: {fileID: 5033389293101370671, guid: 2ea5b9338aec02c4f96bbc6cbce4debd, type: 3}
   LaserPrefab: {fileID: 5767770686312116127, guid: e58fc5557b3451944867b4a65bd0adbe, type: 3}
   ProjectileSpeed: 25
   SingleFire: 1
   BurstFire: 1
-  ShotgunFire: 1
+  ShotgunFire: 0
   Laser: 0
   AttackCooldownRange: {x: 2, y: 5}
   BurstRate: 0.1
@@ -117,12 +150,12 @@ Transform:
   m_GameObject: {fileID: 2990256036891912933}
   serializedVersion: 2
   m_LocalRotation: {x: -0.36121252, y: 0.1781303, z: -0.40483192, w: 0.8209179}
-  m_LocalPosition: {x: 0.062499996, y: 0.41875, z: 0}
+  m_LocalPosition: {x: 0.059499998, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1810525568120848576}
-  m_Father: {fileID: 8714223555460475532}
+  m_Father: {fileID: 8211808517512330012}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &501093447932760111
 MeshFilter:
@@ -208,7 +241,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6244216298217063936}
+  - {fileID: 8211808517512330012}
   m_Father: {fileID: 5844875284859101771}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &203159890096707018
