@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speaker: {fileID: 11400000, guid: 07978621786266741aeaac21dca7fd42, type: 2}
   Emotion: Thinking
-  DialogueText: First things first, movement!
+  DialogueText: Can you move? Try pressing  <b><color=#ebcd3b>[WASD]</b><color=#8AFDFF>...
   HasButtons: 0
   Buttons: []
   CharactersPerSecondOverride: -1

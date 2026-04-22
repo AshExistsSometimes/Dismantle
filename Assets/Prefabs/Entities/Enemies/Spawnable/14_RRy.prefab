@@ -59,8 +59,8 @@ MonoBehaviour:
     Hostile: {r: 1, g: 0, b: 0, a: 0}
     Boss: {r: 0, g: 0, b: 0, a: 0}
     NPC: {r: 0, g: 0, b: 0, a: 0}
-  HP: 100
-  MaxHP: 100
+  HP: 40
+  MaxHP: 40
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1
@@ -80,8 +80,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
-  SightRange: 20
-  AttackDistance: 0
+  SightRange: 45
+  AttackDistance: 45
   CanChangeClass: 1
   ragPrefab: {fileID: 4916200420277285613, guid: 451bfa98d02940f4790f294abfe4afd7, type: 3}
   Body: {fileID: 4180848278508812231}

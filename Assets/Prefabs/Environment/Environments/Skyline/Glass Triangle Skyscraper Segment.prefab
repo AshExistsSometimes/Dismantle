@@ -671,7 +671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 230285282076092543}
-  m_Layer: 7
+  m_Layer: 19
   m_Name: Glass Triangle Skyscraper Segment
   m_TagString: Untagged
   m_Icon: {fileID: 0}

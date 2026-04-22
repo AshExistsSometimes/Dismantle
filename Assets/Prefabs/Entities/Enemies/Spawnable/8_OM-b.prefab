@@ -5069,8 +5069,8 @@ MonoBehaviour:
     Hostile: {r: 1, g: 0, b: 0, a: 1}
     Boss: {r: 0, g: 0, b: 0, a: 0}
     NPC: {r: 0, g: 0, b: 0, a: 0}
-  HP: 100
-  MaxHP: 100
+  HP: 60
+  MaxHP: 60
   regenHP: 0
   HPRegenRate: 1
   HPRegenAmount: 1

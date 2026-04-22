@@ -1130,7 +1130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1718898786393448665}
-  m_Layer: 7
+  m_Layer: 19
   m_Name: Glass Circular Skyscraper Segment
   m_TagString: Untagged
   m_Icon: {fileID: 0}

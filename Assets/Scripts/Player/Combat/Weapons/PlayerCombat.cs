@@ -175,6 +175,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
+            
+
         UpdateActiveWeapon();
         HandleInput();
     }
@@ -204,6 +206,8 @@ public class PlayerCombat : MonoBehaviour
         // Primary fire
         if (Input.GetMouseButtonDown(0))
         {
+            if (!weaponManager.EquipmentEnabled) { return; }
+
             switch (currentWeapon)
             {
                 case PlayerWeapon.Revolver:
@@ -220,16 +224,16 @@ public class PlayerCombat : MonoBehaviour
         // Alt fire
         if (Input.GetMouseButtonDown(1))
         {
-            switch (currentWeapon)
-            {
-                case PlayerWeapon.Revolver:
-                    ChargeRevolverAltFire();
-                    break;
-                case PlayerWeapon.Shotgun:
-                    ShotgunAltFire();
-                    break;
-                // Any more guns require extra additions to this
-            }
+            //switch (currentWeapon)
+            //{
+            //    case PlayerWeapon.Revolver:
+            //        ChargeRevolverAltFire();
+            //        break;
+            //    case PlayerWeapon.Shotgun:
+            //        ShotgunAltFire();
+            //        break;
+            //    // Any more guns require extra additions to this
+            //}
         }
 
         if (Input.GetMouseButtonUp(1))

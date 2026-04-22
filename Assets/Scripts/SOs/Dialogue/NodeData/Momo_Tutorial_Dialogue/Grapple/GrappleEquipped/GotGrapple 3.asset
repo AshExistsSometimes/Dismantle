@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speaker: {fileID: 11400000, guid: 07978621786266741aeaac21dca7fd42, type: 2}
   Emotion: Thinking
-  DialogueText: .. You can also <b><color=#ebcd3b>Grapple<color=#8AFDFF></b> to fling
-    yourself by pressing <b>both</b> Left and Right Click at the <b><color=#ebcd3b>same
-    time.
+  DialogueText: .. and unfortunately, due to some hard-coded safety features, you
+    <b><color=#ebcd3b>can't hook onto glass</b><color=#8AFDFF>..
   HasButtons: 0
   Buttons: []
   CharactersPerSecondOverride: -1

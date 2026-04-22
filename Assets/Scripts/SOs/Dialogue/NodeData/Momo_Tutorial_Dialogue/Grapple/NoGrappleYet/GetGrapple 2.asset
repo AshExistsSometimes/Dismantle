@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speaker: {fileID: 11400000, guid: 07978621786266741aeaac21dca7fd42, type: 2}
   Emotion: Thinking
-  DialogueText: Maybe theres something around that can help you?
+  DialogueText: Try <b><color=#ebcd3b>looking around nearby</b><color=#8AFDFF>..
+    there might be something that can help..
   HasButtons: 0
   Buttons: []
   CharactersPerSecondOverride: -1

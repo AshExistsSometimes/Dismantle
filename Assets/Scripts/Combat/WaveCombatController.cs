@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WaveCombatController : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class WaveCombatController : MonoBehaviour
     public int TotalWaves = 3;
 
     private bool combatStarted = false;
+    [Space]
+    public UnityEvent OnCombatStart;
+    public UnityEvent OnCombatEnd;
 
     // Track enemies INSIDE this combat zone
     private List<BaseEnemy> enemiesInZone = new List<BaseEnemy>();
@@ -65,6 +69,7 @@ public class WaveCombatController : MonoBehaviour
     private void StartCombat()
     {
         combatStarted = true;
+        OnCombatStart.Invoke();
 
         foreach (var door in CombatDoors)
         {
@@ -132,5 +137,7 @@ public class WaveCombatController : MonoBehaviour
             if (door != null)
                 door.SetActive(false);
         }
+
+        OnCombatEnd.Invoke();
     }
 }

@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b6c839934c9b8a4d804c579039a7afc, type: 3}
-  m_Name: Momo_Switching 3
+  m_Name: Momo_Swinging 2
   m_EditorClassIdentifier: 
   Speaker: {fileID: 11400000, guid: 07978621786266741aeaac21dca7fd42, type: 2}
-  Emotion: Happy
-  DialogueText: And alt fire with Right Click!
+  Emotion: Surprised
+  DialogueText: It would be pretty annoying, but you can actually use it to <b><color=#ebcd3b>swing
+    Left or Right</b><color=#8AFDFF> depending on the button you press..
   HasButtons: 0
   Buttons: []
   CharactersPerSecondOverride: -1

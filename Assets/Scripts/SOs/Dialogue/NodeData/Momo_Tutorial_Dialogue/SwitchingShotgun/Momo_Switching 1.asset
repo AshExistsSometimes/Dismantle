@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Momo_Switching 1
   m_EditorClassIdentifier: 
   Speaker: {fileID: 11400000, guid: 07978621786266741aeaac21dca7fd42, type: 2}
-  Emotion: Surprised
-  DialogueText: Oh cool! you found a shotgun!
+  Emotion: Thinking
+  DialogueText: Hmm.. this looks suspicious, but I dont think you can get past that 
+    <b><color=#ebcd3b>barricade</b><color=#8AFDFF> without picking it up..
   HasButtons: 0
   Buttons: []
   CharactersPerSecondOverride: -1

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Momo_Tutorial_Node 1
   m_EditorClassIdentifier: 
   Speaker: {fileID: 11400000, guid: 07978621786266741aeaac21dca7fd42, type: 2}
-  Emotion: Happy
-  DialogueText: Welcome to your introductory class on Kinetic Dissasembly!
+  Emotion: Surprised
+  DialogueText: OH! You're awake!
   HasButtons: 0
   Buttons: []
+  CharactersPerSecondOverride: -1

@@ -27,9 +27,10 @@ Material:
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _ALPHATEST_ON
+  - _EMISSION
   - _SURFACE_TYPE_TRANSPARENT
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -135,7 +136,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 0.1556603, b: 0.1556603, a: 0.8784314}
     - _Color: {r: 1, g: 0.15566027, b: 0.15566027, a: 0.8784314}
-    - _EmissionColor: {r: 4.594794, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 1.4980395, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
