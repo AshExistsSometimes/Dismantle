@@ -10,6 +10,10 @@ public class LevelSO : ScriptableObject
     [Header("Enemies")]
     public int EnemiesInLevel;
 
+    [Header("Music")]
+    public AudioClip BaseMusic;
+    public AudioClip CombatMusic;
+
     [Header("UI")]
     public string LevelName;
     public Sprite LevelIcon;

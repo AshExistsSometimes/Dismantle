@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4407935448212089621}
   - component: {fileID: 1995191559989629925}
   - component: {fileID: 8968194434860036554}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 1248545923818090676}
   - component: {fileID: 8167373292792660930}
   - component: {fileID: 3817726170814736962}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}

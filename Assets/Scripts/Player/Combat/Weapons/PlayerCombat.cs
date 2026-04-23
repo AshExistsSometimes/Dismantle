@@ -175,7 +175,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-            
+        if (GameManager.Instance.IsPaused) return;    
 
         UpdateActiveWeapon();
         HandleInput();

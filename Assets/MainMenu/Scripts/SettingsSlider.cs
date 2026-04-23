@@ -59,8 +59,7 @@ public class SettingsSlider : MonoBehaviour
         slider.value = GetValue();
         suppressCallback = false;
 
-        float ValueDisplay = Mathf.Round(slider.value * 100f) * 0.01f;
-        valueLabel.text = "" + ValueDisplay;
+        UpdateValueLabel(slider.value);
     }
 
     private void OnSliderChanged(float value)
@@ -68,8 +67,13 @@ public class SettingsSlider : MonoBehaviour
         if (suppressCallback)
             return;
 
-        float ValueDisplay = Mathf.Round(slider.value * 100f) * 0.01f;
-        valueLabel.text = "" + ValueDisplay;
+        // Snap audio sliders to clean steps
+        if (IsAudioSlider())
+        {
+            slider.SetValueWithoutNotify(value);
+        }
+
+        UpdateValueLabel(value);
 
         SetValue(value);
         SettingsManager.Instance.ApplyAllSettings();
@@ -143,5 +147,37 @@ public class SettingsSlider : MonoBehaviour
         );
 
         return spaced;
+    }
+
+    private bool IsAudioSlider()
+    {
+        return settingKey == SettingsFloatKey.MasterVolume ||
+               settingKey == SettingsFloatKey.MusicVolume ||
+               settingKey == SettingsFloatKey.SFXVolume ||
+               settingKey == SettingsFloatKey.UIVolume;
+    }
+
+    private void UpdateValueLabel(float value)
+    {
+        if (valueLabel == null)
+            return;
+
+        if (IsAudioSlider())
+        {
+            if (value <= 0.001f)
+            {
+                valueLabel.text = "Muted";
+            }
+            else
+            {
+                int percent = Mathf.RoundToInt(value * 100f);
+                valueLabel.text = percent + "%";
+            }
+        }
+        else
+        {
+            // Show actual value (NOT normalized)
+            valueLabel.text = Mathf.RoundToInt(value).ToString();
+        }
     }
 }

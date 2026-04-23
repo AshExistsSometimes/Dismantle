@@ -69,6 +69,9 @@ public class WaveCombatController : MonoBehaviour
     private void StartCombat()
     {
         combatStarted = true;
+
+        SoundManager.Instance.FadeInCombatMusic();
+
         OnCombatStart.Invoke();
 
         foreach (var door in CombatDoors)
@@ -137,6 +140,8 @@ public class WaveCombatController : MonoBehaviour
             if (door != null)
                 door.SetActive(false);
         }
+
+        SoundManager.Instance.FadeOutCombatMusic();
 
         OnCombatEnd.Invoke();
     }

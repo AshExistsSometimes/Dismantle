@@ -96,7 +96,17 @@ public class SettingsManager : MonoBehaviour
 
     private void ApplyAudio()
     {
-        // Hook into AudioMixer later
+        if (SoundManager.Instance == null)
+            return;
+
+        var s = CurrentSettings;
+
+        SoundManager.Instance.SetVolumes(
+            s.masterVolume,
+            s.musicVolume,
+            s.sfxVolume,
+            s.uiVolume
+        );
     }
 
     private void ApplyVideo()

@@ -81,6 +81,16 @@ public class LevelManager : MonoBehaviour
 
         SceneManager.LoadScene(level.SceneName);
 
+
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.SetLevelMusic(
+                level.BaseMusic,
+                level.CombatMusic
+            );
+        }
+
+
         TimerRunning = true;
 
         HasCheckpoint = false;
