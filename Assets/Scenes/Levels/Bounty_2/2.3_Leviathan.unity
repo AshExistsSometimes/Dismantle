@@ -53327,6 +53327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6843081d3e3f0a42a90ae1c7f959cc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseScore: 200
   BossPivotPoint: {fileID: 1899477312}
   BossActive: 1
   MaxHealth: 300

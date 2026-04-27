@@ -5059,6 +5059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf06c7e61b51f94d9802167ee6e6d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 50
   canUpdateOutline: 1
   Name: 8_OM-b
   type: 0

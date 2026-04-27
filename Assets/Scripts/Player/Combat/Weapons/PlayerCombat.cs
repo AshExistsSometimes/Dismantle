@@ -175,7 +175,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.IsPaused) return;    
+        if (GameManager.Instance.IsPaused) { Debug.Log("Game Paused"); return; }
 
         UpdateActiveWeapon();
         HandleInput();
@@ -196,7 +196,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void HandleInput()
     {
-        if (!PlayerWeaponManager.Instance.EquipmentEnabled) { return; }
+        if (!PlayerWeaponManager.Instance.EquipmentEnabled) { Debug.Log("Equipment Disabled"); return; }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -238,12 +238,12 @@ public class PlayerCombat : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1))
         {
-            switch (currentWeapon)
-            {
-                case PlayerWeapon.Revolver:
-                    RevolverAltFire();
-                    break;
-            }
+            //switch (currentWeapon)
+            //{
+            //    case PlayerWeapon.Revolver:
+            //        RevolverAltFire();
+            //        break;
+            //}
         }
     }
 

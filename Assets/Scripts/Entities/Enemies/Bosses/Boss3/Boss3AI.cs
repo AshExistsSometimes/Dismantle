@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss3AI : MonoBehaviour, IDamagable
 {
+    public int BaseScore;
+
     public bool BossActive = false;
     public enum Phase
     {
@@ -186,6 +188,8 @@ public class Boss3AI : MonoBehaviour, IDamagable
     public void Die()
     {
         LevelManager.Instance.EnemyWasKilled();
+
+        LevelManager.Instance.AddScore(BaseScore, "++ Dragon Slayer");
 
         BossActive = false;
         StopAllCoroutines();

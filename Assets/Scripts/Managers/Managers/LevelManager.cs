@@ -90,6 +90,9 @@ public class LevelManager : MonoBehaviour
             );
         }
 
+        GameManager.Instance.IsPaused = false;
+        GameManager.Instance.UIOpen = false;
+
 
         TimerRunning = true;
 
@@ -146,7 +149,7 @@ public class LevelManager : MonoBehaviour
     // Stat Updates (called externally)
     // --------------------
 
-    public void AddScore(int amount)
+    public void AddScore(int amount, string FlavorText)
     {
         Score += amount;
     }
@@ -389,8 +392,7 @@ public class LevelManager : MonoBehaviour
 
     private void OpenLevelEndScreen()
     {
-        // TEMPORARY, will be a screen that shows values of killcount, time and score, and displays all ranks, but not yet
-        ReturnToHub();
+        LevelEndScreenController.Instance.Show();
     }
 
     // CHECKPOINTS
@@ -404,15 +406,23 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.Instance.PlayerDead = false;
 
+        player = FindFirstObjectByType<PlayerController>();
+        playerHP = FindFirstObjectByType<PlayerHealth>();
+
         if (!HasCheckpoint)
         {
             RestartLevel();
+            return;
         }
-        else
-        {
-            player.transform.position = LastCheckpoint.position;
-            playerHP.CurrentHP = playerHP.MaxHP;
-        }
+
+        player.transform.position = LastCheckpoint.position;
+        playerHP.CurrentHP = playerHP.MaxHP;
+
+        player.enabled = true;
+        player.rb.linearVelocity = Vector3.zero;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void RestartLevel()

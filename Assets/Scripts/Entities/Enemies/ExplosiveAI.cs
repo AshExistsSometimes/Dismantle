@@ -178,7 +178,7 @@ public class ExplosiveAI : BaseEnemy
         NoAI = true;
         StopAllCoroutines();
 
-        Die(AttackDamage);
+        Die(AttackDamage, 1);
     }
 
     private IEnumerator ResetScaleRoutine()

@@ -13,41 +13,43 @@ MonoBehaviour:
   m_Name: 1.1_Tutorial
   m_EditorClassIdentifier: 
   SceneName: 1.1_Tutorial
-  EnemiesInLevel: 0
+  EnemiesInLevel: 26
+  BaseMusic: {fileID: 0}
+  CombatMusic: {fileID: 0}
   LevelName: Kinetic Disassembly 101
   LevelIcon: {fileID: 21300000, guid: 64ecf5d16b2f5e246a4ea1d43f5fb7ea, type: 3}
   TimeRanks:
   - Rank: 0
-    MaxTime: 0
+    MaxTime: 150
   - Rank: 1
-    MaxTime: 0
+    MaxTime: 170
   - Rank: 2
-    MaxTime: 0
+    MaxTime: 200
   - Rank: 3
-    MaxTime: 0
+    MaxTime: 230
   - Rank: 4
-    MaxTime: 0
+    MaxTime: 260
   - Rank: 5
-    MaxTime: 0
+    MaxTime: 290
   - Rank: 6
-    MaxTime: 0
+    MaxTime: 320
   - Rank: 7
-    MaxTime: 0
+    MaxTime: 321
   ScoreRanks:
   - Rank: 0
-    MinScore: 0
+    MinScore: 370
   - Rank: 1
-    MinScore: 0
+    MinScore: 370
   - Rank: 2
-    MinScore: 0
+    MinScore: 340
   - Rank: 3
-    MinScore: 0
+    MinScore: 300
   - Rank: 4
-    MinScore: 0
+    MinScore: 260
   - Rank: 5
-    MinScore: 0
+    MinScore: 220
   - Rank: 6
-    MinScore: 0
+    MinScore: 180
   - Rank: 7
-    MinScore: 0
+    MinScore: 100
   IsImplemented: 1

@@ -153547,6 +153547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef67f25e7ca7d5a4d8b2f9ec88a43058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseScore: 200
   BossActive: 1
   CurrentPhase: 0
   BossPivotPoint: {fileID: 807680547}

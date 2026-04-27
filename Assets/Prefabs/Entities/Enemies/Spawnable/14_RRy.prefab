@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfdd9b271f0dd7d40a628e7f203fa40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 20
   canUpdateOutline: 1
   Name: 14_RRy
   type: 0

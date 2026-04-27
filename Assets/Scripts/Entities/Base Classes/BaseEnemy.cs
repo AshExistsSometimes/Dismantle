@@ -150,11 +150,11 @@ public class BaseEnemy : Entity
         }
     }
 
-    public override void Die(int killingDamage)
+    public override void Die(int killingDamage, float scoreMult)
     {
         if (isDead) return;
 
-        base.Die(killingDamage);
+        base.Die(killingDamage, 1);
 
         NoAI = true;
 

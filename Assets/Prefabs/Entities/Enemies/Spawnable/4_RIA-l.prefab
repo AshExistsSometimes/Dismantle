@@ -5085,6 +5085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4de0826c54e7b3643908cc54accf4a5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 30
   canUpdateOutline: 1
   Name: 4_RIA-l
   type: 0

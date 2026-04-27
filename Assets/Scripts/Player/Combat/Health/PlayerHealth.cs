@@ -132,8 +132,11 @@ public class PlayerHealth : MonoBehaviour, IDamagable
         { return; }      
 
         Debug.Log("[!] : Player has died");
-        LevelManager.Instance.LoadLastCheckpoint();
-      
+
+
+        GameManager.Instance.PlayerDead = true;
+        DeathScreenController.Instance.ShowDeathScreen();
+
     }
 
 

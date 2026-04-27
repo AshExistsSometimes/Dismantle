@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss2AI : MonoBehaviour, IDamagable
 {
+    public int BaseScore;
+
     [Header("References")]
     public Transform BossPivotPoint;
 
@@ -258,6 +260,7 @@ public class Boss2AI : MonoBehaviour, IDamagable
     public void Die()
     {
         LevelManager.Instance.EnemyWasKilled();
+        LevelManager.Instance.AddScore(BaseScore, "++ Arachnophobic");
 
         BossActive = false;
         StopAllCoroutines();

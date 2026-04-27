@@ -7,6 +7,8 @@ using UnityEngine;
 public class Entity : MonoBehaviour, IDamagable
 {
     // VARIABLES //
+    public int BaseKillScore = 10;
+
 
     public bool canUpdateOutline = true;
 
@@ -136,7 +138,7 @@ public class Entity : MonoBehaviour, IDamagable
         FlashDamageIndicator();
         Debug.Log(name + " took " + damage + " damage");
 
-        if (HP <= 0 && !Essential) { Die(damage); }
+        if (HP <= 0 && !Essential) { Die(damage, 1); }
         else if (HP <= 0 && Essential && regenCoroutine == null)
         {
             regenCoroutine = StartCoroutine(RegenToFull(HPRegenRate / 100f));
@@ -177,12 +179,16 @@ public class Entity : MonoBehaviour, IDamagable
 
     public virtual void Die()
     {
-        Die(0); // default if no damage info exists
+        Die(0, 0); // default if no damage info exists
     }
 
-    public virtual void Die(int killingDamage)
+    public virtual void Die(int killingDamage, float scoreMult)
     {
         LevelManager.Instance.EnemyWasKilled();
+
+        int FinalKillScore = Mathf.FloorToInt(BaseKillScore * scoreMult);
+
+        LevelManager.Instance.AddScore(FinalKillScore, "+Kill");
 
         DeathColourEffect();
 

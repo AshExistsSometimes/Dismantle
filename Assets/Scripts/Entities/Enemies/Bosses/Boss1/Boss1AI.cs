@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss1AI : MonoBehaviour, IDamagable
 {
+    public int BaseScore;
+
     [Header("State")]
     public bool BossActive = false;
 
@@ -171,6 +173,8 @@ public class Boss1AI : MonoBehaviour, IDamagable
     public void Die()
     {
         LevelManager.Instance.EnemyWasKilled();
+
+        LevelManager.Instance.AddScore(BaseScore, "++ Ripped up metal");
 
         BossActive = false;
         StopAllCoroutines();
