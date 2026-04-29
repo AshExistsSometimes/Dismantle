@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: 3.3_Europa
   EnemiesInLevel: 0
-  BaseMusic: {fileID: 0}
-  CombatMusic: {fileID: 0}
+  BaseMusic: {fileID: 8300000, guid: 30cf0a0ab272bf04cb9d1cd827dde64b, type: 3}
+  CombatMusic: {fileID: 8300000, guid: e59c64c76324c6243a6aeec59fe32443, type: 3}
   LevelName: Europa
   LevelIcon: {fileID: 21300000, guid: d9cc8e43b4b90d2479f5c33dee3838d2, type: 3}
   TimeRanks: []
