@@ -231,6 +231,8 @@ public class Boss3AI : MonoBehaviour, IDamagable
         targetBaseHeight = bossPivotDefaultPos.position.y;
         BossActive = true;
 
+        SoundManager.Instance.FadeInCombatMusic();
+
         foreach (TurretController turret in Turrets)
         {
             turret.TurretActive = true;

@@ -73,11 +73,13 @@ public class BossWeakPoint : MonoBehaviour, IDamagable
 
         currentHealth -= damage;
 
+        UpdateGlow();
+
         if (currentHealth <= 0)
         {
             Die();
             WeakPointActive = false;
-            UpdateGlow();
+            
 
             gameObject.SetActive(false);// Temporary, will need to lower intensity of colour to 0 and set colour to black
         }
@@ -124,19 +126,37 @@ public class BossWeakPoint : MonoBehaviour, IDamagable
             return;
         }
 
-        // IMPORTANT: this creates an instance (no shared material issues)
-        glowMaterial = targetRenderer.material;
+        Material[] mats = targetRenderer.materials;
+
+        if (mats.Length < 2)
+        {
+            Debug.LogWarning("Expected at least 2 materials (Base + Glow).");
+            return;
+        }
+
+        mats[1] = new Material(mats[1]);
+        glowMaterial = mats[1];
+
+        targetRenderer.materials = mats;
 
         if (!glowMaterial.HasProperty(emissionProperty))
         {
-            Debug.LogWarning("Material does not support emission.");
+            Debug.LogWarning("Glow material does not support emission.");
             return;
         }
 
         glowMaterial.EnableKeyword("_EMISSION");
 
-        // Store base color (already HDR in most cases)
+        // Normalize the emission color so intensity is controlled manually
         baseEmissionColor = glowMaterial.GetColor(emissionProperty);
+
+        // Extract brightness (approximation)
+        float maxChannel = Mathf.Max(baseEmissionColor.r, baseEmissionColor.g, baseEmissionColor.b);
+
+        if (maxChannel > 1f)
+        {
+            baseEmissionColor /= maxChannel;
+        }
     }
 
     private void UpdateGlow()

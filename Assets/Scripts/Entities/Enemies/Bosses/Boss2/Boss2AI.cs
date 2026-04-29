@@ -310,6 +310,8 @@ public class Boss2AI : MonoBehaviour, IDamagable
         CurrentPhase = Phase.Phase1;
         BossActive = true;
 
+        SoundManager.Instance.FadeInCombatMusic();
+
         foreach (TurretController turret in Turrets)
         {
             turret.TurretActive = true;

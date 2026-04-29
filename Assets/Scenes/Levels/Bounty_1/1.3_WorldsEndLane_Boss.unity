@@ -12020,6 +12020,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model
       objectReference: {fileID: 0}
+    - target: {fileID: 4783795453862461670, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d800b69f6acd4d446969b3ad2d033ddf, type: 2}
+    - target: {fileID: 4783795453862461670, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 275925cd7df33e545a2a14938abbf29b, type: 2}
     - target: {fileID: 5084278724364828010, guid: b28ca00809226a04ba5140897f391f61, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.016999995
@@ -12113,7 +12121,7 @@ MonoBehaviour:
   boss1: {fileID: 801112243}
   boss2: {fileID: 0}
   boss3: {fileID: 0}
-  maxHealth: 30
+  maxHealth: 70
   currentHealth: 50
   myBoss: 0
   targetRenderer: {fileID: 1800955553}
@@ -12134,7 +12142,7 @@ MonoBehaviour:
   boss1: {fileID: 801112243}
   boss2: {fileID: 0}
   boss3: {fileID: 0}
-  maxHealth: 20
+  maxHealth: 70
   currentHealth: 50
   myBoss: 0
   targetRenderer: {fileID: 1800955551}
@@ -12155,7 +12163,7 @@ MonoBehaviour:
   boss1: {fileID: 801112243}
   boss2: {fileID: 0}
   boss3: {fileID: 0}
-  maxHealth: 20
+  maxHealth: 70
   currentHealth: 50
   myBoss: 0
   targetRenderer: {fileID: 1800955552}

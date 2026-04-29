@@ -187,6 +187,7 @@ public class Boss1AI : MonoBehaviour, IDamagable
     {
         BossActive = true;
 
+        SoundManager.Instance.FadeInCombatMusic();
 
         foreach (TurretController turret in Turrets)
         {
