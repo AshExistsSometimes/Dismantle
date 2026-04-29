@@ -42,11 +42,18 @@ public class DialogueUI : MonoBehaviour
 
     private bool allowManualAdvance = true;
 
+    private void Awake()
+    {
+        if (DialogueManager.Instance != null)
+        {
+            DialogueManager.Instance.UI = this;
+        }
+
+        gameObject.SetActive(false);
+    }
+
     private void Start()
     {
-        DialogueManager.Instance.UI = this;
-        gameObject.SetActive(false);
-
         DialogueText.richText = true;
     }
 

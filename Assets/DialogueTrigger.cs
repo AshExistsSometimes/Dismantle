@@ -12,8 +12,12 @@ public class DialogueTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-
         if (!CanTrigger) return;
+
+        if (DialogueManager.Instance == null || DialogueManager.Instance.UI == null)
+        {
+            return; // don't consume trigger if system isn't ready
+        }
 
         if (TriggerOnce)
         {

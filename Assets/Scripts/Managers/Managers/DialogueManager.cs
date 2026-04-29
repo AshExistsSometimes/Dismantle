@@ -35,15 +35,19 @@ public class DialogueManager : MonoBehaviour
         if (currentDialogue != null)
             return;
 
-        if (dialogue == null || dialogue.Nodes.Count == 0)
+        if (dialogue == null || dialogue.Nodes == null || dialogue.Nodes.Count == 0)
+        {
+            ShowFallbackMessage("NO DIALOGUE OR EMPTY NODES");
             return;
+        }
 
         currentDialogue = dialogue;
         currentIndex = 0;
 
         UI.gameObject.SetActive(true);
+        UI.Root.SetActive(true);
+        UI.Open();
 
-        // Only halt player if specified
         if (dialogue.HaltPlayer)
         {
             if (!InHub)
@@ -54,26 +58,49 @@ public class DialogueManager : MonoBehaviour
             GameManager.Instance.UIPauseGame();
         }
 
-        UI.Open();
         ShowNode();
+    }
+
+    private void ShowFallbackMessage(string message)
+    {
+        if (UI == null || UI.DialogueText == null)
+            return;
+
+        UI.Root.SetActive(true);
+        UI.gameObject.SetActive(true);
+
+        UI.NameText.text = "SYSTEM";
+        UI.DialogueText.text = message;
     }
 
     private void ShowNode()
     {
+        if (currentDialogue == null)
+        {
+            ShowFallbackMessage("CURRENT DIALOGUE IS NULL");
+            return;
+        }
+
         if (currentIndex >= currentDialogue.Nodes.Count)
         {
+            ShowFallbackMessage("END OF DIALOGUE REACHED");
             EndDialogue();
             return;
         }
 
         DialogueNodeSO node = currentDialogue.Nodes[currentIndex];
 
-        // Display node with completion callback
+        if (node == null)
+        {
+            ShowFallbackMessage("NODE IS NULL AT INDEX " + currentIndex);
+            return;
+        }
+
         UI.DisplayNode(
             node,
             NextNode,
             OnNodeFinished,
-            currentDialogue.HaltPlayer // true = manual, false = autoplay
+            currentDialogue.HaltPlayer
         );
     }
 

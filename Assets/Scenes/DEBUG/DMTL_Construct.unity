@@ -65928,33 +65928,6 @@ Transform:
   - {fileID: 1811589563}
   m_Father: {fileID: 680811851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &739640698 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-  m_PrefabInstance: {fileID: 1725768241}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &739640700
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739640698}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 75a044ef3810eb5428e09fce3306a0df, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &740307788
 GameObject:
   m_ObjectHideFlags: 0
@@ -86059,6 +86032,7 @@ MonoBehaviour:
   - {fileID: 0}
   Player: {fileID: 0}
   CameraHolder: {fileID: 0}
+  PlayerArms: {fileID: 0}
   Steps:
   - CameraStops:
     - Transform: {fileID: 476814828}
@@ -88738,6 +88712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f54e23ccb4b67d4485e96b7f032f48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EquipmentEnabled: 1
   EquippedWeapon: 1
   lastRegularWeapon: 1
   GrappleKey: 304
@@ -89682,6 +89657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f535e21bec672419fb9982ddd14983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: NPC
   type: 2
@@ -89699,6 +89675,7 @@ MonoBehaviour:
   HPRegenAmount: 1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.075
+  DeathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   DefaultSpeed: 5
   effects: 0
   NoAI: 0
@@ -94728,6 +94705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f535e21bec672419fb9982ddd14983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: NPC
   type: 2
@@ -94745,6 +94723,7 @@ MonoBehaviour:
   HPRegenAmount: 1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.075
+  DeathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   DefaultSpeed: 5
   effects: 0
   NoAI: 0
@@ -114909,6 +114888,7 @@ MonoBehaviour:
   - {fileID: 0}
   Player: {fileID: 0}
   CameraHolder: {fileID: 0}
+  PlayerArms: {fileID: 0}
   Steps:
   - CameraStops:
     - Transform: {fileID: 1379972003}
@@ -139358,6 +139338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1bd4451e41e3e4b88cf579a7a9f4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: Entity
   type: 0
@@ -139375,6 +139356,7 @@ MonoBehaviour:
   HPRegenAmount: 1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.075
+  DeathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   DefaultSpeed: 5
   effects: 0
   NoAI: 0
@@ -139383,12 +139365,15 @@ MonoBehaviour:
   Modifier: 0
   AttackDamage: 5
   AttackRate: 1
+  DeathForceMultiplier: 3
+  BodyLifetime: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
   SightRange: 10
   AttackDistance: 2
   CanChangeClass: 1
+  ragPrefab: {fileID: 0}
 --- !u!1001 &1589401232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -142390,6 +142375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1bd4451e41e3e4b88cf579a7a9f4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: Entity
   type: 0
@@ -142407,6 +142393,7 @@ MonoBehaviour:
   HPRegenAmount: 1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.075
+  DeathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   DefaultSpeed: 5
   effects: 0
   NoAI: 0
@@ -142415,12 +142402,15 @@ MonoBehaviour:
   Modifier: 1
   AttackDamage: 5
   AttackRate: 1
+  DeathForceMultiplier: 3
+  BodyLifetime: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
   SightRange: 10
   AttackDistance: 2
   CanChangeClass: 1
+  ragPrefab: {fileID: 0}
 --- !u!4 &1612697634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4492786144577136542, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
@@ -145099,6 +145089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea1bd4451e41e3e4b88cf579a7a9f4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: Entity
   type: 0
@@ -145116,6 +145107,7 @@ MonoBehaviour:
   HPRegenAmount: 1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.075
+  DeathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   DefaultSpeed: 5
   effects: 0
   NoAI: 0
@@ -145124,12 +145116,15 @@ MonoBehaviour:
   Modifier: 2
   AttackDamage: 5
   AttackRate: 1
+  DeathForceMultiplier: 3
+  BodyLifetime: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 0
   SightRange: 10
   AttackDistance: 2
   CanChangeClass: 1
+  ragPrefab: {fileID: 0}
 --- !u!4 &1645870459 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4492786144577136542, guid: c311b9437fcacc248b13fbb66e6ac325, type: 3}
@@ -151708,78 +151703,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2128717113348053275, guid: 598739cf50eddee49bb1c6c3e2052a15, type: 3}
   m_PrefabInstance: {fileID: 1573148213}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1725768241
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.145
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0000029504295
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -180
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4601992614122945897, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -4601992614122945897, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: f03a0f4b991e0264a97aeb70ef70628a, type: 2}
-    - target: {fileID: -4601992614122945897, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: f03a0f4b991e0264a97aeb70ef70628a, type: 2}
-    - target: {fileID: 919132149155446097, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      propertyPath: m_Name
-      value: Hologram
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 739640700}
-  m_SourcePrefab: {fileID: 100100000, guid: 3b39a08341ead7d4ca777178e8f3709f, type: 3}
 --- !u!1001 &1725831695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190645,6 +190568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c902bd7ac3dd0c41af04de82587c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: 8_UG
   type: 0
@@ -190662,6 +190586,7 @@ MonoBehaviour:
   HPRegenAmount: 1
   damageFlashColor: {r: 1, g: 0, b: 0, a: 1}
   damageFlashTime: 0.075
+  DeathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   DefaultSpeed: 5
   effects: 0
   NoAI: 0
@@ -190670,12 +190595,15 @@ MonoBehaviour:
   Modifier: 0
   AttackDamage: 5
   AttackRate: 1
+  DeathForceMultiplier: 3
+  BodyLifetime: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 8
   SightRange: 10
   AttackDistance: 2
   CanChangeClass: 1
+  ragPrefab: {fileID: 0}
   Head: {fileID: 0}
   SightBlockingLayers:
     serializedVersion: 2
@@ -191563,7 +191491,6 @@ SceneRoots:
   - {fileID: 295271468}
   - {fileID: 870028668}
   - {fileID: 273440087}
-  - {fileID: 1725768241}
   - {fileID: 714479837}
   - {fileID: 1051362202}
   - {fileID: 1411613239}
