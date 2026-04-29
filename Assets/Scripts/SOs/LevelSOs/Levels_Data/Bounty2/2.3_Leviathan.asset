@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: 2.3_Leviathan
   EnemiesInLevel: 0
+  BaseMusic: {fileID: 0}
+  CombatMusic: {fileID: 0}
   LevelName: Leviathan
-  LevelIcon: {fileID: 21300000, guid: 64ecf5d16b2f5e246a4ea1d43f5fb7ea, type: 3}
+  LevelIcon: {fileID: 21300000, guid: 80432de7251403e489e5055e7b104ee2, type: 3}
   TimeRanks: []
   ScoreRanks: []
   IsImplemented: 1

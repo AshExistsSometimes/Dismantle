@@ -189,7 +189,17 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
         ApplyImmediateRotation(PlayerWeapon.Shotgun, EquippedWeapon == PlayerWeapon.Shotgun);
 
         // Ensure only the equipped weapon is visible at start
-        EnableWeaponObject(EquippedWeapon);
+        if (EquipmentEnabled && EquippedWeapon != PlayerWeapon.None)
+        {
+            EnableWeaponObject(EquippedWeapon);
+        }
+        else
+        {
+            DisableWeaponObject(PlayerWeapon.Revolver);
+            DisableWeaponObject(PlayerWeapon.Shotgun);
+        }
+
+
         foreach (PlayerWeapon w in new PlayerWeapon[] { PlayerWeapon.Revolver, PlayerWeapon.Shotgun })
         {
             if (w != EquippedWeapon)
@@ -281,6 +291,43 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
 
         if (weapon != PlayerWeapon.Grapple)
             lastRegularWeapon = weapon;
+
+        UpdateHUDIcon();
+        UpdateSecondaryHUDIcon();
+    }
+
+    public void ForceDisableAllWeapons()
+    {
+        EquipmentEnabled = false;
+
+        EquippedWeapon = PlayerWeapon.None;
+        lastRegularWeapon = PlayerWeapon.None;
+
+        // Disable ALL weapon objects
+        DisableWeaponObject(PlayerWeapon.Revolver);
+        DisableWeaponObject(PlayerWeapon.Shotgun);
+
+        // Optional: also hide grapple-related visuals if any later
+
+        UpdateHUDIcon();
+        UpdateSecondaryHUDIcon();
+    }
+
+    public void EnableStartingWeapon(PlayerWeapon weapon)
+    {
+        EquipmentEnabled = true;
+
+        EquippedWeapon = weapon;
+        lastRegularWeapon = weapon;
+
+        // Disable everything first (prevents leftovers)
+        DisableWeaponObject(PlayerWeapon.Revolver);
+        DisableWeaponObject(PlayerWeapon.Shotgun);
+
+        // Proper equip (this is what you were missing)
+        StartEquip(weapon);
+
+        ApplyImmediateRotation(weapon, true);
 
         UpdateHUDIcon();
         UpdateSecondaryHUDIcon();
@@ -427,13 +474,20 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
         switch (EquippedWeapon)
         {
             case PlayerWeapon.Grapple:
-                hudController.EquipmentIcon.sprite = GrappleIcon;
+                SetImage(hudController.EquipmentIcon, GrappleIcon, 1f);
                 break;
+
             case PlayerWeapon.Revolver:
-                hudController.EquipmentIcon.sprite = RevolverIcon;
+                SetImage(hudController.EquipmentIcon, RevolverIcon, 1f);
                 break;
+
             case PlayerWeapon.Shotgun:
-                hudController.EquipmentIcon.sprite = ShotgunIcon;
+                SetImage(hudController.EquipmentIcon, ShotgunIcon, 1f);
+                break;
+
+            case PlayerWeapon.None:
+            default:
+                SetImage(hudController.EquipmentIcon, null, 0f);
                 break;
         }
     }
@@ -852,6 +906,11 @@ public class PlayerWeaponManager : MonoBehaviour, ISaveable
                 lastRegularWeapon = parsed;
             else
                 lastRegularWeapon = PlayerWeapon.Revolver; // fallback
+        }
+
+        if (!EquipmentEnabled)
+        {
+            EquippedWeapon = PlayerWeapon.None;
         }
 
         ApplyImmediateRotation(PlayerWeapon.Revolver, EquippedWeapon == PlayerWeapon.Revolver);

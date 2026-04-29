@@ -5,5 +5,7 @@ using UnityEngine;
 public class DialogueSO : ScriptableObject
 {
     public List<DialogueNodeSO> Nodes;
+
+    public bool HaltPlayer = false;
 }
 

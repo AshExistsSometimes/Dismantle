@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class TutorialSetup : MonoBehaviour
 {
     [Header("Dialogue")]
     public DialogueSO Dialogue;
+
+    public AudioSource audioSource;
+    public AudioClip ItemPickup_SFX;
 
     private PlayerWeaponManager weaponManager;
 
@@ -26,29 +30,39 @@ public class TutorialSetup : MonoBehaviour
 
     public void UnequipWeapons()
     {
-        weaponManager.SetWeapon(PlayerWeapon.Revolver);
-
-        weaponManager.EquipmentEnabled = false;
+        PlayerWeaponManager.Instance.ForceDisableAllWeapons();
 
         ShotgunEquipped(false);
         GrappleEquipped(false);
-        RevolverEquipped(false);  
+        RevolverEquipped(false);
     }
 
-
+    // PICKUP LOGIC //
     public void ShotgunEquipped(bool equipped)
     {
-        TryEnableEquipment();
-
         weaponManager.ShotgunEnabled = equipped;
+
+        audioSource.PlayOneShot(ItemPickup_SFX);
+
+        if (equipped)
+        {
+            weaponManager.EnableStartingWeapon(PlayerWeapon.Shotgun);
+        }
+
         weaponManager.RefreshWeaponUI();
     }
 
     public void RevolverEquipped(bool equipped)
     {
-        TryEnableEquipment();
-
         weaponManager.RevolverEnabled = equipped;
+
+        audioSource.PlayOneShot(ItemPickup_SFX);
+
+        if (equipped)
+        {
+            weaponManager.EnableStartingWeapon(PlayerWeapon.Revolver);
+        }
+
         weaponManager.RefreshWeaponUI();
     }
 
@@ -56,10 +70,13 @@ public class TutorialSetup : MonoBehaviour
     {
         TryEnableEquipment();
 
+        audioSource.PlayOneShot(ItemPickup_SFX);
+
         weaponManager.GrappleEnabled = equipped;
         weaponManager.RefreshWeaponUI();
     }
 
+    // END OF PICKUP LOGIC
     public void TryEnableEquipment()
     {
         if (!weaponManager.EquipmentEnabled)

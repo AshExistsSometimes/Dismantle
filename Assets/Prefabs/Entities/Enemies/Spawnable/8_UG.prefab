@@ -5383,6 +5383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c902bd7ac3dd0c41af04de82587c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: 8_UG
   type: 0

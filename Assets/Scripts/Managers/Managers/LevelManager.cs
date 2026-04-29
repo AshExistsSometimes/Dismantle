@@ -400,14 +400,12 @@ public class LevelManager : MonoBehaviour
     public void SetNewCheckpoint(Transform newTransform)
     {
         LastCheckpoint = newTransform;
+        HasCheckpoint = true;
     }
 
     public void LoadLastCheckpoint()
     {
         GameManager.Instance.PlayerDead = false;
-
-        player = FindFirstObjectByType<PlayerController>();
-        playerHP = FindFirstObjectByType<PlayerHealth>();
 
         if (!HasCheckpoint)
         {
@@ -415,12 +413,26 @@ public class LevelManager : MonoBehaviour
             return;
         }
 
+        if (player == null || playerHP == null)
+        {
+            Debug.LogError("Player references missing on respawn.");
+            return;
+        }
+
+        // Teleport
         player.transform.position = LastCheckpoint.position;
+
+        // Reset velocity
+        player.rb.linearVelocity = Vector3.zero;
+        player.rb.angularVelocity = Vector3.zero;
+
+        // Reset health
         playerHP.CurrentHP = playerHP.MaxHP;
 
+        // Re-enable control
         player.enabled = true;
-        player.rb.linearVelocity = Vector3.zero;
 
+        // Unlock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

@@ -34,9 +34,13 @@ public class DialogueUI : MonoBehaviour
 
     private float typingSpeedMultiplier = 1f;
     private float currentCharactersPerSecond;
+
     private System.Action onContinueCached;
+    private System.Action onFinishedCached;
 
     private DialogueNodeSO currentNode;
+
+    private bool allowManualAdvance = true;
 
     private void Start()
     {
@@ -72,8 +76,7 @@ public class DialogueUI : MonoBehaviour
             return;
         }
 
-        // Continue to next node
-        if (canContinue && !hasButtons && IsDialogueInputPressed())
+        if (canContinue && !hasButtons && allowManualAdvance && IsDialogueInputPressed())
         {
             canContinue = false;
             nextNodeImage.gameObject.SetActive(false);
@@ -92,10 +95,19 @@ public class DialogueUI : MonoBehaviour
         ClearButtons();
     }
 
-    public void DisplayNode(DialogueNodeSO node, System.Action onContinue)
+    // UPDATED SIGNATURE
+    public void DisplayNode(
+        DialogueNodeSO node,
+        System.Action onContinue,
+        System.Action onFinished,
+        bool allowInput
+    )
     {
         currentNode = node;
         onContinueCached = onContinue;
+        onFinishedCached = onFinished;
+        allowManualAdvance = allowInput;
+
         inputWasHeldDuringTyping = false;
 
         // Per-node typing speed
@@ -126,10 +138,12 @@ public class DialogueUI : MonoBehaviour
             canContinue = true;
             awaitingRelease = inputWasHeldDuringTyping;
 
-            if (!hasButtons)
+            if (!hasButtons && allowManualAdvance)
                 nextNodeImage.gameObject.SetActive(true);
 
-            currentNode = null; // clear node reference when done
+            currentNode = null;
+
+            onFinishedCached?.Invoke();
         }));
 
         if (node.HasButtons)
@@ -173,21 +187,19 @@ public class DialogueUI : MonoBehaviour
 
         while (i < fullText.Length)
         {
-            // If we hit a rich text tag, type it instantly
+            // Handle rich text instantly
             if (fullText[i] == '<')
             {
                 int tagEnd = fullText.IndexOf('>', i);
 
                 if (tagEnd != -1)
                 {
-                    // Append full tag instantly
                     DialogueText.text += fullText.Substring(i, tagEnd - i + 1);
                     i = tagEnd + 1;
                     continue;
                 }
             }
 
-            // Normal visible character
             char c = fullText[i];
             DialogueText.text += c;
 
@@ -220,7 +232,11 @@ public class DialogueUI : MonoBehaviour
         isTyping = false;
 
         canContinue = true;
-        nextNodeImage.gameObject.SetActive(true);
+
+        if (allowManualAdvance)
+            nextNodeImage.gameObject.SetActive(true);
+
+        onFinishedCached?.Invoke();
     }
 
     // -----------------

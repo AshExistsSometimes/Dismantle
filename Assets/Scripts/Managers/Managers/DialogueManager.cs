@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,8 @@ public class DialogueManager : MonoBehaviour
     public UnityEvent OnDialogueEnd;
 
     public bool InHub = false;
+
+    private Coroutine autoPlayRoutine;
 
     private void Awake()
     {
@@ -35,16 +38,21 @@ public class DialogueManager : MonoBehaviour
         if (dialogue == null || dialogue.Nodes.Count == 0)
             return;
 
-        if (!InHub)
-        {
-            PlayerWeaponManager.Instance.EquipmentEnabled = false;
-        }
-
-        UI.gameObject.SetActive(true);
-        GameManager.Instance.UIPauseGame();
-
         currentDialogue = dialogue;
         currentIndex = 0;
+
+        UI.gameObject.SetActive(true);
+
+        // Only halt player if specified
+        if (dialogue.HaltPlayer)
+        {
+            if (!InHub)
+            {
+                PlayerWeaponManager.Instance.EquipmentEnabled = false;
+            }
+
+            GameManager.Instance.UIPauseGame();
+        }
 
         UI.Open();
         ShowNode();
@@ -59,7 +67,32 @@ public class DialogueManager : MonoBehaviour
         }
 
         DialogueNodeSO node = currentDialogue.Nodes[currentIndex];
-        UI.DisplayNode(node, NextNode);
+
+        // Display node with completion callback
+        UI.DisplayNode(
+            node,
+            NextNode,
+            OnNodeFinished,
+            currentDialogue.HaltPlayer // true = manual, false = autoplay
+        );
+    }
+
+    private void OnNodeFinished()
+    {
+        // Only auto-advance if NOT halting player
+        if (currentDialogue == null || currentDialogue.HaltPlayer)
+            return;
+
+        if (autoPlayRoutine != null)
+            StopCoroutine(autoPlayRoutine);
+
+        autoPlayRoutine = StartCoroutine(AutoAdvanceAfterDelay());
+    }
+
+    private IEnumerator AutoAdvanceAfterDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        NextNode();
     }
 
     private void NextNode()
@@ -70,22 +103,28 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        if (autoPlayRoutine != null)
+        {
+            StopCoroutine(autoPlayRoutine);
+            autoPlayRoutine = null;
+        }
+
         UI.Close();
         UI.gameObject.SetActive(false);
 
-        GameManager.Instance.UIUnpauseGame();
+        if (currentDialogue != null && currentDialogue.HaltPlayer)
+        {
+            GameManager.Instance.UIUnpauseGame();
+
+            if (!InHub)
+            {
+                PlayerWeaponManager.Instance.EquipmentEnabled = true;
+            }
+        }
 
         OnDialogueEnd?.Invoke();
         OnDialogueEnd.RemoveAllListeners();
 
         currentDialogue = null;
-
-        if (!InHub)
-        {
-            PlayerWeaponManager.Instance.EquipmentEnabled = true;
-        }
     }
-
-
 }
-

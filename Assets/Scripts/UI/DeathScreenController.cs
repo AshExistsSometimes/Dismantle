@@ -84,5 +84,5 @@ public class DeathScreenController : MonoBehaviour
         waitingForInput = false;
 
         LevelManager.Instance.LoadLastCheckpoint();
-    }
+    }  
 }

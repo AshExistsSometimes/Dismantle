@@ -146,4 +146,31 @@ public class LevelProgressManager : MonoBehaviour, ISaveable
                 p.BestRank = SaveUtils.StringToEnum<Rank>(r);
         }
     }
+    [ContextMenu("Unlock All Implemented Levels")]
+    public void UnlockAllImplementedLevels()
+    {
+        foreach (var level in AllLevels)
+        {
+            if (level == null || !level.IsImplemented)
+                continue;
+
+            if (!progress.ContainsKey(level.SceneName))
+            {
+                progress[level.SceneName] = new LevelProgress
+                {
+                    LevelID = level.SceneName,
+                    Unlocked = true,
+                    Played = false,
+                    BestTime = -1,
+                    BestRank = Rank.None
+                };
+            }
+            else
+            {
+                progress[level.SceneName].Unlocked = true;
+            }
+        }
+
+        Debug.Log("[LevelProgressManager] All implemented levels unlocked.");
+    }
 }

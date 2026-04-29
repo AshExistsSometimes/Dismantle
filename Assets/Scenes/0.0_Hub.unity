@@ -19895,6 +19895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aea066980e94d74b8570b3fdb33c38d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: Armourer
   type: 2
@@ -47055,6 +47056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a80a950f3edd5e418323ea2e7cc7f19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BaseKillScore: 10
   canUpdateOutline: 1
   Name: Shopkeeper
   type: 2
@@ -55919,7 +55921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf43f1957d704004c98e174bc8400be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseMusic: {fileID: 0}
+  baseMusic: {fileID: 8300000, guid: 404ffbccb11266e45b9e3b4c13f36b73, type: 3}
   combatMusic: {fileID: 0}
 --- !u!4 &2127980461
 Transform:

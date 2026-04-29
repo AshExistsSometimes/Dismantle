@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,6 +14,34 @@ public class PlayerController : MonoBehaviour
     public Transform orientation;
     public Transform headPosition;
     public Transform cameraHolder;
+    #endregion
+
+    #region Audio
+
+    [Header("Audio")]
+    public AudioSource MovementAudioSource;
+
+    public AudioClip WalkingLoopSFX;
+    [Range(0f, 1f)] public float WalkingVolume = 0.5f;
+
+    public AudioClip JumpLandingSFX;
+    [Range(0f, 1f)] public float LandingVolume = 1f;
+
+    public AudioClip SlidingSFX;
+    [Range(0f, 1f)] public float SlidingVolume = 0.7f;
+
+    public AudioClip InAirSFX;
+    [Range(0f, 1f)] public float InAirVolume = 0.5f;
+
+    public float InAirFadeTime = 0.5f;
+
+    private bool wasGroundedLastFrame;
+    private bool isPlayingWalkLoop;
+
+    private float inAirFadeTimer;
+    private bool isPlayingSliding;
+    private bool isPlayingInAir;
+
     #endregion
 
     #region Movement
@@ -194,6 +221,8 @@ public class PlayerController : MonoBehaviour
             originalFOV = playerCam.fieldOfView;
         }
 
+        SoundManager.Instance?.Register(MovementAudioSource, AudioType.SFX);
+
         LevelManager.Instance.player = this;
 
         targetFOV = originalFOV;
@@ -222,6 +251,8 @@ public class PlayerController : MonoBehaviour
         UpdateStateMachine();
 
         UpdateCameraPosition();
+
+        HandleMovementAudio();
     }
 
     private void FixedUpdate()
@@ -398,6 +429,8 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !swinging)
         {
+            PlayJumpImpactSFX();
+
             float finalJumpForce = jumpForce;
 
             // Slide jump boost
@@ -407,6 +440,163 @@ public class PlayerController : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
             rb.AddForce(Vector3.up * finalJumpForce, ForceMode.Impulse);
         }
+    }
+
+    private void HandleMovementAudio()
+    {
+        if (MovementAudioSource == null)
+            return;
+
+        Vector3 horizontalVel = rb.linearVelocity;
+        horizontalVel.y = 0f;
+
+        float speed = horizontalVel.magnitude;
+
+        bool grounded = isGrounded;
+        bool moving = speed > 0.1f;
+
+        bool sliding = currentState == MovementState.Sliding;
+        bool wallRunningState = currentState == MovementState.WallRunning;
+
+        // CRITICAL FIX: true airborne only if NOT grounded AND NOT wallrunning
+        bool airborne = !grounded && !wallRunningState;
+
+        // =========================================================
+        // 1. LANDING
+        // =========================================================
+        if (!wasGroundedLastFrame && grounded && JumpLandingSFX != null)
+        {
+            float vol = (SoundManager.Instance != null)
+                ? SoundManager.Instance.SFXVolume * SoundManager.Instance.MasterVolume
+                : LandingVolume;
+
+            AudioSource.PlayClipAtPoint(JumpLandingSFX, transform.position, vol);
+        }
+
+        // =========================================================
+        // 2. AIR (NOW EXCLUDES WALLRUNNING PROPERLY)
+        // =========================================================
+        if (airborne && InAirSFX != null)
+        {
+            if (MovementAudioSource.clip != InAirSFX)
+            {
+                MovementAudioSource.clip = InAirSFX;
+                MovementAudioSource.loop = true;
+                MovementAudioSource.Play();
+                inAirFadeTimer = 0f;
+            }
+
+            inAirFadeTimer += Time.deltaTime;
+            MovementAudioSource.pitch = Mathf.Lerp(0.9f, 1.2f, speed / MaxFallSpeed);
+
+            wasGroundedLastFrame = grounded;
+            return;
+        }
+
+        // =========================================================
+        // 3. SLIDE (ONLY GROUND)
+        // =========================================================
+        if (sliding && grounded && SlidingSFX != null)
+        {
+            if (MovementAudioSource.clip != SlidingSFX)
+            {
+                MovementAudioSource.clip = SlidingSFX;
+                MovementAudioSource.loop = true;
+                MovementAudioSource.Play();
+            }
+
+            MovementAudioSource.pitch = Mathf.Lerp(1f, 1.5f, speed / maxSlideSpeed);
+
+            wasGroundedLastFrame = grounded;
+            return;
+        }
+
+        // =========================================================
+        // 4. WALK + WALLRUN LOOP
+        // =========================================================
+        bool shouldPlayLoop =
+            (grounded && moving && !sliding) ||
+            wallRunningState;
+
+        if (shouldPlayLoop && WalkingLoopSFX != null)
+        {
+            if (MovementAudioSource.clip != WalkingLoopSFX)
+            {
+                MovementAudioSource.clip = WalkingLoopSFX;
+                MovementAudioSource.loop = true;
+                MovementAudioSource.Play();
+            }
+
+            MovementAudioSource.pitch = 1f;
+
+            wasGroundedLastFrame = grounded;
+            return;
+        }
+
+        // =========================================================
+        // 5. IDLE
+        // =========================================================
+        if (MovementAudioSource.isPlaying)
+        {
+            MovementAudioSource.Stop();
+            MovementAudioSource.clip = null;
+        }
+
+        wasGroundedLastFrame = grounded;
+    }
+
+    private void PlayJumpImpactSFX()
+    {
+        if (JumpLandingSFX == null)
+            return;
+
+        float vol = (SoundManager.Instance != null)
+            ? SoundManager.Instance.SFXVolume * SoundManager.Instance.MasterVolume
+            : LandingVolume;
+
+        AudioSource.PlayClipAtPoint(JumpLandingSFX, transform.position, vol);
+    }
+
+    private void HandleWalkingAudio()
+    {
+        if (MovementAudioSource == null || WalkingLoopSFX == null)
+            return;
+
+        // Only allow walking audio in grounded state
+        if (currentState != MovementState.Grounded || !isGrounded)
+            return;
+
+        Vector3 horizontalVel = rb.linearVelocity;
+        horizontalVel.y = 0f;
+
+        float speed = horizontalVel.magnitude;
+
+        // Not moving -> stop walking loop if it's playing
+        if (speed < 0.1f)
+        {
+            if (MovementAudioSource.clip == WalkingLoopSFX)
+                MovementAudioSource.Stop();
+
+            return;
+        }
+
+        // If another system already owns the audio source, don't override it
+        if (MovementAudioSource.clip != WalkingLoopSFX &&
+            MovementAudioSource.isPlaying &&
+            MovementAudioSource.clip != null)
+        {
+            return;
+        }
+
+        // Start walking loop
+        if (MovementAudioSource.clip != WalkingLoopSFX)
+        {
+            MovementAudioSource.clip = WalkingLoopSFX;
+            MovementAudioSource.loop = true;
+            MovementAudioSource.Play();
+        }
+
+        MovementAudioSource.pitch = 1f;
     }
 
     #endregion
@@ -604,6 +794,8 @@ public class PlayerController : MonoBehaviour
 
     private void WallJump()
     {
+        PlayJumpImpactSFX();
+
         BeginExitWall();
 
         Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;

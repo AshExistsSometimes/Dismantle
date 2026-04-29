@@ -39,6 +39,11 @@ public class PlayerHealth : MonoBehaviour, IDamagable
     [SerializeField]
     private float RegenDelayTimer;
 
+    [Header("Audio")]
+    public AudioSource DamageAudioSource;
+    public AudioClip DamageSFX;
+    [Range(0f, 1f)] public float DamageVolume = 1f;
+
     //
 
     private void Start()
@@ -84,6 +89,12 @@ public class PlayerHealth : MonoBehaviour, IDamagable
 
     public void TakeDamage(int amount)
     {
+        if (DamageAudioSource != null && DamageSFX != null)
+        {
+            DamageAudioSource.pitch = Random.Range(0.95f, 1.05f);
+            DamageAudioSource.PlayOneShot(DamageSFX, DamageVolume);
+        }
+
         if (PassiveRegeneration)
         {
             RegenDelayTimer = PassiveRegenDelay;

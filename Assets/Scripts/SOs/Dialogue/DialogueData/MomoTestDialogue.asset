@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Nodes:
   - {fileID: 11400000, guid: 38b1bb7377433a547bbdb98ca4d51c31, type: 2}
+  HaltPlayer: 1

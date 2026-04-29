@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneName: 1.3_WorldsEndLane
   EnemiesInLevel: 0
+  BaseMusic: {fileID: 0}
+  CombatMusic: {fileID: 0}
   LevelName: World's End lane
-  LevelIcon: {fileID: 21300000, guid: 64ecf5d16b2f5e246a4ea1d43f5fb7ea, type: 3}
+  LevelIcon: {fileID: 21300000, guid: 6f6ce65eddd756e429c3a7772f8ef649, type: 3}
   TimeRanks:
   - Rank: 0
     MaxTime: 0

@@ -29,6 +29,7 @@ public class CinematicController : MonoBehaviour
     [Header("References")]
     public GameObject Player;
     public Transform CameraHolder;
+    public GameObject PlayerArms;
 
     [Header("Cinematic Steps")]
     public List<CinematicStep> Steps = new();
@@ -54,6 +55,8 @@ public class CinematicController : MonoBehaviour
             if (obj != null)
                 obj.SetActive(false);
         }
+
+        PlayerArms.SetActive(true);
 
         cinematicRoutine = StartCoroutine(RunCinematic());
     }
@@ -194,5 +197,7 @@ public class CinematicController : MonoBehaviour
 
         if (Player != null)
             Player.SetActive(true);
+
+        PlayerArms.SetActive(true);
     }
 }

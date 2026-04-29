@@ -8,6 +8,10 @@ public class PlayerCombat : MonoBehaviour
     public PlayerWeaponManager weaponManager;
     public Camera PlayerCamera;
 
+    [Space]
+    public GameObject RightHandSocket;
+    public GameObject LeftHandSocket;
+
     [Header("Weapons")]
     public GameObject Revolver;
     public Transform RevolverFirePoint;
@@ -23,6 +27,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Audio")]
     public AudioSource WeaponAudioSource;
     [Space]
+
     public AudioClip ShotgunFireSFX;
     [Range(0f, 1f)]
     public float ShotgunFireRelativeVolume = 1f;
@@ -30,9 +35,18 @@ public class PlayerCombat : MonoBehaviour
     [Range(0f, 1f)]
     public float ShotgunReloadRelativeVolume = 1f;
     [Space]
+
     public AudioClip RevolverFireSFX;
     [Range(0f, 1f)]
     public float RevolverFireRelativeVolume = 0.7f;
+    [Space]
+
+    public AudioClip Sword_SFX;
+    [Range(0f, 1f)] 
+    public float SwordVolume = 1f;
+    public AudioClip Parry_Impact_SFX;
+    [Range(0f, 1f)] 
+    public float ParryImpactVolume = 1f;
 
     [Header("Shotgun - Primary")]
     [Space]
@@ -178,6 +192,12 @@ public class PlayerCombat : MonoBehaviour
         if (GameManager.Instance.IsPaused) { Debug.Log("Game Paused"); return; }
 
         UpdateActiveWeapon();
+
+        if (!PlayerWeaponManager.Instance.EquipmentEnabled || currentWeapon == PlayerWeapon.None)
+        {
+            return;
+        }
+
         HandleInput();
     }
 
@@ -192,15 +212,36 @@ public class PlayerCombat : MonoBehaviour
 
         // Get the currently equipped weapon
         currentWeapon = weaponManager.EquippedWeapon;
+
+        if (!weaponManager.EquipmentEnabled)
+        {
+            RightHandSocket.SetActive(false);
+        }
+        else
+        {
+            RightHandSocket.SetActive(true);
+        }
     }
 
     private void HandleInput()
     {
-        if (!PlayerWeaponManager.Instance.EquipmentEnabled) { Debug.Log("Equipment Disabled"); return; }
+        if (!weaponManager.EquipmentEnabled || currentWeapon == PlayerWeapon.None)
+            return;
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            MeleeAttack();
+            if (Time.time >= nextSwordFireTime)
+            {
+                if (MeleeAttack())
+                {
+                    if (WeaponAudioSource != null && Sword_SFX != null)
+                    {
+                        WeaponAudioSource.pitch = Random.Range(0.9f, 1.1f);
+                        WeaponAudioSource.volume = SwordVolume;
+                        WeaponAudioSource.PlayOneShot(Sword_SFX);
+                    }
+                }
+            }
         }
 
         // Primary fire
@@ -516,16 +557,30 @@ public class PlayerCombat : MonoBehaviour
     // ------------------------------
 
     private float nextSwordFireTime;
-    private void MeleeAttack()
+
+    private bool MeleeAttack()
     {
-        Debug.Log("Parry");
         if (Time.time < nextSwordFireTime)
-            return;
+            return false;
 
         nextSwordFireTime = Time.time + (1f / SwordFireRate);
 
+        Debug.Log("Parry");
+
         if (weaponManager != null)
             weaponManager.PlaySwordParry(ParryWindow, 1f / SwordFireRate);
+
+        return true;
+    }
+
+    public void PlayParryImpactSFX()
+    {
+        if (WeaponAudioSource != null && Parry_Impact_SFX != null)
+        {
+            WeaponAudioSource.pitch = Random.Range(0.9f, 1.1f);
+            WeaponAudioSource.volume = ParryImpactVolume;
+            WeaponAudioSource.PlayOneShot(Parry_Impact_SFX);
+        }
     }
 
     // ------------------------------

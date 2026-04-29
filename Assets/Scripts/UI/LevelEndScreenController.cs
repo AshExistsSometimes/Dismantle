@@ -37,6 +37,7 @@ public class LevelEndScreenController : MonoBehaviour
     public AudioClip slamSound;    // for rank pop-in
 
     private bool waitingForInput = false;
+    private float tickCooldown;
 
     private void Awake()
     {
@@ -223,33 +224,37 @@ public class LevelEndScreenController : MonoBehaviour
     private IEnumerator AnimateValue(TMP_Text text, float duration, System.Func<float, string> formatter)
     {
         float time = 0f;
-
-        // Start ticking loop
-        if (tickLoop != null && audioSource != null)
-        {
-            audioSource.clip = tickLoop;
-            audioSource.loop = true;
-            audioSource.Play();
-        }
+        string lastValue = "";
 
         while (time < duration)
         {
             time += Time.deltaTime;
             float t = Mathf.Clamp01(time / duration);
 
-            // Ease OUT (fast start, slow end)
             float eased = 1f - Mathf.Pow(1f - t, 3f);
 
-            text.text = formatter(eased);
+            string newValue = formatter(eased);
+
+            // Tick cooldown timer
+            tickCooldown -= Time.deltaTime;
+
+            if (newValue != lastValue)
+            {
+                text.text = newValue;
+
+                if (tickLoop != null && audioSource != null && tickCooldown <= 0f)
+                {
+                    audioSource.PlayOneShot(tickLoop);
+                    tickCooldown = tickLoop.length * 0.9f; // slight overlap tolerance
+                }
+
+                lastValue = newValue;
+            }
 
             yield return null;
         }
 
         text.text = formatter(1f);
-
-        // Stop ticking
-        if (audioSource != null && audioSource.isPlaying)
-            audioSource.Stop();
     }
 
     private IEnumerator SlamIn(Transform target)

@@ -8,6 +8,7 @@ public class ZoneTextPopup : MonoBehaviour
     public TMP_Text ZoneText;
     public RectTransform TopVignette;
     public RectTransform BottomVignette;
+    public GameObject HUD;
 
     [Header("Text Timing")]
     public float DisplayTime = 2f;
@@ -57,6 +58,8 @@ public class ZoneTextPopup : MonoBehaviour
     {
         ResetVignettePositions();
 
+        HUD.gameObject.SetActive(false);
+
         TopVignette.gameObject.SetActive(true);
         BottomVignette.gameObject.SetActive(true);
 
@@ -94,6 +97,8 @@ public class ZoneTextPopup : MonoBehaviour
         ZoneText.gameObject.SetActive(false);
         TopVignette.gameObject.SetActive(false);
         BottomVignette.gameObject.SetActive(false);
+
+        HUD.gameObject.SetActive(true);
     }
 
     private IEnumerator FadeText(float from, float to, float duration)

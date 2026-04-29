@@ -52,7 +52,7 @@ public class Boss1AI : MonoBehaviour, IDamagable
 
         foreach (TurretController turret in Turrets)
         {
-            turret.TurretActive = true;
+            turret.TurretActive = false;
         }
 
         CacheMaterials();
@@ -181,5 +181,16 @@ public class Boss1AI : MonoBehaviour, IDamagable
         Debug.Log("Boss 1 died");
 
         LevelManager.Instance.LevelComplete();
+    }
+
+    public void ActivateBoss()
+    {
+        BossActive = true;
+
+
+        foreach (TurretController turret in Turrets)
+        {
+            turret.TurretActive = true;
+        }
     }
 }
