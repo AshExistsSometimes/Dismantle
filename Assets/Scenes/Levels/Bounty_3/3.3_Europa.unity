@@ -57474,6 +57474,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5168935785923380004, guid: 5b1307b26d7a357489d8bb128bd5d732, type: 3}
   m_PrefabInstance: {fileID: 1633307434}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &330806674 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1893493897764661748, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+  m_PrefabInstance: {fileID: 484496823007077844}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &330806675 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4151447553020871103, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+  m_PrefabInstance: {fileID: 484496823007077844}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &330806676 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8421007159334996421, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+  m_PrefabInstance: {fileID: 484496823007077844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &331109865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7426659214219035625, guid: 8a1878078ed024d46a96d919e526dda9, type: 3}
@@ -153621,11 +153636,10 @@ MonoBehaviour:
   FloatHeightVariation: 15
   Speed: 6
   Phase2TransitionSpeed: 2
-  MaxHealth: 500
-  currentHealth: 500
+  MaxHealth: 350
+  currentHealth: 350
   BossArmour: 2
   WeakPoints:
-  - {fileID: 484496823007077850}
   - {fileID: 484496823007077849}
   - {fileID: 484496823007077848}
   Turrets:
@@ -365532,6 +365546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Model
       objectReference: {fileID: 0}
+    - target: {fileID: 8060758428139694096, guid: 7ca4f3c9a507e864d8648f545ed3100b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -365588,6 +365606,9 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 330806675}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!114 &484496823007077849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365606,6 +365627,9 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 330806674}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!114 &484496823007077850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365624,6 +365648,9 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 330806676}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!1001 &794868063140693245
 PrefabInstance:
   m_ObjectHideFlags: 0

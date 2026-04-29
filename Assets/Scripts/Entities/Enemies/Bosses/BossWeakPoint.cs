@@ -18,6 +18,18 @@ public class BossWeakPoint : MonoBehaviour, IDamagable
     [Header("Debug Info")]
     public int myBoss = 0;
 
+    #region Glow
+
+    [Header("Glow")]
+    public Renderer targetRenderer;
+    public string emissionProperty = "_EmissionColor";
+    public float maxEmissionIntensity = 6f;
+
+    private Material glowMaterial;
+    private Color baseEmissionColor;
+
+    #endregion
+
     private bool WeakPointActive = true;
 
     private void Awake()
@@ -30,6 +42,8 @@ public class BossWeakPoint : MonoBehaviour, IDamagable
         {
             Debug.LogWarning("Weak point has incorrect number of BossAI components, please check there is ONE assigned BossAI script");
         }
+
+        SetupGlowMaterial();
     }
 
     public int CheckAttachedBoss()
@@ -63,7 +77,7 @@ public class BossWeakPoint : MonoBehaviour, IDamagable
         {
             Die();
             WeakPointActive = false;
-            DimGlowingLight();
+            UpdateGlow();
 
             gameObject.SetActive(false);// Temporary, will need to lower intensity of colour to 0 and set colour to black
         }
@@ -97,9 +111,44 @@ public class BossWeakPoint : MonoBehaviour, IDamagable
         }
     }
 
-    public void DimGlowingLight()
+    private void SetupGlowMaterial()
     {
-        // Turn Glow colour to black
-        // Set glow HDR intensity to 0
+        if (targetRenderer == null)
+        {
+            targetRenderer = GetComponent<Renderer>();
+        }
+
+        if (targetRenderer == null)
+        {
+            Debug.LogWarning("BossWeakPoint has no Renderer assigned.");
+            return;
+        }
+
+        // IMPORTANT: this creates an instance (no shared material issues)
+        glowMaterial = targetRenderer.material;
+
+        if (!glowMaterial.HasProperty(emissionProperty))
+        {
+            Debug.LogWarning("Material does not support emission.");
+            return;
+        }
+
+        glowMaterial.EnableKeyword("_EMISSION");
+
+        // Store base color (already HDR in most cases)
+        baseEmissionColor = glowMaterial.GetColor(emissionProperty);
+    }
+
+    private void UpdateGlow()
+    {
+        if (glowMaterial == null) return;
+
+        float healthPercent = Mathf.Clamp01((float)currentHealth / maxHealth);
+
+        float intensity = maxEmissionIntensity * healthPercent;
+
+        Color finalColor = baseEmissionColor * intensity;
+
+        glowMaterial.SetColor(emissionProperty, finalColor);
     }
 }

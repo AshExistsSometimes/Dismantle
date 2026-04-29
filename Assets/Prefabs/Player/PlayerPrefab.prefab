@@ -10496,7 +10496,7 @@ MonoBehaviour:
   SwordHitbox: {fileID: 8353230737019208391}
   SwordDamage: 15
   SwordFireRate: 3
-  ParryWindow: 0.25
+  ParryWindow: 0.13
   ShotgunBulletPrefab: {fileID: 397771071865901027, guid: b33a792c3ff46b94e9572a4e768d3640, type: 3}
   BolaProjectilePrefab: {fileID: 8871206154826707068, guid: 3e7293cfe7100dd478d84b79e6e23511, type: 3}
   RevolverLineRenderer: {fileID: 8238145078379662559}

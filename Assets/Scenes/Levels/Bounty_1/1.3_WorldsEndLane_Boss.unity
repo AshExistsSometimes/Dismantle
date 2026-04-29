@@ -9923,6 +9923,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6866873617502497195, guid: d8f566b3fe22e5c4898273d1aad2b745, type: 3}
   m_PrefabInstance: {fileID: 1751236853}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1800955551 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6112951538707792309, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+  m_PrefabInstance: {fileID: 3899102481883672138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1800955552 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6252529651413589093, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+  m_PrefabInstance: {fileID: 3899102481883672138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1800955553 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4783795453862461670, guid: b28ca00809226a04ba5140897f391f61, type: 3}
+  m_PrefabInstance: {fileID: 3899102481883672138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1812984598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12101,6 +12116,9 @@ MonoBehaviour:
   maxHealth: 30
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 1800955553}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!114 &3899102481883672143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12119,6 +12137,9 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 1800955551}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!114 &3899102481883672144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12137,6 +12158,9 @@ MonoBehaviour:
   maxHealth: 20
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 1800955552}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!1001 &4011586124101103108
 PrefabInstance:
   m_ObjectHideFlags: 0

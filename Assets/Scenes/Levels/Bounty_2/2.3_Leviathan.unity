@@ -65313,6 +65313,31 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558883886}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &1562326445 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4976098679020090339, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1562326446 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5113893552963242680, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1562326447 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3811608736839193689, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1562326448 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1621328012559467856, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1562326449 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5796349411357231697, guid: 24e6bf5342dc1364e999e83041fd330b, type: 3}
+  m_PrefabInstance: {fileID: 1218549059871486160}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1563448549
 GameObject:
   m_ObjectHideFlags: 0
@@ -84475,6 +84500,9 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 1562326445}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!114 &1218549059871486167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84493,6 +84521,9 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 1562326446}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!114 &1218549059871486168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84511,6 +84542,9 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 1562326447}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!114 &1218549059871486169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84529,6 +84563,9 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 1562326448}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!114 &1218549059871486170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84547,6 +84584,9 @@ MonoBehaviour:
   maxHealth: 50
   currentHealth: 50
   myBoss: 0
+  targetRenderer: {fileID: 1562326449}
+  emissionProperty: _EmissionColor
+  maxEmissionIntensity: 6
 --- !u!1 &1247046494803279503
 GameObject:
   m_ObjectHideFlags: 0
